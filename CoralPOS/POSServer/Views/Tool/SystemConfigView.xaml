@@ -27,6 +27,7 @@
                 <Button Content="..." Height="29" HorizontalAlignment="Left" Margin="416,129,0,0" Name="GetSuccessPath" VerticalAlignment="Top" Width="37" />
                 <Button Content="..." Height="29" HorizontalAlignment="Left" Margin="416,166,0,0" Name="GetBackupPath" VerticalAlignment="Top" Width="37" />
                 <Button Content="..." Height="29" HorizontalAlignment="Left" Margin="416,203,0,0" Name="GetDbToolPath" VerticalAlignment="Top" Width="37" />
+                <Button Content="LẤY GIÁ TRỊ MẶC ĐỊNH" Height="27" HorizontalAlignment="Left" Margin="152,245,0,0" Name="CreateDefaultPath" VerticalAlignment="Top" Width="258" />
             </Grid>
         </GroupBox>
         <GroupBox Header="Chức năng" Height="304" HorizontalAlignment="Left" Margin="471,0,0,0" Name="GroupFunction" VerticalAlignment="Top" Width="366" FontSize="14">

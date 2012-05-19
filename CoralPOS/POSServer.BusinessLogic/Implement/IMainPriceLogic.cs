@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Base;
 using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
@@ -61,5 +62,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<MainPrice> criteria);
+
+        void PreloadDefinition(IFlowSession session);
     }
 }

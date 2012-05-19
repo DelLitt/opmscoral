@@ -27,7 +27,7 @@
     <many-to-one class="Product" name="Product" update="false" insert="false">
       <column name="PRODUCT_ID" />
     </many-to-one>
-    <many-to-one class="ProductMaster" name="ProductMaster">
+    <many-to-one class="ProductMaster" name="ProductMaster" >
       <column name="PRODUCT_MASTER_ID" />
     </many-to-one>
   </class>

@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="POSServer.Views.ProductMaster.ProductMasterPriceUpdateView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="840" Height="700" >
+    <Grid>
+            <Grid Height="125" VerticalAlignment="Bottom">
+            <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="418,28,334,34" Name="Save">
+                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">LƯU THAY ĐỔI</TextBlock></Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="307,28,0,34" Name="Edit" HorizontalAlignment="Left" Width="91" Visibility="Hidden">SỬA</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,6,34" Name="Stop" Width="88">DỪNG</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,221,34" Name="Cancel" Width="88">BỎ QUA</Button>
+        </Grid>        
+            <Grid Margin="0,0,0,123">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="204*"></RowDefinition>
+                <RowDefinition Height="373*"></RowDefinition>
+            </Grid.RowDefinitions>
+                <TextBox FontSize="14" Height="38.583" Margin="142.25,53,199.872,0" Name="ProductName" VerticalAlignment="Top" />
+            <Label Height="28" HorizontalAlignment="Left" Margin="6,19,0,0" Name="label1" VerticalAlignment="Top" Width="114.32" FontSize="14" HorizontalContentAlignment="Right">MÃ SẢN PHẨM</Label>
+                <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="6,63,0,0" Name="label2" VerticalAlignment="Top" Width="114.32" HorizontalContentAlignment="Right">TÊN SẢN PHẨM</Label>
+                <Label FontSize="14" HorizontalAlignment="Left" Margin="6,0,0,59.139" Name="label3" Width="114.32" HorizontalContentAlignment="Right" Height="30.888" VerticalAlignment="Bottom">CHỦNG LOẠI</Label>
+                <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="6.333,0,0,14.29" Name="label4" VerticalAlignment="Bottom" Width="114.32" HorizontalContentAlignment="Right">NHÓM</Label>
+                <ComboBox Margin="142.25,98,0,58" Name="ProductTypeList" HorizontalAlignment="Left" Width="232" DisplayMemberPath="TypeName" SelectedItem="{Binding SelectedProductType}" />
+                <ComboBox Margin="142.25,0,0,9" Name="CategoryList" Height="42.997" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="232" DisplayMemberPath="CategoryName" SelectedItem="{Binding SelectedCategory}" />
+            <Button FontSize="14" FontWeight="Bold" Height="82.583" Margin="0,9,8.25,0" Name="ProductMasterSearch" VerticalAlignment="Top" HorizontalAlignment="Right" Width="172.73" Content="TÌM KIẾM SẢN PHẨM"></Button>
+            <TextBox Height="38.583" HorizontalAlignment="Left" Margin="142.25,9,0,0" Name="ProductMasterId" VerticalAlignment="Top" Width="120.036" FontSize="14" />
+            <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Left" Margin="520,106,0,0" Name="WholeSalePrice" VerticalAlignment="Top" Width="120.036" />
+            <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Left" Margin="520,156,0,0" Name="Price" VerticalAlignment="Top" Width="120.036" />
+            <Label Content="GIÁ SỈ" FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="400,114,0,0" Name="label5" VerticalAlignment="Top" Width="114.32" />
+            <Label Content="GIÁ LẺ" FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="400,162,0,0" Name="label6" VerticalAlignment="Top" Width="114.32" />
+            <Button Content="ÁP GIÁ" FontSize="14" FontWeight="Bold" Height="43" HorizontalAlignment="Right" Margin="0,152,8,0" Name="button1" VerticalAlignment="Top" Width="172.73" />
+        </Grid>
+        <GroupBox Header="KẾT QUẢ TÌM KIẾM" Margin="12,230,0,132" Name="groupBox1" FontSize="14" Grid.IsSharedSizeScope="True">
+            <Grid HorizontalAlignment="Left" Width="813.75" Height="Auto">
+                <DataGrid AutoGenerateColumns="False" Name="ProductMasterPriceList" CanUserAddRows="False" CanUserDeleteRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn FontSize="14" Header="LOẠI" Width="150" IsReadOnly="True" Binding="{Binding Path=ProductMaster.ProductType.TypeName}" />
+                        <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" IsReadOnly="True" Binding="{Binding Path=ProductMaster.ProductName}" />
+                        <DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="150" Binding="{Binding Path=WholeSalePrice}" />
+                        <DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="*" Binding="{Binding Path=Price}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

@@ -10,7 +10,7 @@ using Caliburn.Micro;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-	public interface IProductMasterSearchViewModel : IScreenNode
+	public interface IProductMasterManagementViewModel : IScreenNode
 	{
 		#region Fields
 		                

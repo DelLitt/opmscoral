@@ -10,9 +10,14 @@
   </object>
   <object id="IPmPreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPreLoadDefinitionAction, POSServer" singleton="false">         
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
-  </object>  
+  </object>
+  <object id="IPmPricePreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPricePreLoadDefinitionAction, POSServer" singleton="false">
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+    <property name="MainPriceLogic" ref="IMainPriceLogic" />
+  </object>
   <object id="IPmSaveAction" type="POSServer.Actions.ProductMaster.PmSaveAction, POSServer" singleton="false">
-    <property name="ProductMasterLogic" ref="IProductMasterLogic" />    
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+    <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
   <object id="IExProductColorsViewPreLoadAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewPreLoadAction, POSServer" singleton="false">
     <property name="ProductColorLogic" ref="IExProductColorLogic" />

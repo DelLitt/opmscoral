@@ -17,11 +17,12 @@ namespace POSServer.Views.ProductMaster
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class ProductMasterSearchView : UserControl
+    public partial class ProductMasterManagementView : UserControl
     {
-        public ProductMasterSearchView()
+        public ProductMasterManagementView()
         {
             InitializeComponent();
         }
+
     }
 }

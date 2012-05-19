@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using AppFrame.Base;
 using Caliburn.Micro;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-	public interface IProductMasterSearchViewModel : IScreenNode
+	public interface IProductMasterPriceUpdateViewModel : IScreenNode
 	{
-		#region Fields
+        IMainPriceLogic MainPriceLogic { get; set; }
+        
+        
+        #region Fields
 		                
 		string ProductName
 		{
@@ -21,6 +25,18 @@ namespace POSServer.ViewModels.ProductMaster
 		}
 		                
 		string ProductMasterId
+		{
+			get;
+			set;            
+		}
+		                
+		string WholeSalePrice
+		{
+			get;
+			set;            
+		}
+		                
+		string Price
 		{
 			get;
 			set;            
@@ -45,6 +61,9 @@ namespace POSServer.ViewModels.ProductMaster
 		
 		        
 		void ProductMasterSearch();
+		
+		        
+		void button1();
 		
 			#endregion
 	}

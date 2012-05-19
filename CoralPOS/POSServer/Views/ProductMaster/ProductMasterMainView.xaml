@@ -21,7 +21,7 @@
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,200,68,0" Name="ProductMasterList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="QUẢN LÝ SẢN PHẨM"></TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="61,301,68,307" Name="StockInByExcel" TabIndex="9" Grid.Row="1" Width="80" Height="80">
+        <Button FontSize="14" FontWeight="Bold" Margin="61,301,68,307" Name="PriceUpdate" TabIndex="9" Grid.Row="1" Width="80" Height="80">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">CẬP NHẬT GIÁ</TextBlock>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,0,68,207" Name="ExtendFunctions" TabIndex="9" VerticalAlignment="Bottom" Grid.Row="1">

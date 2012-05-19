@@ -30,6 +30,16 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+  <object id="ProductMasterPriceUpdateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <entry key="Step1" value="POSServer.Actions.ProductMaster.IPmPricePreLoadDefinitionAction"/>
+        <!-- Show product master form -->
+        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.IProductMasterPriceUpdateViewModel"/>        
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>  
   <object id="ProductColorViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>

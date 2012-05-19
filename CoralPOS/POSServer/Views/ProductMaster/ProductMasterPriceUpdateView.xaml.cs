@@ -17,11 +17,16 @@ namespace POSServer.Views.ProductMaster
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class ProductMasterSearchView : UserControl
+    public partial class ProductMasterPriceUpdateView : UserControl
     {
-        public ProductMasterSearchView()
+        public ProductMasterPriceUpdateView()
         {
             InitializeComponent();
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

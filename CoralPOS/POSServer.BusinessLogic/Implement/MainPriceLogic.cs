@@ -3,6 +3,8 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Base;
+using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -104,6 +106,12 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<MainPrice> criteria)
         {
             return MainPriceDao.FindPaging(criteria);
+        }
+
+        public void PreloadDefinition(IFlowSession session)
+        {
+            IList<MainPrice> mainPrices = MainPriceDao.FindAll(new ObjectCriteria<MainPrice>());
+            session.Put(FlowConstants.MAINPRICE_LIST, mainPrices);
         }
     }
 }

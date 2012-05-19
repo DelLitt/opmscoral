@@ -18,11 +18,11 @@ using POSServer.ViewModels.Menu.ProductMaster;
 namespace POSServer.ViewModels.ProductMaster
 {
 	[AttachMenuAndMainScreen(typeof(IProductMasterMenuViewModel), typeof(IProductMasterMainViewModel))]
-	public class ProductMasterSearchViewModel : PosViewModel,IProductMasterSearchViewModel  
+	public class ProductMasterManagementViewModel : PosViewModel,IProductMasterManagementViewModel  
 	{
 
 		private IShellViewModel _startViewModel;
-		public ProductMasterSearchViewModel()
+		public ProductMasterManagementViewModel()
 		{
 			_startViewModel = ShellViewModel.Current; 
 		}

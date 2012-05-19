@@ -54,12 +54,12 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void ProductMasterList()
         {
-            
+         
         }
 		        
-        public void StockInByExcel()
+        public void PriceUpdate()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.ProductMasterPriceUpdateFlow);   
         }
 		        
         public void ExtendFunctions()

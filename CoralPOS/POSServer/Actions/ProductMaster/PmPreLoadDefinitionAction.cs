@@ -1,4 +1,7 @@
-﻿using AppFrame.Base;
+﻿using System.ComponentModel;
+using AppFrame.Base;
+using AppFrame.WPF.Screens;
+using Caliburn.Micro;
 using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
@@ -8,13 +11,22 @@ namespace POSServer.Actions.ProductMaster
     {
         public override void DoExecute()
         {
-            LoadProductMasterDefinition();
+            IoC.Get<ICircularLoadViewModel>().StartLoading();
+            DoExecuteCompleted += LoadProductMasterDefinitionCompleted;
+            DoExecuteAsync(LoadProductMasterDefinition, null);
+            
         }
 
-        private void LoadProductMasterDefinition()
+        private void LoadProductMasterDefinitionCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            IoC.Get<ICircularLoadViewModel>().StopLoading();
+            GoToNextNode();
+        }
+
+        private object LoadProductMasterDefinition()
         {
             ProductMasterLogic.PreloadDefinition(this.Flow.Session);
-            GoToNextNode();
+            return null;
         }
         
         public IProductMasterLogic ProductMasterLogic

@@ -27,7 +27,7 @@ namespace POSServer.ViewModels.ProductMaster
         void ProductMasterList();
         
 		        
-        void StockInByExcel();
+        void PriceUpdate();
         
 		        
         void ExtendFunctions();

@@ -10,7 +10,8 @@ namespace POSServer.Common
         
         #region Synchronize
         public const string SYNC_TO_DEPARTMENT = "SyncToDepartmentFlow";
-        public static string CreateSyncUSBFlow = "CreateSyncUSBFlow";
+        public const string CreateSyncUSBFlow = "CreateSyncUSBFlow";
+        
 
         #endregion
 
@@ -33,6 +34,7 @@ namespace POSServer.Common
         #region Product Master
 
         public const string ProductMasterCreateFlow = "ProductMasterCreateFlow";
+        public const string ProductMasterPriceUpdateFlow = "ProductMasterPriceUpdateFlow";
 
         #endregion
 

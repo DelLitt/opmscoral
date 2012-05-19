@@ -372,13 +372,12 @@ namespace POSServer.ViewModels.Tool
 			config.StockOutConfirm = StockOutConfirm;
 			config.SubStockEmployeeChecking = SubStockEmployeeChecking;
 			config.PurchaseOrderConfirm = PurchaseOrderConfirm;
-
+		    config.SubStockInvoiceStockOut = SelectedExportDept.DepartmentId;
 			// printer
 			config.BillPrinter = SelectedPrinter;
 
 			config.BarcodeType = SelectedBarcode;
 			config.ConnectionProtocol = SelectedProtocol;
-
 			config.Save();
 			MessageBox.Show("Update config OK!");
 			
@@ -407,6 +406,11 @@ namespace POSServer.ViewModels.Tool
 			Flow.End();
 		}
 
+		public void CreateDefaultPath()
+		{
+			SystemConfig.Instance.SetDefaultPath();
+		}
+
 		protected override void OnInitialize()
 		{
 			SystemConfig config = SystemConfig.Instance;
@@ -426,7 +430,7 @@ namespace POSServer.ViewModels.Tool
 			// load department list
 			IList deptList = DepartmentLogic.FindAll(new ObjectCriteria<Department>()) as IList;
 			SubStockInvoiceStockOutList = deptList;
-
+            SelectedExportDept = GetSelectedExportDept(deptList, config.SubStockInvoiceStockOut);
 			BarcodeTypeList = Enum.GetNames(typeof(Symbology));
 			// protocol list
 			IList protocolList = new ArrayList();
@@ -438,7 +442,22 @@ namespace POSServer.ViewModels.Tool
 			
 		}
 
-		private void LoadConfigToViewModel()
+	    private Department GetSelectedExportDept(IList deptList, long subStockInvoiceStockOut)
+	    {
+	        Department retDept = null;
+            if (deptList.Count > 0) retDept = (Department) deptList[0];
+	        foreach (Department department in deptList)
+	        {
+	            if(department.DepartmentId == subStockInvoiceStockOut)
+	            {
+	                retDept = department;
+	                break;
+	            }
+	        }
+	        return retDept;
+	    }
+
+	    private void LoadConfigToViewModel()
 		{
 			SystemConfig config = SystemConfig.Instance;
 

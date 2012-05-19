@@ -100,6 +100,12 @@ namespace CoralPOS.Models {
 			get;
 			set;
 		}
+		[DataMember(Name = "17", Order = 17)]
+		public virtual ProductMaster ProductMaster
+		{
+			get;
+			set;
+		}
 	 protected bool Equals(MainPrice entity)
 		{
 			if (entity == null) return false;

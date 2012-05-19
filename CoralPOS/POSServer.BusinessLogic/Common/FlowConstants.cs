@@ -7,6 +7,7 @@ namespace POSServer.BusinessLogic.Common
 {
     public class FlowConstants
     {
+        public const string PRODUCT_MASTER_LIST ="ProductMasterList";
         public const string EDIT_USER_ROLE="EditUserRole";
         public const string EDIT_USER_INFO="EditUserInfo";
         public const string ATTACHED_EMPLOYEE_INFO="AttachedEmployeeInfo";
@@ -36,6 +37,6 @@ namespace POSServer.BusinessLogic.Common
         public const string CONFIRMING_STOCK_OUT_LIST = "ConfirmingStockOutList";
 
         public const string STOCK_OUT_CONFIRM_FLAG = "StockOutConfirmFlag";
-
+        public const string MAINPRICE_LIST = "MainPriceList";
     }
 }

@@ -97,6 +97,9 @@
     <Reference Include="protobuf-net">
       <HintPath>..\libraries\protobuf-net.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\libraries\Others\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Aop">
       <HintPath>..\libraries\Spring\Spring.Aop.dll</HintPath>
     </Reference>
@@ -167,6 +170,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\ProductMaster\IPmPricePreLoadDefinitionAction.cs" />
+    <Compile Include="Actions\ProductMaster\PmPricePreLoadDefinitionAction.cs" />
     <Compile Include="Actions\Stock\StockOut\StockOutConfirmSaveAction.cs" />
     <Compile Include="Actions\Stock\StockOut\StockOutConfirmPreLoadAction.cs" />
     <Compile Include="Actions\Stock\StockOut\IStockOutConfirmSaveAction.cs" />
@@ -286,6 +291,8 @@
     <Compile Include="ViewModels\ProductMaster\IExProductSizeViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductCategoryViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterMainViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IProductMasterManagementViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IProductMasterPriceUpdateViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterSearchViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterSummaryViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterViewModel.cs" />
@@ -293,6 +300,8 @@
     <Compile Include="ViewModels\ProductMaster\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductCategoryViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductMasterMainViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ProductMasterManagementViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ProductMasterPriceUpdateViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductMasterSearchViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductMasterSummaryViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductMasterViewModel.cs" />
@@ -391,6 +400,12 @@
     <Compile Include="Views\Menu\Stock\StockInMenuView.xaml.cs">
       <DependentUpon>StockInMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProductMaster\ProductMasterManagementView.xaml.cs">
+      <DependentUpon>ProductMasterManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductMaster\ProductMasterSearchView.xaml.cs">
+      <DependentUpon>ProductMasterSearchView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Report\ReportsMainView.xaml.cs">
       <DependentUpon>ReportsMainView.xaml</DependentUpon>
     </Compile>
@@ -403,8 +418,8 @@
     <Compile Include="Views\Menu\ProductMaster\ProductMasterMenuView.xaml.cs">
       <DependentUpon>ProductMasterMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductMaster\ProductMasterSearchView.xaml.cs">
-      <DependentUpon>ProductMasterSearchView.xaml</DependentUpon>
+    <Compile Include="Views\ProductMaster\ProductMasterPriceUpdateView.xaml.cs">
+      <DependentUpon>ProductMasterPriceUpdateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductMenuFormView.xaml.cs">
       <DependentUpon>ProductMenuFormView.xaml</DependentUpon>
@@ -557,6 +572,7 @@
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -657,6 +673,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ProductMaster\ProductMasterManagementView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMaster\ProductMasterSearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Report\ReportsMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -681,7 +705,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ProductMaster\ProductMasterSearchView.xaml">
+    <Page Include="Views\ProductMaster\ProductMasterPriceUpdateView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

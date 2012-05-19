@@ -79,7 +79,8 @@ namespace POSServer.ViewModels.Tool
 		
 				
 		void Quit();
-		
-			#endregion
+	    void CreateDefaultPath();
+
+	    #endregion
 	}
 }

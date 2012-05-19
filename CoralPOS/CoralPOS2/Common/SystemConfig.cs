@@ -1,10 +1,16 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Formatters.Soap;
 using System.Text;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Bson;
+using ServiceStack.Text;
 
 namespace CoralPOS.Common
 {
@@ -77,7 +83,7 @@ namespace CoralPOS.Common
 
         public string BarcodeType { get; set; }
         public string BillPrinter { get; set; }
-        public IList SubStockInvoiceStockOut { get; set; }
+        public long SubStockInvoiceStockOut { get; set; }
         public string ConnectionProtocol { get; set; }
 
 
@@ -86,17 +92,24 @@ namespace CoralPOS.Common
         /// </summary>
         public bool Load()
         {
+            bool returnVal = false;
+            Stream stream = null; 
             try
             {
-                Stream stream = File.Open(CONFIG_FILE_NAME, FileMode.Open);
+                stream = File.Open(CONFIG_FILE_NAME, FileMode.Open);
                 Load(stream);
-                return true;
+                returnVal = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                Console.WriteLine(ex.Message);
+                returnVal = false;
             }
-            
+            finally
+            {
+                if (stream != null) stream.Close();
+            }
+            return returnVal;
         }
         /// <summary>
         /// 
@@ -104,23 +117,31 @@ namespace CoralPOS.Common
         /// <param name="path"></param>
         public bool Load(string path)
         {
+            Stream stream = null;
             try
             {
-                Stream stream = File.Open(path + @"\" + CONFIG_FILE_NAME, FileMode.Open);
+                stream = File.Open(path + @"\" + CONFIG_FILE_NAME, FileMode.Open);
                 Load(stream);
+                
                 return true;
             }
             catch (Exception)
             {
                 return false;
             }
+            finally
+            {
+                if (stream != null) stream.Close();
+            }
         }
         private void Load(Stream stream)
         {
-            BinaryFormatter writer = new BinaryFormatter();
-            SystemConfig config = (SystemConfig)writer.Deserialize(stream);
-            stream.Flush();
-            stream.Close();
+
+            //var reader = new SoapFormatter();
+            var reader = new TypeSerializer<SystemConfig>();
+            var streamReader = new StreamReader(stream);
+            SystemConfig config = reader.DeserializeFromReader(streamReader);
+            
             var mapper = EmitMapper.ObjectMapperManager.DefaultInstance.GetMapper<SystemConfig, SystemConfig>();
             mapper.Map(config, this); 
         }
@@ -130,10 +151,14 @@ namespace CoralPOS.Common
         public void Save()
         {
             Stream stream = File.Open(CONFIG_FILE_NAME, FileMode.Create);
-            BinaryFormatter writer = new BinaryFormatter();
-            writer.Serialize(stream, this);
-            stream.Flush();
-            stream.Close();
+            //var writer = new SoapFormatter();
+            var writer = new TypeSerializer<SystemConfig>();
+            var streamWriter = new StreamWriter(stream);
+            writer.SerializeToWriter(this, streamWriter);
+            //streamWriter.Flush();
+            streamWriter.Close();
+            /*stream.Flush();
+            stream.Close();*/
         }
 
         /// <summary>
@@ -141,17 +166,21 @@ namespace CoralPOS.Common
         /// </summary>
         public void CreateDefaultValue()
         {
+            SetDefaultPath();
+            DbToolPath = @"C:\Program Files\MySQL\bin";
+            BarcodeType = @"Code39";
+            BillPrinter = "Epson 403 TM 4";
+            ConnectionProtocol = "Http";
+            SubStockInvoiceStockOut = 0;
+
+        }
+        public void SetDefaultPath()
+        {
             SyncImportPath = @"\POS\CH-KHO";
             SyncExportPath = @"\POS\KHO-CH";
             SyncBackupPath = @"\POS\Backup";
             SyncErrorPath = @"\POS\Error";
             SyncSuccessPath = @"\POS\Success";
-            DbToolPath = @"C:\Program Files\Oracle\bin";
-            BarcodeType = @"Code39";
-            BillPrinter = "Epson 403 TM 4";
-            ConnectionProtocol = "Http";
-            SubStockInvoiceStockOut = new ArrayList();
-
         }
     }
 }

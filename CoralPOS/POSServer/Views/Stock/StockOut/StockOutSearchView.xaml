@@ -25,10 +25,11 @@
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" Binding="{Binding Path=StockOutId}" SortMemberPath="StockOutId" />
+                    <DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="100" Binding="{Binding Path=StockOutId}" SortMemberPath="StockOutId" />
                     <DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" Binding="{Binding Path=Description}"/>                                            
-                    <DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" Binding="{Binding Path=TotalQuantity}"/>
-                    <DataGridTextColumn FontSize="14" Header="NGÀY NHẬP" Width="120*" Binding="{Binding Path=CreateDate}" SortMemberPath="CreateDate" />                   
+                    <DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="100" Binding="{Binding Path=TotalQuantity}"/>
+                    <DataGridTextColumn FontSize="14" Header="CỬA HÀNG" Width="150" Binding="{Binding Path=Department.DepartmentName}"/>
+                    <DataGridTextColumn FontSize="14" Header="NGÀY XUẤT" Width="120*" Binding="{Binding Path=CreateDate}" SortMemberPath="CreateDate" />                   
                     
                 </DataGrid.Columns>
             </DataGrid>
