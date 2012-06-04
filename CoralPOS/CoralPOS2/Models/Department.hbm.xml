@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="Department" table="CRL_DEPT" >
+  <class name="Department" table="CRL_DEPT" where="DEL_FLG = 0">
     <id name="DepartmentId" type="Int64" column="DEPARTMENT_ID">
       <generator class="assigned" />
     </id>
@@ -19,5 +19,6 @@
     <property name="StartDate" column="START_DATE" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
+    <sql-delete>update CRL_DEPT set DEL_FLG=1,UPDATE_DATE=now() WHERE DEPARTMENT_ID=?</sql-delete>
   </class>
 </hibernate-mapping>

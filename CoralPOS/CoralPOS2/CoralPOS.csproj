@@ -63,7 +63,7 @@
       <HintPath>..\libraries\Caliburn\Caliburn.Micro.dll</HintPath>
     </Reference>
     <Reference Include="EmitMapper">
-      <HintPath>..\libraries\EmitMapper.dll</HintPath>
+      <HintPath>..\libraries\Others\EmitMapper.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.4\lib\net40\Newtonsoft.Json.dll</HintPath>

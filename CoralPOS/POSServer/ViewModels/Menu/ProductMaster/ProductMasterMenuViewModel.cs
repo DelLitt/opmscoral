@@ -14,7 +14,7 @@ using Caliburn.Micro;
 
 using AppFrame.CustomAttributes;
 using AppFrame.CustomAttributes;
-
+using POSServer.Common;
 
 
 namespace POSServer.ViewModels.Menu.ProductMaster
@@ -47,12 +47,12 @@ namespace POSServer.ViewModels.Menu.ProductMaster
 		        
         public void Back()
         {
-            
+            _startViewModel.OpenMainScreen();
         }
 		        
         public void CreateProductMaster()
         {
-            _startViewModel.EnterFlow("ProductMasterCreateFlow");
+            _startViewModel.EnterFlow(FlowDefinition.ProductMasterCreateFlow);
         }
 		        
         public void CreateProductMasterByTemplate()
@@ -64,10 +64,10 @@ namespace POSServer.ViewModels.Menu.ProductMaster
         {
             
         }
-		        
-        public void StockInByExcel()
+
+        public void UpdateProductMasterPrice()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.ProductMasterPriceUpdateFlow);
         }
 		        
         public void ExtendFunctions()

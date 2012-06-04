@@ -45,17 +45,18 @@ namespace POSServer.Actions.Stock.StockOut
 
         private object DoWork()
         {
-            IList productMasters = (IList) MainStockLogic.FetchAll(new LinqCriteria<MainStock>());
-            //IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType("%%");
-            Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
+            
             var stockOutCriteria = new ObjectCriteria<CoralPOS.Models.StockOut>();
             stockOutCriteria.Add(x => x.ConfirmFlg == 1);
             var confirmingStockOuts = (IList) StockOutLogic.FindAll(stockOutCriteria);
             IList<CoralPOS.Models.StockOut> fetchedStockOuts = new List<CoralPOS.Models.StockOut>();
             foreach (CoralPOS.Models.StockOut confirmingStockOut in confirmingStockOuts)
             {
-                fetchedStockOuts.Add(StockOutLogic.Fetch(confirmingStockOut));
+                CoralPOS.Models.StockOut fetchedStockOut = StockOutLogic.Fetch(confirmingStockOut);
+                MainStockLogic.UpdateStockQuantity(fetchedStockOut.StockOutDetails);
+                fetchedStockOuts.Add(fetchedStockOut);
             }
+
             Flow.Session.Put(FlowConstants.CONFIRMING_STOCK_OUT_LIST,confirmingStockOuts);
             return null;
         }

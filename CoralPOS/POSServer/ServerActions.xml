@@ -78,6 +78,7 @@
     <property name="CategoryLogic" ref="ICategoryLogic" />
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
     <property name="StockOutLogic" ref="IStockOutLogic" />
+    <property name="MainStockLogic" ref="IMainStockLogic" />
   </object>
   
   <object id="ISyncToDepartmentAction" type="POSServer.Actions.Synchronize.SyncToDepartmentAction, POSServer" singleton="false">    

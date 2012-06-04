@@ -6,9 +6,11 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.DataLayer;
+using AppFrame.Invocation;
 using AppFrame.Utils;
 using System.Linq;
 using System.Linq.Expressions;
+using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 
 using AppFrame.CustomAttributes;
@@ -83,16 +85,30 @@ namespace POSServer.ViewModels.Dialogs
 		public event EventHandler<StockInChoosingArg> ConfirmEvent;
 		public void Choose()
 		{
-			StockIn stockIn = StockInLogic.Fetch(SelectedStockIn);
-			StockInLogic.FetchMainStock(stockIn);
-									 
-			StockInChoosingArg eventArgs = new StockInChoosingArg();
-			eventArgs.SelectedStockIn = stockIn;
-			if (ConfirmEvent != null) ConfirmEvent(this, eventArgs);
+		    BackgroundTask task = new BackgroundTask(() => ChooseStockIn(SelectedStockIn));
+            task.Completed += new System.ComponentModel.RunWorkerCompletedEventHandler(task_Completed);
+            IoC.Get<ICircularLoadViewModel>().StartLoading();
+            task.Start(SelectedStockIn);
 			//Shutdown();
 		}
 
-		protected override void OnInitialize()
+        void task_Completed(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            IoC.Get<ICircularLoadViewModel>().StopLoading();
+            StockIn stockIn = (StockIn)e.Result;
+            StockInChoosingArg eventArgs = new StockInChoosingArg();
+            eventArgs.SelectedStockIn = stockIn;
+            if (ConfirmEvent != null) ConfirmEvent(this, eventArgs);
+        }
+
+	    private object ChooseStockIn(StockIn selectedStockIn)
+	    {
+            StockIn stockIn = StockInLogic.Fetch(SelectedStockIn);
+            StockInLogic.FetchMainStock(stockIn);
+	        return stockIn;
+	    }
+
+	    protected override void OnInitialize()
 		{
 			FromDate = DateTime.Now;
 			ToDate = DateTime.Now;

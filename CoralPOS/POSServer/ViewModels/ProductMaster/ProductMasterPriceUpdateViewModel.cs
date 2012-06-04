@@ -7,8 +7,10 @@ using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.Extensions;
+using AppFrame.Invocation;
 using AppFrame.Utils;
 using AppFrame.Validation;
+using AppFrame.WPF.Screens;
 using AppFrame.WPF.ValidationAttributes;
 using Caliburn.Micro;
 using CoralPOS.Models;
@@ -191,13 +193,13 @@ namespace POSServer.ViewModels.ProductMaster
 			}
 			if (catList.Count > 0)
 			{
-                IList preparedCatList = new ArrayList();
-                preparedCatList.Add(allCategory);
-                foreach (var type in catList)
-                {
-                    preparedCatList.Add(type);
-                }
-                CategoryList = preparedCatList;
+				IList preparedCatList = new ArrayList();
+				preparedCatList.Add(allCategory);
+				foreach (var type in catList)
+				{
+					preparedCatList.Add(type);
+				}
+				CategoryList = preparedCatList;
 			}
 
 			_allMainPriceList = (IList<MainPrice>)Flow.Session.Get(FlowConstants.MAINPRICE_LIST);
@@ -210,10 +212,36 @@ namespace POSServer.ViewModels.ProductMaster
 
 		public void Save()
 		{
-
+            IList<MainPrice> prices = ProductMasterPriceList;
+		    ExecuteHelper.OnBackgroundThread(() => SavePrices(prices),CompleteSavePrices);
 		}
 
-		public void Edit()
+	    private bool savedOk = false;
+        void CompleteSavePrices(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            IoC.Get<INormalLoadViewModel>().StopLoading();
+            if (savedOk) MessageBox.Show("Đã cập nhật giá thành công !!");
+        }
+	    private object SavePrices(IList<MainPrice> prices)
+	    {
+	        savedOk = false;
+            IoC.Get<INormalLoadViewModel>().StartLoading();
+            try
+            {
+                foreach (var price in prices)
+                {
+                    MainPriceLogic.Update(price);
+                }
+                savedOk = true;
+            }
+            catch (Exception)
+            {
+             
+            }
+	        return null;
+	    }
+
+	    public void Edit()
 		{
 
 		}

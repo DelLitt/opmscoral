@@ -140,7 +140,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 		}
 
 		public IProductMasterLogic ProductMasterLogic { get; set; }
-        public IMainPriceLogic MainPriceLogic { get; set; }
+		public IMainPriceLogic MainPriceLogic { get; set; }
 				#endregion
 		
 		#region List use to fetch object for view
@@ -175,6 +175,20 @@ namespace POSServer.ViewModels.Stock.StockIn
 				NotifyOfPropertyChange(() => StockInDetailList);
 			}
 		}
+
+        private IList _selectedStockInDetails;
+        public IList SelectedStockInDetails
+        {
+            get
+            {
+                return _selectedStockInDetails;
+            }
+            set
+            {
+                _selectedStockInDetails = value;
+                NotifyOfPropertyChange(() => SelectedStockInDetails);
+            }
+        }
 				#endregion
 		
 		#region Methods
@@ -267,11 +281,17 @@ namespace POSServer.ViewModels.Stock.StockIn
 			
 		}
 
-		protected override void OnInitialize()
+	    public void PutPrice()
+	    {
+	        var list = _selectedStockInDetails;
+	    }
+
+	    protected override void OnInitialize()
 		{
 			var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
 			ProductMasterList = list as IList;
 			_stockInDetailList = new ArrayList();
+            _selectedStockInDetails = new ArrayList();
 			StockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
 			if(StockIn == null)
 			{
@@ -306,7 +326,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 			var screen = IoC.Get<IProductPropertiesViewModel>("IProductPropertiesViewModel");
 			screen.ProductName = ProductMaster.ProductName;
 			screen.Setup();
-			screen.ConfirmEvent += new EventHandler<ProductEventArgs>(screen_ConfirmEvent);
+			screen.ConfirmEvent += screen_ConfirmEvent;
 			_startViewModel.ShowDialog(screen);
 		}
 
@@ -320,32 +340,32 @@ namespace POSServer.ViewModels.Stock.StockIn
 		private void CreateProductIdForInput(IList colorList, IList sizeList)
 		{
 
-		    var productMaster = ProductMaster;
-		    string price = string.IsNullOrEmpty(Price) ? "0" : Price;
-		    string wholesaleprice = string.IsNullOrEmpty(WholeSalePrice) ? "0" : WholeSalePrice;
-		    MainPricePK findPk = new MainPricePK {DepartmentId = 0, ProductMasterId = productMaster.ProductMasterId};
-		    MainPrice newPrice = null;
-		    newPrice = MainPriceLogic.FindById(findPk);
-            if (newPrice == null)
-            {
-                newPrice = new MainPrice();
-                newPrice.Price = Int64.Parse(price);
-                newPrice.WholeSalePrice = Int64.Parse(wholesaleprice);
+			var productMaster = ProductMaster;
+			string price = string.IsNullOrEmpty(Price) ? "0" : Price;
+			string wholesaleprice = string.IsNullOrEmpty(WholeSalePrice) ? "0" : WholeSalePrice;
+			MainPricePK findPk = new MainPricePK {DepartmentId = 0, ProductMasterId = productMaster.ProductMasterId};
+			MainPrice newPrice = null;
+			newPrice = MainPriceLogic.FindById(findPk);
+			if (newPrice == null)
+			{
+				newPrice = new MainPrice();
+				newPrice.Price = Int64.Parse(price);
+				newPrice.WholeSalePrice = Int64.Parse(wholesaleprice);
 
-                MainPricePK newPricePK = new MainPricePK
-                {
-                    DepartmentId = 0,
-                    ProductMasterId = productMaster.ProductMasterId
-                };
-                newPrice.MainPricePK = newPricePK;
-            }
-            else // price has been existed
-            {
-                Price = newPrice.Price.ToString();
-                WholeSalePrice = newPrice.WholeSalePrice.ToString();
-            }
+				MainPricePK newPricePK = new MainPricePK
+				{
+					DepartmentId = 0,
+					ProductMasterId = productMaster.ProductMasterId
+				};
+				newPrice.MainPricePK = newPricePK;
+			}
+			else // price has been existed
+			{
+				Price = newPrice.Price.ToString();
+				WholeSalePrice = newPrice.WholeSalePrice.ToString();
+			}
 
-	    IList<Product> products = StockInHelper.CreateProduct(productMaster, colorList, sizeList);
+		IList<Product> products = StockInHelper.CreateProduct(productMaster, colorList, sizeList);
 			foreach (Product newProduct in products)
 			{
 					bool isFound = CheckProductInStockInDetailList(newProduct); 
@@ -373,7 +393,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 					
 
 					//MainPrice newPrice = DataErrorInfoFactory.Create<MainPrice>();
-                    
+					
 					
 					//newPrice = DataErrorInfoFactory.CreateProxyFor(newPrice);
 					newDetail.MainPrice = newPrice;

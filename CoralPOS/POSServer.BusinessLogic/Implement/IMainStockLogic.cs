@@ -77,5 +77,6 @@ namespace POSServer.BusinessLogic.Implement
         IList<MainStock> FetchAll(LinqCriteria<MainStock> crit);
 
         void Update(StockOut stockOut);
+        void UpdateStockQuantity(IList<StockOutDetail> details);
     }
 }

@@ -42,6 +42,8 @@ namespace POSServer.BusinessLogic.Implement
 		public IStockInDetailDao StockInDetailDao { get; set; }
 		public IMainStockDao MainStockDao { get; set; }
 		public IMainPriceDao MainPriceDao { get; set; }
+		public IExProductColorDao ExProductColorDao { get; set; }
+		public IExProductSizeDao ExProductSizeDao { get; set; }
 		/// <summary>
 		/// Find StockIn object by id. Return null if nothing is found
 		/// </summary>
@@ -140,7 +142,22 @@ namespace POSServer.BusinessLogic.Implement
 				}
 			}
 			
-
+			// color and size
+			// the updating informs that specialized object has been used in stock in so it can not be deleted.
+			IList<ExProductColor> colors = data.StockInDetails.Select(x => x.Product.ProductColor).Distinct().ToList();
+			foreach (ExProductColor exProductColor in colors)
+			{
+				if(exProductColor.ExFld1 == 1) continue;
+				exProductColor.ExFld1 = 1;
+				ExProductColorDao.Update(exProductColor);
+			}
+			IList<ExProductSize> sizes = data.StockInDetails.Select(x => x.Product.ProductSize).Distinct().ToList();
+			foreach (ExProductSize exProductSize in sizes)
+			{
+				if(exProductSize.ExFld1 == 1) continue;
+				exProductSize.ExFld1 = 1;
+				ExProductSizeDao.Update(exProductSize);
+			}
 			return data;
 		}
 		
@@ -290,7 +307,7 @@ namespace POSServer.BusinessLogic.Implement
 				// max result, should put in common properties
 				executeCrit.SetMaxResults(20);
 				//executeCrit.SetResultTransformer(Transformers.DistinctRootEntity);
-			    return executeCrit.List<StockIn>();
+				return executeCrit.List<StockIn>();
 			}
 								 );
 		}

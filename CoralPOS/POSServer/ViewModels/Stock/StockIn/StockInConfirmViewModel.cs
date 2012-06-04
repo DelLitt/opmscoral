@@ -10,17 +10,19 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.Utils;
 using AppFrame.WPF;
 using CoralPOS.Models;
 using Neodynamic.WPF;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
+using POSServer.ViewModels.Menu.Stock;
 
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
-	
+    [AttachMenuAndMainScreen(typeof(IStockInMenuViewModel), typeof(IStockMainViewModel))]
 	public class StockInConfirmViewModel : PosViewModel,IStockInConfirmViewModel  
 	{
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="ExProductSize" table="CRL_EX_PRD_SIZE" >
+  <class name="ExProductSize" table="CRL_EX_PRD_SIZE" where="DEL_FLG = 0">
     <id name="SizeId" type="Int64" column="SIZE_ID">
       <generator class="assigned" />
     </id>
@@ -16,5 +16,6 @@
     <property name="SizeName" column="SIZE_NAME" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
+    <sql-delete>update CRL_EX_PRD_SIZE set DEL_FLG=1,UPDATE_DATE=now() WHERE SIZE_ID=?</sql-delete>
   </class>
 </hibernate-mapping>

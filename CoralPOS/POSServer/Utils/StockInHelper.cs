@@ -13,7 +13,7 @@ namespace POSServer.Utils
         {
             IList<Product> products = new List<Product>();
             // product id is formed by productmasterid-colorid-sizeid and month of input
-            string productIdPart1 = string.Format("{0:0000000}", Int64.Parse(productMaster.ProductMasterId));
+            string productIdPart1 = string.Format("{0:000000}", Int64.Parse(productMaster.ProductMasterId));
             string month = "";
             int i = DateTime.Now.Month%12;
             switch (i)
@@ -31,7 +31,10 @@ namespace POSServer.Utils
                     month = (i) + "";
                     break;
             }
-            string productIdPart4 = month;
+            //string productIdPart4 = month;
+            string year = (DateTime.Now.Year - 2012) + "";
+            string productIdPart4 = year + month;
+
             foreach (ExProductColor color in colorList)
             {
                 string productIdPart2 = string.Format("{0:00}", color.ColorId);

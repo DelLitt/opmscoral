@@ -20,16 +20,16 @@ using POSServer.ViewModels.Menu;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IProductMasterMainViewModel))]
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel))]
-    public class ProductMasterMainViewModel : PosViewModel,IProductMasterMainViewModel  
-    {
+	[PerRequest(typeof(IProductMasterMainViewModel))]
+	[AttachMenuAndMainScreen(typeof(IMainMenuViewModel))]
+	public class ProductMasterMainViewModel : PosViewModel,IProductMasterMainViewModel  
+	{
 
-        private IShellViewModel _startViewModel;
-        public ProductMasterMainViewModel()
-        {
-            _startViewModel = ShellViewModel.Current;
-        }
+		private IShellViewModel _startViewModel;
+		public ProductMasterMainViewModel()
+		{
+			_startViewModel = ShellViewModel.Current;
+		}
 		
 		#region Fields
 				#endregion
@@ -41,34 +41,34 @@ namespace POSServer.ViewModels.ProductMaster
 				#endregion
 		
 		#region Methods
-		        
-        public void CreateProductMaster()
-        {
-            _startViewModel.EnterFlow(FlowDefinition.ProductMasterCreateFlow);
-        }
-		        
-        public void CreateProductMasterByTemplate()
-        {
-            
-        }
-		        
-        public void ProductMasterList()
-        {
-         
-        }
-		        
-        public void PriceUpdate()
-        {
-            _startViewModel.EnterFlow(FlowDefinition.ProductMasterPriceUpdateFlow);   
-        }
-		        
-        public void ExtendFunctions()
-        {
-            
-        }
+				
+		public void CreateProductMaster()
+		{
+			_startViewModel.EnterFlow(FlowDefinition.ProductMasterCreateFlow);
+		}
+				
+		public void CreateProductMasterByTemplate()
+		{
+			
+		}
+				
+		public void ProductMasterList()
+		{
+		 
+		}
+				
+		public void PriceUpdate()
+		{
+			_startViewModel.EnterFlow(FlowDefinition.ProductMasterPriceUpdateFlow);   
+		}
+				
+		public void ExtendFunctions()
+		{
+			
+		}
 				#endregion
 		
-        
-        
-    }
+		
+		
+	}
 }

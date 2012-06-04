@@ -28,7 +28,9 @@ namespace POSServer.ViewModels.Menu.Stock
         
 		        
         void StockCategorySearch();
-        
-			#endregion
+
+        void Back();
+
+        #endregion
     }
 }

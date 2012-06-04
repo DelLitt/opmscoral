@@ -1,4 +1,4 @@
-			 
+﻿			 
 
 			 
 
@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Forms;
 using AppFrame.Base;
 using AppFrame.Utils;
 using Caliburn.Micro;
@@ -18,14 +19,17 @@ using AppFrame.CustomAttributes;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
+using MessageBox = System.Windows.MessageBox;
 
 
 namespace POSServer.ViewModels.ProductMaster
 {
 	//[PerRequest(typeof(IProductTypeViewModel))]
-	public class ProductTypeViewModel : PosViewModel,IProductTypeViewModel  
+	public class ProductTypeViewModel : PosViewModel,IProductTypeViewModel
 	{
-
+	    private IList _originalList;
+	    private bool hasCreatedAction = false;
+	    private bool hasDeletedAction = false;
 		private IShellViewModel _startViewModel;
 		public ProductTypeViewModel()
 		{
@@ -126,7 +130,8 @@ namespace POSServer.ViewModels.ProductMaster
 		{
 			IList list = new ArrayList(_productTypeList);
 			ObjectUtility.RemoveFromList(list, SelectedProductType, "TypeName");
-			ProductTypeList = list; 
+			ProductTypeList = list;
+		    hasDeletedAction = true;
 		}
 				
 		public void Edit()
@@ -146,12 +151,19 @@ namespace POSServer.ViewModels.ProductMaster
 			{
 				TypeName = "NONAME"
 			});
-			ProductTypeList = list;
+            ProductTypeList = list;
+		    hasCreatedAction = true;
 		}
 
 		public void Save()
 		{
-			ProductTypeLogic.Update(ProductTypeList);
+            if (hasCreatedAction || hasDeletedAction)
+            {
+                MessageBoxResult result = MessageBox.Show("Danh sách được thêm hoặc bớt. Xin xác nhận muốn lưu thay đổi","Cảnh báo", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No) return;
+            }
+		    ProductTypeLogic.Update(ProductTypeList);
+		    ProductTypeLogic.Sync(ObjectConverter.ConvertTo<ProductType>(ProductTypeList),Flow.Session);
 			SetBackToParentFlow(FlowConstants.PRODUCT_TYPE_LIST, ProductTypeList);
 			GoToNextNode();
 		}
@@ -162,6 +174,7 @@ namespace POSServer.ViewModels.ProductMaster
 			IList list = null;
 			list = Flow.Session.Get(FlowConstants.PRODUCT_TYPE_LIST) as IList;
 			if (list == null) list = new ArrayList();
+            _originalList = list;
 			ProductTypeList = list;
 		}
 		

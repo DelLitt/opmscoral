@@ -64,5 +64,6 @@ namespace POSServer.BusinessLogic.Implement
         QueryResult FindPaging(ObjectCriteria<MainPrice> criteria);
 
         void PreloadDefinition(IFlowSession session);
+        MainPrice Save(MainPrice price);
     }
 }

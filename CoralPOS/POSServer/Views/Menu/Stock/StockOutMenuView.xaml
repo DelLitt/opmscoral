@@ -15,5 +15,8 @@
         <Button FontSize="14" FontWeight="Bold" Margin="50,312,44,308" Name="StockOutByExcel" TabIndex="9">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="66">XUẤT HÀNG BẰNG EXCEL</TextBlock>
         </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,0,44,210" Name="Back" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MÀN HÌNH CHÍNH</TextBlock>
+        </Button>
     </Grid>
 </UserControl>

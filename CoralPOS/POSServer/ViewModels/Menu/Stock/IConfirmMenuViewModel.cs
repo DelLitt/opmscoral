@@ -25,7 +25,9 @@ namespace POSServer.ViewModels.Menu.Stock
         
 		        
         void DepartmentStockOutConfirm();
-        
-			#endregion
+
+        void Back();
+
+        #endregion
     }
 }

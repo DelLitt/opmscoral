@@ -15,5 +15,8 @@
         <Button FontSize="14" FontWeight="Bold" Margin="50,312,44,308" Name="StockCategorySearch" TabIndex="9" Width="80" Height="80">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" >TÌM KIẾM THEO CHỦNG LOẠI</TextBlock>
         </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,0,44,209" Name="Back" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MÀN HÌNH CHÍNH</TextBlock>
+        </Button>
     </Grid>
 </UserControl>

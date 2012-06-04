@@ -25,6 +25,12 @@ namespace CoralPOS.Models {
             get;
             set;
         }
+        [DataMember(Name = "3", Order = 3)]
+        public virtual string DefectStatusDescription
+        {
+            get;
+            set;
+        }
    	 protected bool Equals(StockDefinitionStatus entity)
 		{
 			if (entity == null) return false;

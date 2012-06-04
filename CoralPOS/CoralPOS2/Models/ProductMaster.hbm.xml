@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="ProductMaster" table="CRL_PRD_MST" >
+  <class name="ProductMaster" table="CRL_PRD_MST" where="DEL_FLG = 0">
     <id name="ProductMasterId" type="String" column="PRODUCT_MASTER_ID">
       <generator class="assigned" />
     </id>
@@ -36,5 +36,6 @@
       <column name="SUPPLIER_ID" />
     </many-to-one>
     <many-to-one class="ProductUnit" name="ProductUnit" />-->
+    <sql-delete>update CRL_PRD_MST set DEL_FLG=1,UPDATE_DATE=now() WHERE PRODUCT_MASTER_ID=?</sql-delete>
   </class>
 </hibernate-mapping>

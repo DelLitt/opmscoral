@@ -16,7 +16,7 @@
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,212,44,0" Name="ProductMasterList" TabIndex="9" VerticalAlignment="Top">
             <TextBlock Text="QUẢN LÝ SẢN PHẨM" TextAlignment="Center" TextWrapping="Wrap" />
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="50,312,44,308" Name="StockInByExcel" TabIndex="9">
+        <Button FontSize="14" FontWeight="Bold" Margin="50,312,44,0" Name="UpdateProductMasterPrice" TabIndex="9" Height="80" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="75">CẬP NHẬT GIÁ</TextBlock>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,0,44,208" Name="ExtendFunctions" TabIndex="9" VerticalAlignment="Bottom">

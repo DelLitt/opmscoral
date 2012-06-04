@@ -27,7 +27,6 @@ namespace AppFrame.Extensions.DataGrid
                 new PropertyMetadata(
                     null,
                     new PropertyChangedCallback(OnSelectedItemsSourceChanged)));
-
         #endregion
 
         #region Attached Property Accessors

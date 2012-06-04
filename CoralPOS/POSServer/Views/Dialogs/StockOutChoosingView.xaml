@@ -14,7 +14,7 @@
             
         </Grid.RowDefinitions>
             <DataGrid AutoGenerateColumns="False" Name="StockInList" Grid.Row="1" ItemsSource="{Binding StockInList}" Margin="0,0,113,0"
-                      SelectedItem="{Binding SelectedStockIn}">
+                      SelectedItem="{Binding SelectedStockIn}" CanUserAddRows="False" CanUserDeleteRows="False">
             <DataGrid.Columns>
                     <!--<DataGridTextColumn Header="ERROR" Width="50*" IsReadOnly="True" Binding="{Binding Path=PropertyName}">                                              
                     </DataGridTextColumn>-->

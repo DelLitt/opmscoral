@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,20 @@ namespace POSServer.Views.Stock.StockIn
         private void ProductMasterList_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             
+        }
+
+        private void StockInDetailList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void PutPrice_Click(object sender, RoutedEventArgs e)
+        {
+            IList<DataGridCellInfo> selectedCells = StockInDetailList.SelectedCells;
+            foreach (DataGridCellInfo dataGridCellInfo in selectedCells)
+            {
+                
+            }
         }
     }
 }

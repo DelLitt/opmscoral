@@ -13,6 +13,7 @@ using AppFrame.Utils;
 using AppFrame.Validation;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
+using CoralPOS.Common;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
@@ -123,8 +124,9 @@ namespace POSServer.ViewModels.Stock.StockOut
 			}
 		}
 
-		private CoralPOS.Models.StockDefinitionStatus _definitionStatus;
+		
 		[Required]
+		private CoralPOS.Models.StockDefinitionStatus _definitionStatus;
 		public CoralPOS.Models.StockDefinitionStatus DefinitionStatus
 		{
 			get
@@ -225,6 +227,8 @@ namespace POSServer.ViewModels.Stock.StockOut
 			if (StockOut.Department == null) return;
 			StockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
 			StockOut.DefinitionStatus = DefinitionStatus;
+			bool stockOutConfim = SystemConfig.Instance.StockOutConfirm;
+			if (stockOutConfim) StockOut.ConfirmFlg = 1;
 			IEnumerable<IError> errors = this.GetErrors(StockOut);
 			if (this.HasError())
 			{
@@ -247,19 +251,19 @@ namespace POSServer.ViewModels.Stock.StockOut
 		public void CreateByBlock()
 		{
 			var screen = IoC.Get<IStockOutChoosingViewModel>("IStockOutChoosingViewModel");
-			screen.ConfirmEvent += new EventHandler<StockInChoosingArg>(StockInConfirmEvent);
+			screen.ConfirmEvent += StockInConfirmEvent;
 			_startViewModel.ShowDialog(screen); 
 		}
 
 		void StockInConfirmEvent(object sender, StockInChoosingArg e)
 		{
-
+			StartWaitingScreen(0);
 			CoralPOS.Models.StockIn selectedStockIn = e.SelectedStockIn;
 			BackgroundTask backgroundTask = new BackgroundTask(() => PopulateStockOutList(selectedStockIn));
-			backgroundTask.Completed += new System.ComponentModel.RunWorkerCompletedEventHandler(backgroundTask_Completed);
-			StartWaitingScreen(0);
+			backgroundTask.Completed += backgroundTask_Completed;
 			backgroundTask.Start(selectedStockIn);
 		}
+
 		private object PopulateStockOutList(CoralPOS.Models.StockIn selectedStockIn)
 		{
 			var details = new ArrayList(StockOutDetails);
@@ -278,8 +282,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 					newDetail.UpdateId = "admin";
 					newDetail.Quantity = inDetail.Quantity;
 					newDetail.StockQuantity = inDetail.Stock.Quantity;
-
-
+					newDetail.GoodQuantity = inDetail.Quantity;
 					details.Add(newDetail);
 				}
 				else
@@ -288,7 +291,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 											 where sod.Product.ProductId.Equals(product.ProductId)
 											 select sod).FirstOrDefault();
 					result.Quantity += inDetail.Quantity;
-
+					result.GoodQuantity += inDetail.Quantity;
 				}
 			}
 
@@ -343,9 +346,9 @@ namespace POSServer.ViewModels.Stock.StockOut
 						newDetail.UpdateDate = DateTime.Now;
 						newDetail.CreateId = "admin";
 						newDetail.UpdateId = "admin";
-						newDetail.Quantity = stock.GoodQuantity;
+						newDetail.Quantity = keyValuePair.Value;
 						newDetail.StockQuantity = stock.Quantity;
-
+						newDetail.GoodQuantity = keyValuePair.Value;
 						details.Add(newDetail);
 					}
 				}
@@ -405,6 +408,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 					}
 				}
 			}
+
 			var details = new ArrayList(_stockOutDetails);
 			foreach (MainStock stock in addStockList)
 			{
@@ -422,7 +426,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 					newDetail.UpdateId = "admin";
 					newDetail.Quantity = stock.GoodQuantity;
 					newDetail.StockQuantity = stock.Quantity;
-
+                    newDetail.GoodQuantity = newDetail.Quantity;
 
 					details.Add(newDetail);
 				}

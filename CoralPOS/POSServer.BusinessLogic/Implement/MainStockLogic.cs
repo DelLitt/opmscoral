@@ -263,5 +263,25 @@ namespace POSServer.BusinessLogic.Implement
 				}
 			}
 		}
+
+	    public void UpdateStockQuantity(IList<StockOutDetail> details)
+	    {
+	        var productIds = (from detail in details
+	                         select detail.Product.ProductId).ToList();
+
+	        var stocks = (IList<MainStock>)MainStockDao.ExecuteExposedSession(
+                session => session.QueryOver<MainStock>().Where(a=>a.Product.ProductId.IsIn(productIds)).List());
+            foreach (StockOutDetail detail in details)
+            {
+                foreach (MainStock stock in stocks)
+                {
+                    if (stock.Product.ProductId.Equals(detail.Product.ProductId))
+                    {
+                        detail.StockQuantity = stock.Quantity;
+                        break;
+                    }
+                }
+            }
+	    }
 	}
 }

@@ -12,5 +12,8 @@
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,212,44,0" Name="DepartmentStockOutConfirm" TabIndex="9" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">X.NHẬN XUẤT KHO TỪ CỬA HÀNG</TextBlock>
         </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="49,0,45,310" Name="Back" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MÀN HÌNH CHÍNH</TextBlock>
+        </Button>
     </Grid>
 </UserControl>

@@ -28,7 +28,9 @@ namespace POSServer.ViewModels.Menu.Stock
         
 		        
         void StockInByExcel();
-        
-			#endregion
+
+        void Back();
+
+        #endregion
     }
 }

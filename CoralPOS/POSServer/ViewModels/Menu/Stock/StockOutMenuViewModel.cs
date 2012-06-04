@@ -13,7 +13,7 @@ using Caliburn.Micro;
 
 using AppFrame.CustomAttributes;
 using AppFrame.CustomAttributes;
-
+using POSServer.Common;
 
 
 namespace POSServer.ViewModels.Menu.Stock
@@ -41,22 +41,27 @@ namespace POSServer.ViewModels.Menu.Stock
 		        
         public void StockOutToDepartment()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.StockOutCreateFlow);
         }
 		        
         public void StockOutToOther()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.StockOutSpecificCreateFlow);
         }
 		        
         public void StockOutList()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.StockOutSearchFlow);
         }
 		        
         public void StockOutByExcel()
         {
             
+        }
+
+        public void Back()
+        {
+            _startViewModel.OpenMainScreen();
         }
 				#endregion
 		

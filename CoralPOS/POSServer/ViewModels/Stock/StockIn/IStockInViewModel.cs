@@ -75,7 +75,9 @@ namespace POSServer.ViewModels.Stock.StockIn
         
 		        
         void EditProductMaster();
-        
-			#endregion
+
+        void PutPrice();
+
+        #endregion
     }
 }

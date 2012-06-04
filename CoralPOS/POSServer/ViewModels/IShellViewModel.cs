@@ -16,7 +16,7 @@ namespace POSServer.ViewModels
         bool ResumeFlow(string flowName);
         void LeaveFlow();
         void EnterChildFlow(string childFlowName, IFlow parentFlow);
-
         void HideDialog<U>(U screen) where U : IScreen;
+        void OpenMainScreen();
     }
 }

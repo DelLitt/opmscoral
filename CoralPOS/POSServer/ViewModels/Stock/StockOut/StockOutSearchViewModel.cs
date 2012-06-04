@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.Invocation;
 using AppFrame.Utils;
@@ -16,11 +17,12 @@ using Caliburn.Micro;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
+using POSServer.ViewModels.Menu.Stock;
 
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-	
+    [AttachMenuAndMainScreen(typeof(IStockOutMenuViewModel), typeof(IStockMainViewModel))]
 	public class StockOutSearchViewModel : PosViewModel,IStockOutSearchViewModel  
 	{
 

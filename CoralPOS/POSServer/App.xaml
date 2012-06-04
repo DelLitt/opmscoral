@@ -2,7 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Converters="clr-namespace:Caliburn.WPF.ApplicationFramework.Converters;assembly=Caliburn.WPF.ApplicationFramework"  
-             xmlns:local="clr-namespace:POSServer"
+             
              xmlns:appframe="clr-namespace:AppFrame.WPF;assembly=AppFrame">
     <Application.Resources>
         

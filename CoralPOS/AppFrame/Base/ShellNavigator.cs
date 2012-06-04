@@ -184,8 +184,10 @@ namespace AppFrame.Base
                       if (flowName.Equals(childFlow.ParentFlow.Name)) isParentFlow = true;
                   }
               }
-              if(!isParentFlow)
-              _freezeFlows[ActiveFlow.Name] = ActiveFlow;
+              if (!isParentFlow)
+              {
+                  _freezeFlows[ActiveFlow.Name] = ActiveFlow;
+              }
            }
  
            if(_freezeFlows.ContainsKey(flowName))
@@ -317,16 +319,30 @@ namespace AppFrame.Base
             }
             else
             {
-                OpenMainScreen();
+                if (flow.IsRepeated)
+                {
+                    EnterFlow(flow.Name);
+                    flow.IsRepeated = false;
+                }
+                else
+                {
+                    OpenMainScreen();    
+                }
             }
         }
 
         /// <summary>
         /// Open Main Screen
         /// </summary>
-        private void OpenMainScreen()
+        public void OpenMainScreen()
         {
-            if (MainScreen != null) this.ActivateItem(MainScreen);        
+            if (MainScreen != null) this.ActivateItem(MainScreen);
+            // if active flow is not null so freeze it
+            if (ActiveFlow != null)
+            {
+                if(!_freezeFlows.Keys.Contains(ActiveFlow.Name)) _freezeFlows[ActiveFlow.Name] = ActiveFlow;
+                ActiveFlow = null;
+            }
         }
 
         /// <summary>

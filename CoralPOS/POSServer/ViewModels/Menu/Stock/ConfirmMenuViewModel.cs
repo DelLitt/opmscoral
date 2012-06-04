@@ -53,7 +53,13 @@ namespace POSServer.ViewModels.Menu.Stock
         {
             
         }
-				#endregion
+
+        public void Back()
+        {
+            _startViewModel.OpenMainScreen();
+        }
+
+        #endregion
 		
         
         

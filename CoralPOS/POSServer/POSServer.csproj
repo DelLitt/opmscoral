@@ -66,9 +66,6 @@
     <Reference Include="Accessibility">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="BarcodeLib">
-      <HintPath>..\libraries\BarcodeLib.dll</HintPath>
-    </Reference>
     <Reference Include="Caliburn.Micro">
       <HintPath>..\libraries\Caliburn\Caliburn.Micro.dll</HintPath>
     </Reference>
@@ -85,17 +82,13 @@
       <HintPath>..\libraries\Others\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.3.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.3.8\Assemblies\v2.0\MySql.Data.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\libraries\MySQL\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Neodynamic.WPF.Barcode">
       <HintPath>..\libraries\trial\Neodynamic.WPF.Barcode.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\libraries\NHibernate\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="protobuf-net">
-      <HintPath>..\libraries\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>..\libraries\Others\ServiceStack.Text.dll</HintPath>
@@ -160,7 +153,7 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="WPF.Themes">
-      <HintPath>..\libraries\WPF.Themes.dll</HintPath>
+      <HintPath>..\libraries\Others\WPF.Themes.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

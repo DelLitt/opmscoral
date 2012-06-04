@@ -113,5 +113,26 @@ namespace POSServer.BusinessLogic.Implement
             IList<MainPrice> mainPrices = MainPriceDao.FindAll(new ObjectCriteria<MainPrice>());
             session.Put(FlowConstants.MAINPRICE_LIST, mainPrices);
         }
+
+        public MainPrice Save(MainPrice mainPrice)
+        {
+            ObjectCriteria<MainPrice> findPrice = new ObjectCriteria<MainPrice>();
+            string productMasterId = mainPrice.MainPricePK.ProductMasterId;
+            findPrice.Add(
+                price => price.MainPricePK.ProductMasterId == productMasterId);
+            MainPrice currentPrice = MainPriceDao.FindFirst(findPrice) as MainPrice;
+            if (currentPrice == null)
+            {
+                MainPriceDao.Add(mainPrice);
+                return mainPrice;
+            }
+            else
+            {
+                currentPrice.Price = mainPrice.Price;
+                currentPrice.WholeSalePrice = mainPrice.WholeSalePrice;
+                MainPriceDao.Update(currentPrice);
+                return currentPrice;
+            }
+        }
     }
 }

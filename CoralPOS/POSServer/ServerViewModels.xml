@@ -113,7 +113,7 @@
   </object>
 
   <object id="IStockOutWaitingConfirmViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutWaitingConfirmViewModel, POSServer" singleton="false">
-    <!--<property name="MainPriceLogic" ref="IMainPriceLogic" />-->
+    <property name="MainStockLogic" ref="IMainStockLogic" />
   </object>
   
   <object id="IStockOutSearchViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutSearchViewModel, POSServer" singleton="false">

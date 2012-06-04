@@ -1,14 +1,16 @@
 using System.Collections;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.Utils;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
+using POSServer.ViewModels.Menu.Stock;
 
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-	
+	[AttachMenuAndMainScreen(typeof(IStockOutMenuViewModel), typeof(IStockMainViewModel))]
 	public class StockOutConfirmViewModel : PosViewModel,IStockOutConfirmViewModel  
 	{
 
@@ -62,6 +64,20 @@ namespace POSServer.ViewModels.Stock.StockOut
 			{
 				_department = value;
 				NotifyOfPropertyChange(() => Department);
+			}
+		}
+
+		private StockDefinitionStatus _definitionStatus;
+		public StockDefinitionStatus DefinitionStatus
+		{
+			get
+			{
+				return _definitionStatus;
+			}
+			set
+			{
+				_definitionStatus = value;
+				NotifyOfPropertyChange(() => DefinitionStatus);
 			}
 		}
 
@@ -132,6 +148,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 			}
 			StockOutDetails = ObjectConverter.ConvertFrom(stockOut.StockOutDetails);
 			Department = stockOut.Department;
+		    DefinitionStatus = stockOut.DefinitionStatus;
 			CreateDate = stockOut.CreateDate.ToString();
 			
 		}

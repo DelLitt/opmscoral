@@ -8,7 +8,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=TypeId}"/>
                 <DataGridTextColumn FontSize="14" Header="TÊN LOẠI" Width="200" Binding="{Binding Path=TypeName}"/>
-                <DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" Binding="{Binding Path=Description}"/>
+                <DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" Binding="{Binding Path=Description}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         </Grid>

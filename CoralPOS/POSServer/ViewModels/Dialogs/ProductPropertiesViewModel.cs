@@ -139,17 +139,19 @@ namespace POSServer.ViewModels.Dialogs
 		{
 			
 			string productName = ProductName;
-			LinqCriteria<Product> crit = new LinqCriteria<Product>();
+			//LinqCriteria<Product> crit = new LinqCriteria<Product>();
 			/*IList colors = ProductLogic.GetColorsWithProductName(productName);
 			IList sizes = ProductLogic.GetSizesWithProductName(productName);*/
-			crit.AddCriteria(p => p.ProductMaster.ProductName == productName);
-			IList<Product> products = ProductLogic.FindAll(crit);
+			//crit.AddCriteria(p => p.ProductMaster.ProductName == productName);
+			//IList<Product> products = ProductLogic.FindAll(crit);
 			IList<ExProductColor> extraColors = ProductColorLogic.FindAll(new ObjectCriteria<ExProductColor>());
 			IList<ExProductSize> extraSizes = ProductSizeLogic.FindAll(new ObjectCriteria<ExProductSize>());
-			IList colors = products.Select(s => s.ProductColor).Distinct().ToList();
-			IList sizes = products.Select(s => s.ProductSize).Distinct().ToList();
-			ProductColorList = colors;
-			ProductSizeList = sizes;
+			//IList colors = products.Select(s => s.ProductColor).Distinct().ToList();
+			//IList sizes = products.Select(s => s.ProductSize).Distinct().ToList();
+			//ProductColorList = colors;
+			//ProductSizeList = sizes;
+            ProductColorList = extraColors as IList;
+            ProductSizeList = extraSizes as IList;
 			ExtraProductColorList = extraColors as IList;
 			ExtraProductSizeList = extraSizes as IList;
 			SelectedProductColors = new ArrayList();

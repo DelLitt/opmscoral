@@ -57,7 +57,7 @@
                     <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" IsReadOnly="True" Binding="{Binding Path=Product.ProductColor.ColorName}"/>
                     <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" IsReadOnly="True" Binding="{Binding Path=Product.ProductSize.SizeName}"/>
                     <DataGridTextColumn FontSize="14" Header="SL XUẤT" Width="150" IsReadOnly="True" Binding="{Binding Path=Quantity}"/>
-                    <DataGridTextColumn FontSize="14" Header="SL TỒN" Width="100*" IsReadOnly="True" />
+                    <DataGridTextColumn FontSize="14" Header="SL TỒN" Width="100*" IsReadOnly="True" Binding="{Binding Path=StockQuantity}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

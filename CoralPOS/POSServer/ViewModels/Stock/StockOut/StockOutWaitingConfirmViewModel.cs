@@ -9,12 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Invocation;
+using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 
 using AppFrame.CustomAttributes;
 using AppFrame.CustomAttributes;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
 using POSServer.ViewModels.Menu.Stock;
 
 
@@ -29,7 +32,8 @@ namespace POSServer.ViewModels.Stock.StockOut
 		{
 			_startViewModel = ShellViewModel.Current;
 		}
-		
+
+		private IMainStockLogic MainStockLogic { get; set; }
 		#region Fields
 				#endregion
 		
@@ -168,6 +172,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 			IList stockOuts = Flow.Session.Get(FlowConstants.CONFIRMING_STOCK_OUT_LIST) as IList;
 			ConfirmingStockOutList = stockOuts;
 			SelectedStockOuts = new ArrayList();
+			StockOutDetailList = new List<StockOutDetail>();
 		}
 
 		public void Help()
@@ -177,7 +182,6 @@ namespace POSServer.ViewModels.Stock.StockOut
 
 		public void GridSelectionChanged()
 		{
-
 			IList<StockOutDetail> details = SelectedStockOut.StockOutDetails;
 			if (details == null) return;
 			StockOutDetailList = details;
