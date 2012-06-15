@@ -90,6 +90,9 @@
     <Reference Include="NHibernate">
       <HintPath>..\libraries\NHibernate\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.LambdaExtensions">
+      <HintPath>..\libraries\Others\NHibernate.LambdaExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>..\libraries\Others\ServiceStack.Text.dll</HintPath>
     </Reference>
@@ -165,6 +168,9 @@
     </ApplicationDefinition>
     <Compile Include="Actions\ProductMaster\IPmPricePreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\PmPricePreLoadDefinitionAction.cs" />
+    <Compile Include="Actions\Stock\Inventory\IInventoryStockViewSaveAction.cs" />
+    <Compile Include="Actions\Stock\Inventory\IInventoryStockViewPreloadAction.cs" />
+    <Compile Include="Actions\Stock\Inventory\InventoryStockViewPreloadAction.cs" />
     <Compile Include="Actions\Stock\StockOut\StockOutConfirmSaveAction.cs" />
     <Compile Include="Actions\Stock\StockOut\StockOutConfirmPreLoadAction.cs" />
     <Compile Include="Actions\Stock\StockOut\IStockOutConfirmSaveAction.cs" />
@@ -995,6 +1001,10 @@
     <ProjectReference Include="..\POSServer.BusinessLogic\POSServer.BusinessLogic.csproj">
       <Project>{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}</Project>
       <Name>POSServer.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POSServer.DataLayer\POSServer.DataLayer.csproj">
+      <Project>{28adf592-ed6b-4e5f-a80d-b737b67db364}</Project>
+      <Name>POSServer.DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

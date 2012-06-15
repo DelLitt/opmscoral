@@ -57,6 +57,7 @@
   <ItemGroup>
     <Reference Include="Caliburn.Micro">
       <HintPath>..\libraries\Caliburn\Caliburn.Micro.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -70,6 +71,7 @@
     </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\libraries\Caliburn\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
@@ -129,6 +131,7 @@
     <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
       <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
       <Name>AppFrame2</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

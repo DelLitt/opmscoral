@@ -23,8 +23,8 @@
                 <RowDefinition Height="204.424*"></RowDefinition>
                 <RowDefinition Height="388.545*"></RowDefinition>
             </Grid.RowDefinitions>
-            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInventoryList"  FontSize="14" Margin="0,0,184.426,33" CanUserAddRows="False" CanUserResizeColumns="False"
-                      SelectedItem="{Binding SelectedTempValidDTO}"
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" x:Name="StockInventoryList"  FontSize="14" Margin="0,0,184.426,33" CanUserAddRows="False" CanUserResizeColumns="False"
+                      SelectedItem="{Binding Path=SelectedTempValidDTO}"
                       >
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="14" Header="STT" >
@@ -35,37 +35,39 @@
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn FontSize="14" Header="TÊN HÀNG" Width="200" Binding="{Binding ProductMaster.ProductName}" />
-                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" Binding="{Binding ProductColor.ColorName}" />
-                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="70" Binding="{Binding ProductSize.SizeName}" />
-                    <DataGridTextColumn FontSize="14" Header="SL MÁY" Width="100" Binding="{Binding TotalQuantity}" />
-                    <DataGridTextColumn FontSize="14" Header="SL THỰC" Width="100" Binding="{Binding TotalGoodQuantity}" />
+                    <DataGridTextColumn FontSize="14" Header="TÊN HÀNG" Width="200" Binding="{Binding ProductMaster.ProductName}" CanUserResize="False" IsReadOnly="True"/>
+                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" Binding="{Binding ProductColor.ColorName}" CanUserResize="False" IsReadOnly="True" />
+                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="70" Binding="{Binding ProductSize.SizeName}" CanUserResize="False" IsReadOnly="True"/>
+                    <DataGridTextColumn FontSize="14" Header="SL MÁY" Width="70" Binding="{Binding TotalQuantity}" CanUserResize="False" IsReadOnly="True" />
+                    <DataGridTextColumn FontSize="14" Header="SL THỰC" Width="70" Binding="{Binding TotalGoodQuantity}" CanUserResize="False" IsReadOnly="True" />
                     <DataGridCheckBoxColumn Header="KHỚP" Width="100*" Binding="{Binding Fixed}" />
                 </DataGrid.Columns>                
             </DataGrid>
-            <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="11,57,0,97" Name="label1" Width="97" Content="CỬA HÀNG"></Label>
-            <TextBox FontSize="14" Margin="0,57,227,97" Name="Description" HorizontalAlignment="Right" Width="493" />
-            <Label FontSize="14" Height="39" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="11,12,0,0" Name="label3" VerticalAlignment="Top" Width="97" Content="TỪ NGÀY"></Label>
+            <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="14,99,0,55" Name="label1" Width="97" Content="CỬA HÀNG"></Label>
+            <TextBox FontSize="14" Margin="0,99,440,55" Name="Description" HorizontalAlignment="Right" Width="280" />
+            <Label FontSize="14" Height="39" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="14,15,0,0" Name="label3" VerticalAlignment="Top" Width="97" Content="TỪ NGÀY"></Label>
             <ComboBox Grid.Row="1" Height="42.218" HorizontalAlignment="Right" Name="ProductTypeList" VerticalAlignment="Top" Width="172" FontSize="14" Margin="0,0,6,0" DisplayMemberPath="TypeName" SelectedItem="{Binding SelectedProductType}" 
                       IsEditable="False" 
                       cal:Message.Attach="[Event SelectionChanged]=[Action ProcessProductTypeChange()]" SelectionChanged="comboBox1_SelectionChanged" />
             <ListBox Grid.Row="1" HorizontalAlignment="Right" Margin="0,52.217,6,1.111" Name="ProductMasterList" Width="172" FontSize="14" DisplayMemberPath="ProductName" />
-            <Button Content="CHỌN" Height="36" HorizontalAlignment="Left" Margin="514,15,0,0" Name="SearchEvaluation" VerticalAlignment="Top" Width="96" />
-            <TextBox Grid.Row="1" Height="32" HorizontalAlignment="Left" Margin="429,345,0,0" VerticalAlignment="Top" Width="98" FontWeight="ExtraBold" Name="LogicalSum" />
-            <TextBox Height="34" HorizontalAlignment="Right" Margin="0,344,197,0" Name="RealSum" VerticalAlignment="Top" Width="107" Grid.Row="1" FontWeight="ExtraBold" />
+            <Button Height="78" HorizontalAlignment="Left" Margin="316,15,0,0" Name="SearchEvaluation" VerticalAlignment="Top" Width="81" Content="TIM KIEM" />
+            <TextBox Grid.Row="1" Height="32"  HorizontalAlignment="Left" Margin="407,345,0,0" VerticalAlignment="Top" Width="72" FontWeight="ExtraBold" Name="LogicalSum" TextAlignment="Left" />
+            <TextBox Height="32" HorizontalAlignment="Right" Margin="0,345,290,0" Name="RealSum" VerticalAlignment="Top" Width="67" Grid.Row="1" FontWeight="ExtraBold" TextAlignment="Left" />
             <CheckBox Content="LOẠI DÒNG TRÙNG" Height="16" HorizontalAlignment="Left" Margin="6,177,0,0" Name="FilterDuplicate" VerticalAlignment="Top" />
             <CheckBox Content="BÙ TRƯỢT MÃ" Height="16" HorizontalAlignment="Left" Margin="147,177,0,0" Name="FilterSlidedBarcode" VerticalAlignment="Top" />
-            <DatePicker Height="36" HorizontalAlignment="Left" Margin="117,15,0,0" Name="FromDate" VerticalAlignment="Top" Width="154" SelectedDate="{Binding FromDate}" FontSize="14" />
-            <DatePicker Height="36" HorizontalAlignment="Left" Margin="338,15,0,0" Name="ToDate" VerticalAlignment="Top" Width="154" SelectedDate="{Binding ToDate}" FontSize="14" />
-            <Label Content="ĐẾN" FontSize="14" Height="39" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="277,12,0,0" Name="label2" VerticalAlignment="Top" Width="55" />
-            <DataGrid AutoGenerateColumns="False" Height="149" HorizontalAlignment="Right" Margin="0,6,6,0" Name="EvaluationList" VerticalAlignment="Top" Width="172"                      
-                      SelectedItem="{Binding SelectedEvaluationKey,Mode=TwoWay}" CanUserAddRows="False">
+            <DatePicker Height="36" HorizontalAlignment="Left" Margin="117,15,0,0" Name="FromDate" VerticalAlignment="Top" Width="190" SelectedDate="{Binding FromDate}" FontSize="14" />
+            <DatePicker Height="36" HorizontalAlignment="Left" Margin="117,57,0,0" Name="ToDate" VerticalAlignment="Top" Width="190" SelectedDate="{Binding ToDate}" FontSize="14" />
+            <Label Content="ĐẾN" FontSize="14" Height="39" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="56,57,0,0" Name="label2" VerticalAlignment="Top" Width="55" />
+            <DataGrid AutoGenerateColumns="False" Height="138" HorizontalAlignment="Right" Margin="0,6,6,0" Name="EvaluationList" VerticalAlignment="Top" Width="425"                      
+                      SelectedItem="{Binding Path=SelectedEvaluationKey,Mode=TwoWay}" CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ĐỢT KIỂM TRA" Width="*" CanUserResize="False" Binding="{Binding CreateDate}" CanUserReorder="False" CanUserSort="False" IsReadOnly="True" />                    
+                    <DataGridTextColumn Header="ĐỢT KIỂM TRA" Width="150" CanUserResize="False" Binding="{Binding Path=DepartmentInventoryId}" CanUserReorder="False" CanUserSort="False" IsReadOnly="True" />
+                    <DataGridTextColumn Header="NGÀY" Width="100" CanUserResize="False" Binding="{Binding Path=CreateDate}" CanUserReorder="False" CanUserSort="False" IsReadOnly="True" />
+                    <DataGridTextColumn Header="DIỄN GIẢI" Width="*" CanUserResize="False" Binding="{Binding Path=Description}" CanUserReorder="False" CanUserSort="False" IsReadOnly="True" />
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Content="KHỚP" Height="36" HorizontalAlignment="Left" Margin="578,157,0,0" Name="Fixing" VerticalAlignment="Top" Width="75" />
-            <Button Content="CHỌN" Height="36" HorizontalAlignment="Left" Margin="702,157,0,0" Name="SelectEvaluationDate" VerticalAlignment="Top" Width="90" />
+            <Button Content="KHỚP" Height="28" HorizontalAlignment="Left" Margin="406,165,0,0" Name="Fixing" VerticalAlignment="Top" Width="247" />
+            <Button Content="CHỌN" Height="43" HorizontalAlignment="Left" Margin="659,150,0,0" Name="SelectEvaluationDate" VerticalAlignment="Top" Width="172" />
         </Grid>
     </Grid>
 </UserControl>

@@ -90,6 +90,16 @@ namespace AppFrame.Extensions
             task.Completed += (sender, e) => viewModel.StopWaitingScreen(loadScreenType);
             task.Start(theDelegate);
         }
-        
+
+        public static void ExecuteAsync(this PosViewModel viewModel, Func<object> theDelegate, Func<object> theResult,int loadScreenType = 0, bool catchException = false)
+        {
+            BackgroundTask task = new BackgroundTask(theDelegate);
+            viewModel.StartWaitingScreen(loadScreenType);
+            task.Completed += (sender, e) => 
+            { viewModel.StopWaitingScreen(loadScreenType);
+              theResult();
+            };
+            task.Start(theDelegate);
+        }
     }
 }

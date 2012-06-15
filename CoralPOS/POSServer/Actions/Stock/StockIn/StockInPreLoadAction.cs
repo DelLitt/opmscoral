@@ -17,7 +17,7 @@ namespace POSServer.Actions.Stock.StockIn
         {
             IoC.Get<ICircularLoadViewModel>().StartLoading();
             DoExecuteCompleted += StockInPreLoadAction_DoExecuteCompleted;
-            DoExecuteAsync(() => DoWork(), null);
+            DoExecuteAsync(DoWork, null);
         }
 
         void StockInPreLoadAction_DoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)

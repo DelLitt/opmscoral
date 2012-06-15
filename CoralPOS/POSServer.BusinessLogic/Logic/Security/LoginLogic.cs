@@ -10,16 +10,12 @@ namespace POSServer.BusinessLogic.Logic.Security
     {
         public bool Login(LoginModel loginInfo)
         {
+            if(string.IsNullOrEmpty(loginInfo.Username) || string.IsNullOrEmpty(loginInfo.Password)) return false;
+
             string username = loginInfo.Username.ToLower();
             string password = loginInfo.Password.ToLower();
-            if (username.Equals("admin") && password.Equals("admin"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (username.Equals("admin") && password.Equals("admin")) return true;
+            else return false;            
         }
     }
 }

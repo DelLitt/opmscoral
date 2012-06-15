@@ -69,5 +69,10 @@ namespace POSServer.Views.Stock.Inventory
                 return master.ProductMaster.ProductType.TypeId == type.TypeId;
             };
         }
+
+        private void Barcode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Barcode.Text) && Barcode.Text.Length == 12) Barcode.Text = "";
+        }
     }
 }

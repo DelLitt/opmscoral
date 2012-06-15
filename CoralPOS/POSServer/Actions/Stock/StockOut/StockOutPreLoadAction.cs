@@ -42,7 +42,9 @@ namespace POSServer.Actions.Stock.StockOut
             IList productMasters = (IList) MainStockLogic.FetchAll(new LinqCriteria<MainStock>());
             //IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType("%%");
             Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
-            IList<Department> departments = DepartmentLogic.FindAll(new ObjectCriteria<Department>());
+            ObjectCriteria<Department> objectCriteria = new ObjectCriteria<Department>();
+            objectCriteria.Add(x => x.DepartmentId > 0); // we don't get department 0 because department 0 is MAIN STOCK.
+            IList<Department> departments = DepartmentLogic.FindAll(objectCriteria);
             Flow.Session.Put(FlowConstants.DEPARTMENTS,departments);
             return null;
         }

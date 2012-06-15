@@ -55,36 +55,25 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.Logging.Log4Net, Version=1.2.0.2, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Common.Logging.Log4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\libraries\NHibernate\NHibernate.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NHibernate.LambdaExtensions">
       <HintPath>..\libraries\Codeplex\NHibernate.LambdaExtensions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Core">
       <HintPath>..\libraries\Spring\Spring.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Data">
       <HintPath>..\libraries\Spring\Spring.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Data.NHibernate32">
       <HintPath>..\libraries\Spring\Spring.Data.NHibernate32.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
@@ -288,18 +277,23 @@
     <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
       <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
       <Name>AppFrame2</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj">
       <Project>{0567B942-B5ED-430F-8E45-FE639039B75B}</Project>
       <Name>Caliburn.WPF.ApplicationFramework</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\CoralPOS2\CoralPOS.csproj">
       <Project>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</Project>
       <Name>CoralPOS</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataLayer.xml" />
+    <EmbeddedResource Include="DataLayer.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataLayer\" />

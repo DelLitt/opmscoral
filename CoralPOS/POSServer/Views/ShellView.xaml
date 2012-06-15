@@ -31,7 +31,7 @@
         </Controls:TransitionPresenter>        -->
     </Grid>    
             <Grid x:Name="overlay"
-              Visibility="{Binding DialogModel, Converter={StaticResource collapsedWhenNullConverter}}"
+              Visibility="{Binding Path=DialogModel, Converter={StaticResource collapsedWhenNullConverter}}"
               Background="Transparent"
               IsHitTestVisible="True">
                 <Grid Margin="2"

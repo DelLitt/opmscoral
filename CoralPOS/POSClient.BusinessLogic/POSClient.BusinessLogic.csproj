@@ -57,21 +57,27 @@
   <ItemGroup>
     <Reference Include="Iesi.Collections">
       <HintPath>..\libraries\NHibernate\Iesi.Collections.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\libraries\NHibernate\NHibernate.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NHibernate.LambdaExtensions">
       <HintPath>..\libraries\Codeplex\NHibernate.LambdaExtensions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Core">
       <HintPath>..\libraries\Spring\Spring.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Data">
       <HintPath>..\libraries\Spring\Spring.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Data.NHibernate32">
       <HintPath>..\libraries\Spring\Spring.Data.NHibernate32.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -265,14 +271,17 @@
     <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
       <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
       <Name>AppFrame2</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\CoralPOS2\CoralPOS.csproj">
       <Project>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</Project>
       <Name>CoralPOS</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\POSClient.DataLayer\POSClient.DataLayer.csproj">
       <Project>{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}</Project>
       <Name>POSClient.DataLayer</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

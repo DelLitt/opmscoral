@@ -87,5 +87,9 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="toDate"></param>
         /// <returns></returns>
         IList<DepartmentStockTempValid> FindByDate(DateTime fromDate, DateTime toDate);
+
+        IList<DepartmentInventoryChecking> FindInventoryChecking(DateTime fromDate, DateTime toDate);
+
+        IList<DepartmentStockTempValid> LoadDepartmentStockTempValid(DepartmentInventoryChecking checking);
     }
 }

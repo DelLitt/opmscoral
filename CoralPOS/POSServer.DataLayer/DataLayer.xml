@@ -211,7 +211,11 @@
 	<object id="IDepartmentTimelineDao" type="POSServer.DataLayer.Implement.DepartmentTimelineDao, POSServer.DataLayer">
 		<property name="HibernateTemplate" ref="HibernateTemplate"/>
 	</object>
-		
+
+  <object id="IDepartmentInventoryCheckingDao" type="POSServer.DataLayer.Implement.DepartmentInventoryCheckingDao, POSServer.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  
 	<object id="IDistributorDao" type="POSServer.DataLayer.Implement.DistributorDao, POSServer.DataLayer">
 		<property name="HibernateTemplate" ref="HibernateTemplate"/>
 	</object>

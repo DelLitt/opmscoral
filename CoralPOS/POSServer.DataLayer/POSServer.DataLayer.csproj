@@ -55,27 +55,33 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\log4net.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\libraries\Others\log4net.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\CoralPOS2\libraries\NHibernate.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NHibernate.LambdaExtensions, Version=1.0.10.0, Culture=neutral, PublicKeyToken=706dcfc1e2725d62, processorArchitecture=MSIL">
       <HintPath>..\libraries\Codeplex\NHibernate.LambdaExtensions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Aop">
       <HintPath>..\..\CoralPOS2\libraries\Spring.Aop.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Core">
       <HintPath>..\..\CoralPOS2\libraries\Spring.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Data">
       <HintPath>..\..\CoralPOS2\libraries\Spring.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Spring.Data.NHibernate32">
       <HintPath>..\..\CoralPOS2\libraries\Spring.Data.NHibernate32.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -101,6 +107,8 @@
     <Compile Include="Implement\CashIoTransactionDao.cs" />
     <Compile Include="Implement\CategoryDao.cs" />
     <Compile Include="Implement\ContractDao.cs" />
+    <Compile Include="Implement\DepartmentInventoryCheckingDao.cs" />
+    <Compile Include="Implement\IDepartmentInventoryCheckingDao.cs" />
     <Compile Include="Implement\CountryDao.cs" />
     <Compile Include="Implement\CouponDao.cs" />
     <Compile Include="Implement\CouponTypeDao.cs" />
@@ -277,10 +285,12 @@
     <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
       <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
       <Name>AppFrame2</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\CoralPOS2\CoralPOS.csproj">
       <Project>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</Project>
       <Name>CoralPOS</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

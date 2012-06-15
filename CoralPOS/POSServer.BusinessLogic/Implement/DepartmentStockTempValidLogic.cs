@@ -38,6 +38,8 @@ namespace POSServer.BusinessLogic.Implement
         public IDepartmentStockDao DepartmentStockDao { get; set; }
         public IMainStockDao MainStockDao { get; set; }
         public IProductDao ProductDao { get; set; }
+        public IDepartmentInventoryCheckingDao DepartmentInventoryCheckingDao { get; set; }
+        
         /// <summary>
         /// Find DepartmentStockTemployeeValid object by id. Return null if nothing is found
         /// </summary>
@@ -245,8 +247,14 @@ namespace POSServer.BusinessLogic.Implement
 
         public void AddBatch(IList<DepartmentStockTempValid> stockInventoryList)
         {
+            bool addInventoryChecking = false;
             foreach (DepartmentStockTempValid departmentStockTempValid in stockInventoryList)
             {
+                if (!addInventoryChecking)
+                {
+                    DepartmentInventoryCheckingDao.Add(departmentStockTempValid.DepartmentInventoryChecking);
+                    addInventoryChecking = true;
+                }
                 DepartmentStockTempValidDao.Add(departmentStockTempValid);
             }
         }
@@ -270,6 +278,26 @@ namespace POSServer.BusinessLogic.Implement
                                                             select tempValid;
                                                         return list.ToList();
                                                     });
+        }
+
+        public IList<DepartmentInventoryChecking> FindInventoryChecking(DateTime fromDate, DateTime toDate)
+        {
+            ObjectCriteria<DepartmentInventoryChecking> criteria = new ObjectCriteria<DepartmentInventoryChecking>();
+            criteria.Add(a => a.CreateDate >= fromDate);
+            criteria.Add(a => a.CreateDate <= toDate);
+            return DepartmentInventoryCheckingDao.FindAll(criteria);
+        }
+
+        public IList<DepartmentStockTempValid> LoadDepartmentStockTempValid(DepartmentInventoryChecking checking)
+        {
+            return (IList<DepartmentStockTempValid>) DepartmentStockTempValidDao.Execute((session) =>
+                                                                                             {
+                                                                                                 var rs = session.Query<DepartmentStockTempValid>();
+                                                                                                 var list = from valid in rs.Fetch(x=>x.Product).ThenFetch(x=>x.ProductMaster)
+                                                                                                            where valid.DepartmentInventoryChecking.DepartmentInventoryId == checking.DepartmentInventoryId && valid.Fixed ==0
+                                                                                                            select valid    ;
+                                                                                                 return list.ToList();
+                                                                                             });
         }
     }
 }

@@ -178,7 +178,11 @@
 	<object id="IDepartmentStockInDao" type="POSClient.DataLayer.Implement.DepartmentStockInDao, POSClient.DataLayer">
 		<property name="HibernateTemplate" ref="HibernateTemplate"/>
 	</object>
-		
+
+  <object id="IDepartmentStockInventoryDao" type="POSClient.DataLayer.Implement.DepartmentStockInventoryDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  
 	<object id="IDepartmentStockInCostDao" type="POSClient.DataLayer.Implement.DepartmentStockInCostDao, POSClient.DataLayer">
 		<property name="HibernateTemplate" ref="HibernateTemplate"/>
 	</object>

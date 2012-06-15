@@ -47,10 +47,16 @@
   <object id="IStockOutConfirmPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutConfirmPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />
-    <property name="DepartmentLogic" ref="IDepartmentLogic" />
+    <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />
     <property name="StockOutLogic" ref="IStockOutLogic" />
   </object>
-  
+
+  <object id="IInventoryStockViewPreloadAction" type="POSServer.Actions.Stock.Inventory.InventoryStockViewPreloadAction, POSServer" singleton="false">
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+    <property name="MainStockLogic" ref="IMainStockLogic" />
+    <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />   
+  </object>
+
   <object id="IStockOutSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSaveAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />

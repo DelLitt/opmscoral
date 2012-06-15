@@ -61,16 +61,20 @@
   <ItemGroup>
     <Reference Include="Caliburn.Micro, Version=1.3.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\libraries\Caliburn\Caliburn.Micro.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="EmitMapper">
       <HintPath>..\libraries\Others\EmitMapper.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.4\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="ServiceStack.Text">
       <HintPath>..\libraries\Others\ServiceStack.Text.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -107,6 +111,9 @@
     <Compile Include="Common\StockOutType.cs" />
     <Compile Include="Common\SystemConfig.cs" />
     <Compile Include="DTO\DepartmentStockTempValidDTO.cs" />
+    <Compile Include="Models\DepartmentInventoryChecking.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PosClient.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,7 +276,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="PosClient.xsc">
       <DependentUpon>PosClient.xsd</DependentUpon>
     </None>
@@ -370,6 +379,7 @@
     <EmbeddedResource Include="Models\ReceiptOut.hbm.xml" />
     <EmbeddedResource Include="Models\ReceiptOutCost.hbm.xml" />
     <EmbeddedResource Include="Models\ReturnBlockIn.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentInventoryChecking.hbm.xml" />
     <Resource Include="Models\ReturnProduct.hbm.xml" />
     <EmbeddedResource Include="Models\ReturnTransaction.hbm.xml" />
     <EmbeddedResource Include="Models\Role.hbm.xml" />
@@ -396,6 +406,7 @@
     <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
       <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
       <Name>AppFrame2</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

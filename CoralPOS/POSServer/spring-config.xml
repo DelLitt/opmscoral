@@ -146,6 +146,7 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+  
   <object id="StockInSearchFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
@@ -156,11 +157,14 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
-  <object id="StockInventoryViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+  
+  <object id="StockInventoryViewFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Stock.Inventory.IStockInventoryViewModel"/>        
+        <entry key="Step1" value="POSServer.Actions.Stock.Inventory.IInventoryStockViewPreloadAction"/>
+        <entry key="Step2" value="POSServer.ViewModels.Stock.Inventory.IStockInventoryViewModel"/>
+        <entry key="Step3" value="POSServer.Actions.Stock.Inventory.IInventoryStockViewSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

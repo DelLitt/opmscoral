@@ -134,8 +134,14 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        [DataMember(Name = "24", Order = 23)]
+        [DataMember(Name = "24", Order = 24)]
         public virtual Product Product
+        {
+            get;
+            set;
+        }
+        [DataMember(Name = "25", Order = 25)]
+        public virtual DepartmentInventoryChecking DepartmentInventoryChecking
         {
             get;
             set;
