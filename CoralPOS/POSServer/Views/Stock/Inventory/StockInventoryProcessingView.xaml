@@ -51,8 +51,8 @@
                       cal:Message.Attach="[Event SelectionChanged]=[Action ProcessProductTypeChange()]" SelectionChanged="comboBox1_SelectionChanged" />
             <ListBox Grid.Row="1" HorizontalAlignment="Right" Margin="0,52.217,6,1.111" Name="ProductMasterList" Width="172" FontSize="14" DisplayMemberPath="ProductName" />
             <Button Height="78" HorizontalAlignment="Left" Margin="316,15,0,0" Name="SearchEvaluation" VerticalAlignment="Top" Width="81" Content="TIM KIEM" />
-            <TextBox Grid.Row="1" Height="32"  HorizontalAlignment="Left" Margin="407,345,0,0" VerticalAlignment="Top" Width="72" FontWeight="ExtraBold" Name="LogicalSum" TextAlignment="Left" />
-            <TextBox Height="32" HorizontalAlignment="Right" Margin="0,345,290,0" Name="RealSum" VerticalAlignment="Top" Width="67" Grid.Row="1" FontWeight="ExtraBold" TextAlignment="Left" />
+            <TextBox Grid.Row="1" Height="32"  HorizontalAlignment="Left" Margin="407,345,0,0" VerticalAlignment="Top" Width="72" FontWeight="ExtraBold" Name="LogicalSum" TextAlignment="Left" FontSize="14" />
+            <TextBox Height="32" HorizontalAlignment="Right" Margin="0,345,290,0" Name="RealSum" VerticalAlignment="Top" Width="67" Grid.Row="1" FontWeight="ExtraBold" TextAlignment="Left" FontSize="14" />
             <CheckBox Content="LOẠI DÒNG TRÙNG" Height="16" HorizontalAlignment="Left" Margin="6,177,0,0" Name="FilterDuplicate" VerticalAlignment="Top" />
             <CheckBox Content="BÙ TRƯỢT MÃ" Height="16" HorizontalAlignment="Left" Margin="147,177,0,0" Name="FilterSlidedBarcode" VerticalAlignment="Top" />
             <DatePicker Height="36" HorizontalAlignment="Left" Margin="117,15,0,0" Name="FromDate" VerticalAlignment="Top" Width="190" SelectedDate="{Binding FromDate}" FontSize="14" />
