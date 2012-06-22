@@ -14,10 +14,12 @@ namespace AppFrame.DataLayer
         private IList<Expression<Func<T, bool>>> _criteria;
         private RepositoryContext _context;
         private IQueryable<T> _query;
+        
         public QueryHandler(RepositoryContext context)
         {
             _criteria = new List<Expression<Func<T, bool>>>();
             _context = context;
+           
         }
         public QueryHandler(ISession session)
         {
@@ -60,7 +62,27 @@ namespace AppFrame.DataLayer
         {
             var query = from item in _context.CurrentSession().Query<T>()
                         select item;
-            query = new NhQueryable<T>(query.Provider,criteria.InternalQuery.Expression);
+            //query = new NhQueryable<T>(query.Provider,criteria.InternalQuery.Expression);
+            //query = query.Where(criteria.Where);
+            foreach (var linqCriterion in criteria.Where)
+            {
+                query = query.Where(linqCriterion);
+            }
+            foreach (var criterion in criteria.Order)
+            {
+                query = query.OrderBy(criterion);
+
+            }
+            // find a way to add Fetch !!
+            if (criteria.FetchList.Count > 0)
+            {
+                foreach (var fetchPair in criteria.FetchList)
+                {
+                    var queryProvider = query.Provider; // ArgumentUtility.CheckNotNullAndType<QueryProviderBase>("query.Provider", query.Provider);
+                    var callExpression = Expression.Call(fetchPair.Key, query.Expression, fetchPair.Value); 
+                    query = new LinqCriteria<T>(queryProvider,callExpression);
+                }
+            }
             //Tack on  query Criteria parameter
            /* foreach (var criterion in criteria.Where)
             {
