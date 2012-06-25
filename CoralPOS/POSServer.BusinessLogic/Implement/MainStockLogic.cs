@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Extensions;
 using AppFrame.Utils;
 using NHibernate.Linq;
 using Spring.Dao;
@@ -203,18 +204,23 @@ namespace POSServer.BusinessLogic.Implement
 														   query = query.OrderBy(criterion);
 
 													   }
+													   //foreach (var linqCriterion in criteria.FetchProps)
+													   //{
+													   //    query = query.FetchThrough(linqCriterion);
+													   //}
 													   /*//query = query.Where(stk => stk.ProductMaster.ProductName == productName);
 													   query = query.Where(stk => stk.Quantity > 0);
 													   crit.Fetch(i => i.Product);
 													   crit.Fetch(i => i.ProductMaster);
 													   crit.Fetch(i => i.ProductMaster.ProductType);*/
-													   query = query.Fetch(i => i.Product).
-														   ThenFetch(i=>i.ProductSize);
+													   //query.Expand(i => i.Product.ProductMaster.ProductType);
+													   //query.Expand(i => i.Product.ProductMaster.Category);
+													   //query.Expand(i => i.Product.ProductColor);
+													   //query.Expand(i => i.Product.ProductSize);
+													   query = query.Fetch(i => i.Product).ThenFetch(i=>i.ProductSize);
 													   query = query.Fetch(i => i.ProductMaster);
-													   query = query.Fetch(i => i.ProductMaster).
-														   ThenFetch(i => i.ProductType);
-													   query = query.Fetch(i => i.Product).
-														   ThenFetch(i => i.ProductColor);
+													   query = query.Fetch(i => i.ProductMaster).ThenFetch(i => i.ProductType);
+													   query = query.Fetch(i => i.Product).ThenFetch(i => i.ProductColor);
 
 													   if (criteria.MaxResult > 0)
 													   {
@@ -264,24 +270,24 @@ namespace POSServer.BusinessLogic.Implement
 			}
 		}
 
-	    public void UpdateStockQuantity(IList<StockOutDetail> details)
-	    {
-	        var productIds = (from detail in details
-	                         select detail.Product.ProductId).ToList();
+		public void UpdateStockQuantity(IList<StockOutDetail> details)
+		{
+			var productIds = (from detail in details
+							 select detail.Product.ProductId).ToList();
 
-	        var stocks = (IList<MainStock>)MainStockDao.ExecuteExposedSession(
-                session => session.QueryOver<MainStock>().Where(a=>a.Product.ProductId.IsIn(productIds)).List());
-            foreach (StockOutDetail detail in details)
-            {
-                foreach (MainStock stock in stocks)
-                {
-                    if (stock.Product.ProductId.Equals(detail.Product.ProductId))
-                    {
-                        detail.StockQuantity = stock.Quantity;
-                        break;
-                    }
-                }
-            }
-	    }
+			var stocks = (IList<MainStock>)MainStockDao.ExecuteExposedSession(
+				session => session.QueryOver<MainStock>().Where(a=>a.Product.ProductId.IsIn(productIds)).List());
+			foreach (StockOutDetail detail in details)
+			{
+				foreach (MainStock stock in stocks)
+				{
+					if (stock.Product.ProductId.Equals(detail.Product.ProductId))
+					{
+						detail.StockQuantity = stock.Quantity;
+						break;
+					}
+				}
+			}
+		}
 	}
 }

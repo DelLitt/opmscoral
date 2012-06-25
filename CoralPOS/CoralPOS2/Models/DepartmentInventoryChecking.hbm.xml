@@ -16,5 +16,10 @@
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
+    <many-to-one class="Department" name="Department">
+      <column name="DEPARTMENT_ID" />
+    </many-to-one>
+    <property name="StockOutList" column="STOCK_OUT_LIST" />
+    <property name="StockInList" column="STOCK_IN_LIST" />
   </class>
 </hibernate-mapping>

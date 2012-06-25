@@ -149,6 +149,7 @@
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="DepartmentStockTempValidLogic" ref="IDepartmentStockTempValidLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
+    <property name="StockDefinitionStatusLogic" ref ="IStockDefinitionStatusLogic" />
   </object>
   
   <object id="ISyncToDepartmentViewModel" type="POSServer.ViewModels.Synchronize.SyncToDepartmentViewModel, POSServer" singleton="false">

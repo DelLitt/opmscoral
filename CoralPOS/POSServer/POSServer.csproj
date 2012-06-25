@@ -171,6 +171,8 @@
     <Compile Include="Actions\Stock\Inventory\IInventoryStockViewSaveAction.cs" />
     <Compile Include="Actions\Stock\Inventory\IInventoryStockViewPreloadAction.cs" />
     <Compile Include="Actions\Stock\Inventory\InventoryStockViewPreloadAction.cs" />
+    <Compile Include="Actions\Stock\Inventory\IStockInventoryProcessingSaveAction.cs" />
+    <Compile Include="Actions\Stock\Inventory\StockInventoryProcessingSaveAction.cs" />
     <Compile Include="Actions\Stock\StockOut\StockOutConfirmSaveAction.cs" />
     <Compile Include="Actions\Stock\StockOut\StockOutConfirmPreLoadAction.cs" />
     <Compile Include="Actions\Stock\StockOut\IStockOutConfirmSaveAction.cs" />
@@ -234,6 +236,7 @@
     <Compile Include="ServerBootstrapper.cs" />
     <Compile Include="Utils\ClientUtility.cs" />
     <Compile Include="Utils\StockInHelper.cs" />
+    <Compile Include="Utils\StockOutHelper.cs" />
     <Compile Include="ViewModels\CircularLoadViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IStockOutChoosingViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IStockProductPropertiesViewModel.cs" />

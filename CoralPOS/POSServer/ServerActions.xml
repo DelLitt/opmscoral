@@ -57,6 +57,15 @@
     <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />   
   </object>
 
+  <object id="IStockInventoryProcessingSaveAction" type="POSServer.Actions.Stock.Inventory.StockInventoryProcessingSaveAction, POSServer" singleton="false">
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />
+    <property name="MainPriceLogic" ref="IMainPriceLogic" />
+    <property name="DepartmentStockTempValidLogic" ref="IDepartmentStockTempValidLogic" />
+    <property name="StockOutLogic" ref="IStockOutLogic" />
+    <property name="StockInLogic" ref="IStockInLogic" />
+    <property name="StockDefinitionStatusLogic" ref="IStockDefinitionStatusLogic" />    
+  </object>
+  
   <object id="IStockOutSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSaveAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />

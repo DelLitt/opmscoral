@@ -172,12 +172,20 @@ namespace CoralPOS.DTO
             set;
         }
 
-        [DataMember(Name = "24", Order = 23)]
+        [DataMember(Name = "24", Order = 24)]
         public virtual ExProductSize ProductSize
         {
             get;
             set;
         }
+
+        [DataMember(Name = "25", Order = 25)]
+        public virtual bool Matched
+        {
+            get;
+            set;
+        }
+
 
         public void CountQuantities()
         {

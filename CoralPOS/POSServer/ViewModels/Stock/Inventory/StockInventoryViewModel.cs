@@ -311,7 +311,8 @@ namespace POSServer.ViewModels.Stock.Inventory
                                                            ExFld2 = 0,
                                                            ExFld3 = 0,
                                                            ExFld4 = "",
-                                                           ExFld5 = ""
+                                                           ExFld5 = "",
+                                                           Department = SelectedDepartment
                                                        };
 			List<DepartmentStockTempValid> list = saveResult.ToList();
 		    foreach (DepartmentStockTempValid tempValid in saveResult)

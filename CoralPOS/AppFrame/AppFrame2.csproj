@@ -193,6 +193,7 @@
     <Compile Include="Invocation\IBackgroundTask.cs" />
     <Compile Include="Invocation\IMethod.cs" />
     <Compile Include="Invocation\IMethodFactory.cs" />
+    <Compile Include="Invocation\PredicateBuilder.cs" />
     <Compile Include="Mapper\MapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxy\IProxy.cs" />

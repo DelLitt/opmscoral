@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CoralPOS.Models;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Utils
 {
@@ -58,6 +59,45 @@ namespace POSServer.Utils
                 }
             }
             return products;
+        }
+        public static StockIn Create(Department department,IDictionary<Product,long> productList, string createId,DateTime createDate,string description,int stockInType = 1,int confirmFlag = 1)
+        {
+            CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
+            {
+                CreateDate = createDate,
+                ConfirmFlg = confirmFlag,
+                CreateId = createId,
+                UpdateId = createId,
+                UpdateDate = createDate,
+                Description = description,
+                ExclusiveKey = 0,
+                DelFlg = 0,
+                StockInDate = createDate,
+                StockInDetails = new List<StockInDetail>(),
+                StockInType = 3,
+
+            };
+
+            foreach (var tempValid in productList)
+            {
+                CoralPOS.Models.StockInDetail detail = new StockInDetail
+                {
+                    StockIn = stockIn,
+                    CreateDate = createDate,
+                    UpdateDate = createDate,
+                    CreateId = createId,
+                    UpdateId = createId,
+                    DelFlg = 0,
+                    ExclusiveKey = 0,
+                    Quantity = tempValid.Value,
+                    Product = tempValid.Key,
+                    ProductMaster = tempValid.Key.ProductMaster,
+                    StockInType = stockInType,
+
+                };
+                stockIn.StockInDetails.Add(detail);
+            }
+            return stockIn;
         }
     }
 }

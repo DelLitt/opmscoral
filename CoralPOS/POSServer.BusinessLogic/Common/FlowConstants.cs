@@ -7,6 +7,9 @@ namespace POSServer.BusinessLogic.Common
 {
     public class FlowConstants
     {
+        public const string TEMP_VALID_SELECTED_STOCK_IN_LIST="TempValidSelectedStockInList";
+        public const string TEMP_VALID_SELECTED_STOCK_OUT_LIST ="TempValidSelectedStockOutList";
+        public const string TEMP_VALID_SELECTED_CHECKING="TempValidSelectedChecking";
         public const string PRODUCT_MASTER_LIST ="ProductMasterList";
         public const string EDIT_USER_ROLE="EditUserRole";
         public const string EDIT_USER_INFO="EditUserInfo";

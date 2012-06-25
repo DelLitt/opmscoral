@@ -189,8 +189,10 @@
   <object id="StockInventoryProcessingFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
-        <!-- Show product master form -->
+        <!-- Show stock inventory checking form -->
         <entry key="Step1" value="POSServer.ViewModels.Stock.Inventory.IStockInventoryProcessingViewModel"/>
+        <!-- Save and process inventory checking automatically -->
+        <entry key="Step2" value="POSServer.Actions.Stock.Inventory.StockInventoryProcessingSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

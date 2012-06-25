@@ -93,6 +93,26 @@ namespace CoralPOS.Models {
             get;
             set;
         }
+        [DataMember(Name = "14", Order = 14)]
+        public virtual Department Department
+        {
+            get;
+            set;
+        }
+
+        [DataMember(Name = "15", Order = 15)]
+        public virtual string StockOutList
+        {
+            get;
+            set;
+        }
+
+        [DataMember(Name = "16", Order = 16)]
+        public virtual string StockInList
+        {
+            get;
+            set;
+        }
    	 protected bool Equals(Distributor entity)
 		{
 			if (entity == null) return false;
