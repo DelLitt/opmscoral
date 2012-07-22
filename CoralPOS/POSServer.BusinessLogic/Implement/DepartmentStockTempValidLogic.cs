@@ -310,7 +310,8 @@ namespace POSServer.BusinessLogic.Implement
                 currChecking.ExFld2 = checking.ExFld2;
 				currChecking.UpdateDate = DateTime.Now;
 				currChecking.UpdateId = "admin";
-			    currChecking.Solution = checking.Solution;
+                currChecking.StockInList = checking.StockInList;
+                currChecking.StockOutList = checking.StockOutList;
 			}
 			DepartmentInventoryCheckingDao.Update(currChecking);
 		}

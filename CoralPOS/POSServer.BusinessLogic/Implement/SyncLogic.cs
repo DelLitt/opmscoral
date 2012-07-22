@@ -7,6 +7,10 @@ using AppFrame.DataLayer.Utils;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 using Spring.Data.Common;
+using System.Text;
+using Newtonsoft.Json;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace POSServer.BusinessLogic.Implement
 {
@@ -57,13 +61,20 @@ namespace POSServer.BusinessLogic.Implement
             result.FileName = fileName;
             result.Status = "Thành công";
             resultList.Add(result);
-            Stream stream = File.Open(fileName, FileMode.Create);
-            BinaryFormatter writer = new BinaryFormatter();
-            writer.Serialize(stream, syncToDept);
+            //var stream = File.Open(fileName, FileMode.Create);
+            StreamWriter writer = new StreamWriter(fileName, 
+                                      false, 
+                                      Encoding.UTF8);
+            var serializer = new JsonSerializer();
+            serializer.Serialize(writer, syncToDept);
+            writer.Flush();
+            writer.Close();
+            //BinaryFormatter writer = new BinaryFormatter();
+            //writer.Serialize(stream, syncToDept);
             /*NxBinaryWriter nxWriter = new NxBinaryWriter(stream);
             nxWriter.WriteObject(first);*/
-            stream.Flush();
-            stream.Close();
+            //stream.Flush();
+            //stream.Close();
 
             #region useless
             // write each stock out to a sync file for avoiding duplicate update
@@ -116,6 +127,9 @@ namespace POSServer.BusinessLogic.Implement
         {
             PosDatabase database = PosDatabase.Instance;
             syncToDept.StockDefinitionStatus = database.ExecuteQueryAll("CRL_STK_DEF_STAT");
+            string paramMark = "";
+            IDbParameters dbParameters = database.AdoTemplate.CreateDbParameters();
+            dbParameters.Add("CREATE_DATE", MySqlDbType.DateTime).Value = DateTime.MinValue;
             if (syncToDept.DepartmentInfo)
             {
                 IDbParametersBuilder builder = new DbParametersBuilder(database.DbProvider);
@@ -142,9 +156,9 @@ namespace POSServer.BusinessLogic.Implement
                     syncToDept.Prices = database.ExecuteQueryAll("CRL_MN_PRICE");
                 }
             }
-
-            syncToDept.StockOut = database.ExecuteQueryAll("CRL_STK_OUT");
-            syncToDept.StockOutDetail = database.ExecuteQueryAll("CRL_STK_OUT_DET");
+            string whereQuery = " CREATE_DATE>@CREATE_DATE";
+            syncToDept.StockOut = database.ExecuteQueryAll("CRL_STK_OUT", whereQuery, dbParameters);
+            syncToDept.StockOutDetail = database.ExecuteQueryAll("CRL_STK_OUT_DET", whereQuery,dbParameters);
             #region Useless
             /*if (syncToDept.DepartmentInfo)
             {

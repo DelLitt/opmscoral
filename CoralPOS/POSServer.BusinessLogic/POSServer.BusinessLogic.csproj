@@ -59,6 +59,13 @@
       <HintPath>..\..\CoralPOS2\libraries\Caliburn.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.3.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\MySQL\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\libraries\Others\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\CoralPOS2\libraries\NHibernate.dll</HintPath>
       <Private>False</Private>
