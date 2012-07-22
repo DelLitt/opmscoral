@@ -70,6 +70,12 @@ namespace POSClient
             InitValidators();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
             Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy";
+            CoralUserControlAssignFunction();
+        }
+
+        private void CoralUserControlAssignFunction()
+        {
+            CoralUserControlFunctionConfiguration.Instance.Config();
         }
 
 

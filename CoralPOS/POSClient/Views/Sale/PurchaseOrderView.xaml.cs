@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AppFrameControls.Controls;
 
 namespace POSClient.Views.Sale
 {
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class PurchaseOrderView : UserControl
+    public partial class PurchaseOrderView : CoralUserControl
     {
         public PurchaseOrderView()
         {
             InitializeComponent();
         }
 
-        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void GridPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
-        }
-
-        private void Grid_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if(e.Source is TextBox && !((TextBox)e.Source).Name.Equals("Note"))
+            if(e.Source is TextBox 
+                && !((TextBox)e.Source).Name.Equals("Note")
+                && !((TextBox)e.Source).Name.Equals("Barcode"))
                     e.Handled = !IsTextValid(e.Text);
         }
 
@@ -43,17 +41,16 @@ namespace POSClient.Views.Sale
             return isValid;
         }
 
-        private void Grid_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void GridLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
             Barcode.Focus();
         }
 
-        private void Payment_TextInput(object sender, TextCompositionEventArgs e)
+        private void PaymentTextInput(object sender, TextCompositionEventArgs e)
         {
             int payment = Int32.Parse(Payment.Text);
             int change = payment - Int32.Parse(TotalQuantity.Text);
             Changes.Text = change.ToString();
-        }
-        
+        }       
     }
 }

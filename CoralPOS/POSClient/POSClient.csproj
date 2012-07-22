@@ -147,6 +147,7 @@
     <Compile Include="Actions\Stock\StockOut\DepartmentStockOutPreLoadAction.cs" />
     <Compile Include="Actions\Stock\StockOut\DepartmentStockOutSaveAction.cs" />
     <Compile Include="ClientBootstrapper.cs" />
+    <Compile Include="CoralUserControlFunctionConfiguration.cs" />
     <Compile Include="ViewModels\Dialogs\ErrorDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IErrorDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />
