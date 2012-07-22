@@ -85,6 +85,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CoralUserControl.cs" />
     <Compile Include="Controls\CrossFade.cs" />
     <Compile Include="Controls\ITransition.cs" />
     <Compile Include="Controls\PosButton.xaml.cs">
