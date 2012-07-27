@@ -10,6 +10,8 @@ namespace POSServer.Utils
 {
     public class ClientUtility
     {
+        public const string NOTIF_FILE_STRING = "department.notif";
+        public const string WIN_SEPARATE_CHAR = "\\";
         public delegate void EmptyDelegate();
         public static void TryActionHelper(EmptyDelegate method, int retryCount)
         {
@@ -139,6 +141,7 @@ namespace POSServer.Utils
             log4net.GlobalContext.Properties["action"] = action;
             logger.Error(message); //now log error
         }*/
+
         public static string EnsureSyncPath(string path)
         {
             string ensurePath = path;
@@ -278,6 +281,17 @@ namespace POSServer.Utils
                     File.Delete(Element);
                 }
             }
+        }
+
+        public static void CreateDepartmentNotif(string selectedUsb,long departmentId)
+        {
+            string fileName = selectedUsb + WIN_SEPARATE_CHAR + NOTIF_FILE_STRING;
+            var fileNotifStream = new StreamWriter(File.Create(fileName));
+            var info = new FileInfo(fileName);
+            info.Attributes = FileAttributes.Hidden;
+            fileNotifStream.Write(departmentId);
+            fileNotifStream.Flush();
+            fileNotifStream.Close();
         }
     }
 }

@@ -151,12 +151,13 @@ namespace CoralPOS.Common
         public void Save()
         {
             Stream stream = File.Open(CONFIG_FILE_NAME, FileMode.Create);
-            //var writer = new SoapFormatter();
+            
             var writer = new TypeSerializer<SystemConfig>();
             var streamWriter = new StreamWriter(stream);
-            writer.SerializeToWriter(this, streamWriter);
-            //streamWriter.Flush();
+            writer.SerializeToWriter(this, streamWriter);            
             streamWriter.Close();
+            //var writer = new SoapFormatter();
+            //streamWriter.Flush();
             /*stream.Flush();
             stream.Close();*/
         }

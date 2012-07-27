@@ -42,7 +42,7 @@
 				<entry key="connection.driver_class"
 							 value="NHibernate.Driver.MySqlDataDriver"/>
 				<entry key="show_sql" value="true"/>
-				<entry key="hbm2ddl.auto" value="update"/>
+				<!--<entry key="hbm2ddl.auto" value="update"/>-->
 			</dictionary>
 		</property>
 		<property name="ExposeTransactionAwareSessionFactory" value="true" />
@@ -178,11 +178,7 @@
 	<object id="IDepartmentStockInDao" type="POSClient.DataLayer.Implement.DepartmentStockInDao, POSClient.DataLayer">
 		<property name="HibernateTemplate" ref="HibernateTemplate"/>
 	</object>
-
-  <object id="IDepartmentStockInventoryDao" type="POSClient.DataLayer.Implement.DepartmentStockInventoryDao, POSClient.DataLayer">
-    <property name="HibernateTemplate" ref="HibernateTemplate"/>
-  </object>
-  
+   
 	<object id="IDepartmentStockInCostDao" type="POSClient.DataLayer.Implement.DepartmentStockInCostDao, POSClient.DataLayer">
 		<property name="HibernateTemplate" ref="HibernateTemplate"/>
 	</object>

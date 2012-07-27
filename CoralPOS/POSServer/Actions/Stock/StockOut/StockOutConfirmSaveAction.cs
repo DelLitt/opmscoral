@@ -36,8 +36,12 @@ namespace POSServer.Actions.Stock.StockOut
         {
             foreach (CoralPOS.Models.StockOut stockOut in stockOuts)
             {
-                if(confirmFlag)
+                if (confirmFlag)
+                {
                     MainStockLogic.Update(stockOut);
+                    stockOut.ConfirmFlg = 2;
+                    StockOutLogic.Update(stockOut);
+                }
                 else
                     StockOutLogic.Delete(stockOut);
             }

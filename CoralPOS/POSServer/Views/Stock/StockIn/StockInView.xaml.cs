@@ -25,21 +25,6 @@ namespace POSServer.Views.Stock.StockIn
             InitializeComponent();
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void ProductMasterList_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            
-        }
-
-        private void StockInDetailList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
-
         private void PutPrice_Click(object sender, RoutedEventArgs e)
         {
             IList<DataGridCellInfo> selectedCells = StockInDetailList.SelectedCells;

@@ -18,12 +18,6 @@
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="59.994,107.5,68.882,0" Name="FromDepartment" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="NHẬP ĐỒNG BỘ"></TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="59.994,216.25,68.882,0" Name="FromMainStock" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="NHẬP ĐỒNG BỘ"></TextBlock>
-        </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="59.994,324.412,69.256,284.416" Name="ToMainStock" TabIndex="9" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5" Text="XUẤT ĐỒNG BỘ"></TextBlock>
-        </Button>
         <Button FontSize="14" FontWeight="Bold" Margin="60,434,71,175" Name="CreateSyncUSB" TabIndex="9" Grid.Row="1">
             <TextBlock Text="TẠO USB ĐỒNG BỘ" TextAlignment="Center" TextWrapping="Wrap" Width="72.5" />
         </Button>

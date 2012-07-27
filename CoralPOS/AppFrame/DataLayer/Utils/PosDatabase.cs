@@ -51,12 +51,24 @@ namespace AppFrame.DataLayer.Utils
             {
                 countParams++;
                 if (countParams > 1) query += " AND ";
-                query +=" " +dbParameter.ParameterName + "=" + paramMark + dbParameter.ParameterName;
+                string columnName = dbParameter.ParameterName;
+                if(columnName.StartsWith("@")) columnName = columnName.Substring(1);
+                query += " " + columnName + "=" + paramMark + dbParameter.ParameterName;
                 
             }
             return AdoTemplate.DataTableCreateWithParams(CommandType.Text, query, parameters);
         }
 
+        public DataTable ExecuteQueryAll(string tableName, string whereQuery, IDbParameters parameters)
+        {
+            string query = "SELECT * FROM " + tableName;
+            if (whereQuery.Length > 0)
+            {
+                query += " WHERE " + whereQuery;
+            }
+                    
+            return AdoTemplate.DataTableCreateWithParams(CommandType.Text, query, parameters);
+        }
 
         public void UpdateDataTable(DataTable source,DataTable changes)
         {

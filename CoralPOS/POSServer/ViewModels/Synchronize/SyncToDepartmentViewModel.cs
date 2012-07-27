@@ -150,7 +150,9 @@ namespace POSServer.ViewModels.Synchronize
 
         protected override void OnInitialize()
 		{
-			IList<Department> list = DepartmentLogic.FindAll(new ObjectCriteria<Department>().Add(x=>x.DepartmentId>0));
+            ObjectCriteria<Department> criteria = new ObjectCriteria<Department>();
+            criteria.Add(x => x.DepartmentId > 0);
+			IList<Department> list = DepartmentLogic.FindAll(criteria);
 			Departments = list;
 		}
 
@@ -159,6 +161,16 @@ namespace POSServer.ViewModels.Synchronize
         {
             SystemConfig config = SystemConfig.Instance;
             IList departmentUsbList = ClientUtility.GetUSBDrives();
+            if (departmentUsbList.Count == 0)
+            {
+                MessageBox.Show("Không thể tìm thấy USB đồng bộ nào");
+                return null;
+            }
+            if (departmentUsbList.Count > 1)
+            {
+                MessageBox.Show("Có nhiều hơn một USB đồng bộ, xin hãy rút bớt !");
+                return null;
+            }
             foreach (var POSSyncDrive in departmentUsbList)
             {
 

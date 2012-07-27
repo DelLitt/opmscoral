@@ -6,13 +6,17 @@ using System.Linq;
 using System.Text;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
+using AppFrame.DataLayer;
 using AppFrame.Invocation;
+using AppFrame.Utils;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 using CoralPOS.Common;
+using CoralPOS.Models;
+using POSServer.BusinessLogic.Implement;
 using POSServer.Common;
-using POSServer.Utils;
 using POSServer.ViewModels.Menu;
+using ClientUtility = POSServer.Utils.ClientUtility;
 
 namespace POSServer.ViewModels.Synchronize
 {
@@ -20,6 +24,10 @@ namespace POSServer.ViewModels.Synchronize
     public class CreateSyncUSBViewModel : PosViewModel, ICreateSyncUSBViewModel
     {
 
+        private IList _departments;
+        private Department _selectedDepartment;
+
+        public IDepartmentLogic DepartmentLogic { get; set; }
         private IList _usbList;
         public IList USBList
         {
@@ -39,16 +47,43 @@ namespace POSServer.ViewModels.Synchronize
             }
         }
 
-        public void CreateSyncUSB()
+        public IList Departments
         {
-            IoC.Get<INormalLoadViewModel>().StartLoading();
-            BackgroundTask _backgroundTask = null;
-            _backgroundTask = new BackgroundTask(() => CreateSyncUSB(SelectedUSB));
-            _backgroundTask.Completed += (s, e) => CreateSyncUSBCompleted(s, e);
-            _backgroundTask.Start(null);
+            get { return _departments; }
+            set { _departments = value; 
+                NotifyOfPropertyChange(()=>Departments);
+            }
         }
 
-        private object CreateSyncUSB(string selectedUsb)
+        public Department SelectedDepartment
+        {
+            get { return _selectedDepartment; }
+            set { _selectedDepartment = value; 
+                NotifyOfPropertyChange(()=>SelectedDepartment);
+            }
+        }
+
+        protected override void OnActivate()
+        {
+            SelectedDepartment = new Department();
+            Departments = new ArrayList();
+            ObjectCriteria<Department> criteria = new ObjectCriteria<Department>();
+            criteria.Add(t => t.DepartmentId > 0);
+            IList<CoralPOS.Models.Department> departments = DepartmentLogic.FindAll(criteria);
+            Departments = ObjectConverter.ConvertFrom(departments);
+        }
+
+        public void CreateSyncUSB()
+        {
+            if (SelectedDepartment.DepartmentId <=0) return;
+            IoC.Get<INormalLoadViewModel>().StartLoading();
+            BackgroundTask backgroundTask = null;
+            backgroundTask = new BackgroundTask(() => CreateSyncUSB(SelectedUSB,SelectedDepartment.DepartmentId));
+            backgroundTask.Completed += (s, e) => CreateSyncUSBCompleted(s, e);
+            backgroundTask.Start(null);
+        }
+
+        private object CreateSyncUSB(string selectedUsb,long departmentId)
         {
             if (string.IsNullOrEmpty(selectedUsb)) return null;
             SystemConfig config = SystemConfig.Instance;
@@ -58,6 +93,7 @@ namespace POSServer.ViewModels.Synchronize
             ClientUtility.EnsureSyncPath(selectedUsb + config.SyncSuccessPath);
             ClientUtility.EnsureSyncPath(selectedUsb + config.SyncErrorPath);
             ClientUtility.EnsureSyncPath(selectedUsb + config.SyncBackupPath);
+            ClientUtility.CreateDepartmentNotif(selectedUsb,departmentId);
             return null;
         }
 

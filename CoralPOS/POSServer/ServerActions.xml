@@ -47,7 +47,7 @@
   <object id="IStockOutConfirmPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutConfirmPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />
-    <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />
     <property name="StockOutLogic" ref="IStockOutLogic" />
   </object>
 

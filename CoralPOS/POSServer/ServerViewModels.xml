@@ -165,6 +165,7 @@
 
   <object id="ICreateSyncUSBViewModel" type="POSServer.ViewModels.Synchronize.CreateSyncUSBViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->  
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
   
   <object id="IUserInfoViewModel" type="POSServer.ViewModels.Security.UserInfoViewModel, POSServer" singleton="false">
