@@ -81,6 +81,9 @@
     <Reference Include="log4net">
       <HintPath>..\libraries\Others\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\packages\MahApps.Metro.0.9.0.0\lib\net40\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.3.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\libraries\MySQL\MySql.Data.dll</HintPath>
     </Reference>
@@ -131,7 +134,7 @@
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\libraries\Caliburn\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.0.9.0.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
@@ -157,6 +160,12 @@
     </Reference>
     <Reference Include="WPF.Themes">
       <HintPath>..\libraries\Others\WPF.Themes.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFLocalizeExtension">
+      <HintPath>..\packages\WpfLocalizeExtension.2.1.0\lib\net35\WPFLocalizeExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="XAMLMarkupExtensions">
+      <HintPath>..\packages\XAMLMarkupExtensions.1.1.3\lib\net40\XAMLMarkupExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +223,7 @@
     <Compile Include="Actions\StopLoadScreen.cs" />
     <Compile Include="Actions\Synchronize\ISyncToDepartmentAction.cs" />
     <Compile Include="Actions\Synchronize\SyncToDepartmentAction.cs" />
+    <Compile Include="Commands\POSServerCommands.cs" />
     <Compile Include="Commands\ProductMaster\IProductTypeCommand.cs" />
     <Compile Include="Commands\ProductMaster\ProductTypeCommand.cs" />
     <Compile Include="Common\ClientSetting.cs" />
@@ -234,6 +244,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ServerBootstrapper.cs" />
+    <Compile Include="Properties\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ClientUtility.cs" />
     <Compile Include="Utils\StockInHelper.cs" />
     <Compile Include="Utils\StockOutHelper.cs" />
@@ -568,6 +583,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -587,6 +606,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1036,7 +1059,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Entypo.ttf" />
     <None Include="Resources\Stats.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

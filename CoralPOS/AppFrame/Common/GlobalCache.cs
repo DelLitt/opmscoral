@@ -17,7 +17,7 @@ namespace AppFrame.Common
         /// Define constant in global cache.
         /// </summary>
         public const string CURRENT_USER = "CurrentUser";
-
+        private string _text ="";
         
         private GlobalCache()
         {
@@ -46,6 +46,14 @@ namespace AppFrame.Common
             {
                 return globalMap;
             }
+        }
+        public void SetText(string text)
+        {
+            _text = text;
+        }
+        public string GetText()
+        {
+            return _text;
         }
     }
 }

@@ -2,10 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cal="http://www.caliburnproject.org"
+    xmlns:Base="clr-namespace:AppFrame.Base;assembly=AppFrame"         
     xmlns:WPF="clr-namespace:AppFrame.WPF;assembly=AppFrame"
-              Width="837" Height="700">    
+             xmlns:DataGrid="clr-namespace:AppFrame.Extensions.DataGrid;assembly=AppFrame" Width="837" Height="700">    
     <WPF:PosDataErrorProvider Name="PosDataErrorProvider">
-    <Grid>        
+    <Grid>
             <Grid Height="125" VerticalAlignment="Bottom">                
                 <Button FontSize="14" FontWeight="Bold" Margin="23,8,0,37" Name="Help" HorizontalAlignment="Left" Width="80">GIÚP ĐỠ</Button>
                 <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8,227,37" Name="Recreate" Width="80" TabIndex="10">TẠO LẠI</Button>
@@ -22,12 +23,18 @@
             <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,100,214,66" Name="Price" Width="110.383" TabIndex="5" />
             <TextBox FontSize="14" HorizontalAlignment="Left" Margin="147.679,102,0,64" Name="InputPrice" Width="141.097" TabIndex="3" />
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="0,0,331.528,64" Name="label4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="68">GIÁ LẺ</Label>
-            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="10.394,0,0,64" Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="113.926">GIÁ NHẬP</Label>
-            <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,10,6,0" Name="textBox4" VerticalAlignment="Top" Width="184.057" IsTabStop="False" />
+            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="0,0,0,64" Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="124">GIÁ NHẬP</Label>
+            <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,10,6,0" x:Name="DateTimeBox" VerticalAlignment="Top" Width="184.057" IsTabStop="False" />
             <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList"  FontSize="14" TabIndex="8" SelectionUnit="Cell" 
                       CanUserAddRows="False" CanUserDeleteRows="True" 
+                      DataGrid:DataGridExtension.SelectedItemsSource="{Binding Path=SelectedStockInDetails}"
                       >
-                <DataGrid.Columns>
+                    <DataGrid.CommandBindings>
+                        <CommandBinding Command="ApplicationCommands.Cut" Executed="{x:Static Base:AppFrameCommands.CutExecuted}" CanExecute="{x:Static Base:AppFrameCommands.CanExecute}"/>
+                        <CommandBinding Command="ApplicationCommands.Copy" Executed="{x:Static Base:AppFrameCommands.CopyExecuted}" CanExecute="{x:Static Base:AppFrameCommands.CanExecute}"/>
+                        <CommandBinding Command="ApplicationCommands.Paste" Executed="{x:Static Base:AppFrameCommands.PasteExecuted}" CanExecute="{x:Static Base:AppFrameCommands.CanExecute}"/>
+                    </DataGrid.CommandBindings>
+                    <DataGrid.Columns>
                         <DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" >
                             <DataGridTextColumn.Binding>
                                 <MultiBinding Converter="{StaticResource rowNumberConverter}">
@@ -41,23 +48,23 @@
                     <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="180" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>                                            
                     <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
                     <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="80" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
-                    <DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="80" Binding="{Binding Path=Quantity,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="Quantity" />
-                    <DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" Binding="{Binding Path=Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="Price" />
-                    <DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="80" Binding="{Binding Path=MainPrice.WholeSalePrice,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="MainPrice.WholeSalePrice" />
-                    <DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80*" Binding="{Binding Path=MainPrice.Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="MainPrice.Price"  />
+                    <DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="80" Binding="{Binding Path=Quantity,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true,Mode=TwoWay}" SortMemberPath="Quantity" />
+                        <DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" Binding="{Binding Path=Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true,Mode=TwoWay}" SortMemberPath="Price" />
+                        <DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="80" Binding="{Binding Path=MainPrice.WholeSalePrice,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="MainPrice.WholeSalePrice" />
+                        <DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80*" Binding="{Binding Path=MainPrice.Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="MainPrice.Price"  />
                 </DataGrid.Columns>
             </DataGrid>
             <ComboBox Margin="146.25,54.439,405.515,0" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38" VerticalAlignment="Top" IsEditable="True" IsTextSearchEnabled="True" TabIndex="2" IsTabStop="True"  SelectedItem="{Binding ProductMaster}" 
                       DisplayMemberPath="ProductName" cal:Message.Attach="[Event DropDownOpened]=[Action ReloadProductMaster(ProductMasterList.Text)]" 
                       Text ="{Binding ProductNameText}" MaxDropDownHeight="340" BorderThickness="1" />
-            <Button HorizontalAlignment="Right" Margin="0,0,3.333,58" Name="CreateNewProductMaster" Width="185.092" FontSize="14" TabIndex="7" Height="40" VerticalAlignment="Bottom">MẶT HÀNG MỚI</Button>
-            <Button Height="39" HorizontalAlignment="Right" Margin="0,0,6,12.221" Name="EditProductMaster" VerticalAlignment="Bottom" Width="182.425" FontSize="14" TabIndex="8">CHỈNH SỬA</Button>
+            <Button HorizontalAlignment="Right" Margin="0,0,6,66" Name="CreateNewProductMaster" Width="185" FontSize="14" TabIndex="7" Height="38" VerticalAlignment="Bottom">MẶT HÀNG MỚI</Button>
+            <Button Height="37" HorizontalAlignment="Right" Margin="0,0,6,15" Name="EditProductMaster" VerticalAlignment="Bottom" Width="182" FontSize="14" TabIndex="8">CHỈNH SỬA</Button>
             <TextBox FontSize="14" Height="37.774" Margin="147.679,0,331.528,14.028" Name="ProductName" VerticalAlignment="Bottom" IsTabStop="False" IsReadOnly="True" Text="{Binding ProductMaster.ProductName}"></TextBox>
-            <Button Margin="0,55,6,0" Name="OpenProperty" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" Width="184" FontSize="14" TabIndex="6">NHẬP</Button>
-            <Button FontSize="14" Height="45" HorizontalAlignment="Right" Margin="0,0,214,15" Name="PutPrice" VerticalAlignment="Bottom" Width="112" Click="PutPrice_Click">ÁP GIÁ</Button>
+            <Button Margin="0,55,6,0" Name="OpenProperty" Height="38" HorizontalAlignment="Right" VerticalAlignment="Top" Width="184" FontSize="14" TabIndex="6">NHẬP</Button>
+            <Button FontSize="14" Height="38" HorizontalAlignment="Right" Margin="0,0,212,14" Name="PutPrice" VerticalAlignment="Bottom" Width="112">ÁP GIÁ</Button>
         </Grid>
-        <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,20,0,0" Name="label1" VerticalAlignment="Top" Width="114.32">DIỄN TẢ</Label>
-        <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,64,0,0" Name="label2" VerticalAlignment="Top" Width="114.32">MÃ HÀNG</Label>
+        <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,20,0,0" Name="label1" VerticalAlignment="Top" Width="124">DIỄN TẢ</Label>
+        <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,64,0,0" Name="label2" VerticalAlignment="Top" Width="124">MÃ HÀNG NHẬP</Label>
         <TextBox FontSize="14" Height="38.583" Margin="146.25,10,214,0" Name="Description1" VerticalAlignment="Top" TabIndex="1" Text="{Binding StockIn.Description,Mode=TwoWay}"/>        
     </Grid>   
    </WPF:PosDataErrorProvider>

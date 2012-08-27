@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\AppFrameCommands.cs" />
     <Compile Include="Base\ChildFlow.cs" />
     <Compile Include="Base\DefaultFlow.cs" />
     <Compile Include="Base\DefaultSession.cs" />
@@ -160,25 +161,31 @@
     <Compile Include="CustomAttributes\PerRequestAttribute.cs" />
     <Compile Include="DataLayer\AdoWrapper.cs" />
     <Compile Include="DataLayer\DataErrorInfoFactory.cs" />
+    <Compile Include="DataLayer\HashtableDynamicObject.cs" />
     <Compile Include="DataLayer\LazyInitializer.cs" />
-    <Compile Include="DataLayer\LinqCriteria.cs" />
+    <Compile Include="DataLayer\LinqCriteria.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DataLayer\ObjectCriteria.cs" />
     <Compile Include="DataLayer\PosContext.cs" />
     <Compile Include="DataLayer\QueryHandler.cs" />
     <Compile Include="DataLayer\Utils\PosDatabase.cs" />
     <Compile Include="Exceptions\IllegalFlowStateException.cs" />
     <Compile Include="Extensions\DataGrid\DataGridExtension.cs" />
+    <Compile Include="Extensions\DataGrid\SelectedItemsBehavior.cs" />
     <Compile Include="Extensions\DialogExtensions.cs" />
     <Compile Include="Extensions\HibernateTemplateExtensions.cs" />
     <Compile Include="Extensions\ListBox\IListItemConverter.cs" />
     <Compile Include="Extensions\ListBox\ListBoxExtension.cs" />
     <Compile Include="Extensions\ListBox\MultiSelectorBehaviours.cs" />
-    <Compile Include="Extensions\ListBox\RelayCommand.cs" />
+    <Compile Include="Extensions\RelayCommand.cs" />
     <Compile Include="Extensions\ListBox\TwoListSynchronizer.cs" />
     <Compile Include="Extensions\PosViewModelExtensions.cs" />
     <Compile Include="Extensions\TypedExpandExtension.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\DataGridHelper.cs" />
+    <Compile Include="Helpers\TryHelper.cs" />
     <Compile Include="Interceptors\DataErrorInfoInterceptor.cs" />
     <Compile Include="Interceptors\ExceptionValidatorInterceptor.cs" />
     <Compile Include="Interceptors\IInitializableInterceptor.cs" />
@@ -222,6 +229,7 @@
     <Compile Include="Validation\ValidateAttribute.cs" />
     <Compile Include="Validation\ValidatorProvider.cs" />
     <Compile Include="WPF\BindableList.cs" />
+    <Compile Include="WPF\CoralCommands.cs" />
     <Compile Include="WPF\FlowBackgroundTaskResult.cs" />
     <Compile Include="WPF\FlowBackgroundTaskResultEventArgs.cs" />
     <Compile Include="WPF\ModelMapper.cs" />

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using Caliburn.Micro;
@@ -68,11 +69,22 @@ namespace POSServer
             base.Configure();
             InitSpring();
             InitValidators();
+            InitCommands();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
             Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy";
+
+            
         }
 
-        
+        private void InitCommands()
+        {
+            AppFrameCommands.CutExecuted = Commands.POSServerCommands.CutExecutedEventHandler;
+            AppFrameCommands.CopyExecuted = Commands.POSServerCommands.CopyExecutedEventHandler;
+            AppFrameCommands.PasteExecuted = Commands.POSServerCommands.PasteExecutedEventHandler;
+            AppFrameCommands.CanExecute = Commands.POSServerCommands.CommandCanExecute;
+        }
+
+
         protected override IEnumerable<object> GetAllInstances(Type service)
         {
             ICollection collections = context.GetObjectsOfType(service).Values;

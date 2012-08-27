@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace POSServer.Views.Stock.StockIn
 {
@@ -20,18 +21,21 @@ namespace POSServer.Views.Stock.StockIn
     /// </summary>
     public partial class StockInView : UserControl
     {
+        private System.Windows.Threading.DispatcherTimer timer = null;
         public StockInView()
         {
             InitializeComponent();
+            timer = new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
+            
         }
 
-        private void PutPrice_Click(object sender, RoutedEventArgs e)
+        void timer_Tick(object sender, EventArgs e)
         {
-            IList<DataGridCellInfo> selectedCells = StockInDetailList.SelectedCells;
-            foreach (DataGridCellInfo dataGridCellInfo in selectedCells)
-            {
-                
-            }
+            DateTimeBox.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
+        
     }
 }

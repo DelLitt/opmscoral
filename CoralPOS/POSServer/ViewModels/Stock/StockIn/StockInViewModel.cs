@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.Invocation;
@@ -276,7 +277,24 @@ namespace POSServer.ViewModels.Stock.StockIn
 
         public void PutPrice()
         {
-            var list = _selectedStockInDetails;
+            var list = SelectedStockInDetails;
+            var stockInList = StockInDetailList;
+            foreach (StockInDetail detail in list)
+            {
+                foreach (StockInDetail stockInDetail in stockInList)
+                {
+                    if(stockInDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                    {
+                        stockInDetail.MainPrice.WholeSalePrice = int.Parse(WholeSalePrice);
+                        stockInDetail.MainPrice.Price = int.Parse(Price);
+                        break;
+                    }
+                }
+                
+            }
+            IList newlist  = new ArrayList(stockInList);
+            StockInDetailList = newlist;
+            
         }
 
         protected override void OnInitialize()
@@ -285,11 +303,12 @@ namespace POSServer.ViewModels.Stock.StockIn
             ProductMasterList = list as IList;
             _stockInDetailList = new ArrayList();
             _selectedStockInDetails = new ArrayList();
+            SelectedStockInDetails = _selectedStockInDetails;
             StockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
             if (StockIn == null)
             {
                 //CoralPOS.Models.StockIn stockIn = DataErrorInfoFactory.Create<CoralPOS.Models.StockIn>();
-                CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn();
+                var stockIn = new CoralPOS.Models.StockIn();
                 stockIn.StockInType = 0;
                 stockIn.ConfirmFlg = 0;
                 stockIn.Description = Description;

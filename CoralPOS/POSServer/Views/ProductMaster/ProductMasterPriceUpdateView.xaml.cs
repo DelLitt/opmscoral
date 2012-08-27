@@ -24,9 +24,15 @@ namespace POSServer.Views.ProductMaster
             InitializeComponent();
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void Keyboard_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if(e.Source is DataGrid)
+            {
+                DataGrid grid = (DataGrid) e.Source;
+                Clipboard.SetText(grid.SelectedCells[0].Item.ToString());
+            }
         }
     }
 }

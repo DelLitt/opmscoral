@@ -1,6 +1,12 @@
 ﻿<UserControl x:Class="POSServer.Views.Stock.StockMainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Engine="clr-namespace:WPFLocalizeExtension.Engine;assembly=WPFLocalizeExtension"
+    xmlns:Providers="clr-namespace:WPFLocalizeExtension.Providers;assembly=WPFLocalizeExtension"
+    xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension"
+    Engine:LocalizeDictionary.DesignCulture="en"
+    Providers:ResxLocalizationProvider.DefaultAssembly="POSServer"
+    Providers:ResxLocalizationProvider.DefaultDictionary="Properties.Strings"         
     Width="837" Height="748">
     <Grid>
         <Grid.RowDefinitions>
@@ -13,69 +19,48 @@
             <ColumnDefinition Width="167*" />
             <ColumnDefinition Width="167*" />            
         </Grid.ColumnDefinitions>
-        <Label Content="XÁC NHẬN" FontSize="16" FontStretch="Normal" FontStyle="Italic" FontWeight="Black" Name="label3" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1">
-            <Label.LayoutTransform>
-                <RotateTransform Angle="270" />
-            </Label.LayoutTransform>
-        </Label>
-        <Label Content="TÌM KIẾM VÀ KIỂM KÊ" FontSize="16" FontStretch="Normal" FontStyle="Italic" FontWeight="Black" Name="label2" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1">
-            <Label.LayoutTransform>
-                <RotateTransform Angle="270" />
-            </Label.LayoutTransform>
-        </Label>
-        <Label Content="NHẬP HÀNG" FontSize="16" FontStretch="Normal" FontStyle="Italic" FontWeight="Black" Name="label1" VerticalAlignment="Center" Grid.Row="1">
-            <Label.LayoutTransform>
-                <RotateTransform Angle="-90" />
-            </Label.LayoutTransform>
-        </Label>
-        <Label Name="textBlock2" Grid.Column="1" Content="XUẤT HÀNG" Grid.Row="1" VerticalAlignment="Center" FontSize="16" FontWeight="Black" FontStretch="Normal" FontStyle="Italic">
-            <Label.LayoutTransform>
-                <RotateTransform Angle="270" />
-            </Label.LayoutTransform>
-        </Label>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,0,69,0" Name="StockIn" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" TextTrimming="None">NHẬP HÀNG</TextBlock></Button>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" TextTrimming="None" FontSize="13" Text="{lex:Loc StockMenu_StockIn}" /></Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,99.99,69,0" Name="StockInList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH LÔ NHẬP HÀNG</TextBlock>
-        </Button>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_StockInList}" /></Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,199.98,69,0" Name="StockInBackList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">D.SÁCH HÀNG TRẢ KHO CHÍNH</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_StockInBackList}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Margin="60.125,299.97,69.125,356.631" Name="StockInByExcel" TabIndex="9" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">NHẬP HÀNG BẰNG EXCEL</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5" FontSize="13" Text="{lex:Loc StockMenu_StockInByExcel}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="64,0,65,0" Name="StockOutToDepartment" TabIndex="9" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">XUẤT HÀNG ĐẾN CỬA HÀNG</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_StockOutToDepartment}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="64,99.99,65,0" Name="StockOutToOther" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">XUẤT HÀNG ĐẾN NƠI KHÁC</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_StockOutToOther}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="64,199.98,65,0" Name="StockOutList" TabIndex="9" VerticalAlignment="Top" Grid.Column="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH LÔ HÀNG XUẤT</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_StockOutList}"/>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Margin="64.125,299.97,65.125,355.52" Name="StockOutByExcel" TabIndex="9" Grid.Column="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="68">XUẤT HÀNG BẰNG EXCEL</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="68" FontSize="13" Text="{lex:Loc StockMenu_StockOutByExcel}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="68,0,62,0" Name="InventoryCollector" TabIndex="9" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">KIỂM KÊ</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_InventoryCollector}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="68,99.99,62,0" Name="AfterInventoryCollectorProcessing" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="2">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">XỬ LÝ SAU KIỂM KÊ</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_AfterInventoryCollectorProcessing}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="68,199.98,62,0" Name="StockSearch" TabIndex="9" VerticalAlignment="Top" Grid.Column="2">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TÌM KIẾM KHO</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_StockSearch}"/>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Margin="68,299.97,61.25,356.631" Name="StockCategorySearch" TabIndex="9" Grid.Column="2">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="78.881">TÌM KIẾM THEO CHỦNG LOẠI</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="78.881" FontSize="13" Text="{lex:Loc StockMenu_StockCategorySearch}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="69,0,60,0" Name="StockInConfirm" TabIndex="9" VerticalAlignment="Top" Grid.Column="3" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÁC NHẬN NHẬP KHO</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_StockInConfirm}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="69,99.99,60,0" Name="StockOutConfirm" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="3">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÁC NHẬN XUẤT KHO</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_StockOutConfirm}" />
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="69,199.98,60,0" Name="DepartmentStockOutConfirm" TabIndex="9" VerticalAlignment="Top" Grid.Column="3">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">X.NHẬN XUẤT KHO TỪ CỬA HÀNG</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontSize="13" Text="{lex:Loc StockMenu_DepartmentStockOutConfirm}" />
         </Button>
     </Grid>
 </UserControl>
