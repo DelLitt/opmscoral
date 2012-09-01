@@ -1,8 +1,18 @@
 ﻿<UserControl x:Class="POSServer.Views.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Width="840" Height="700">
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             
+    Width="840" Height="700"
+             >
+    
     <Grid>
-        <Button Height="157" HorizontalAlignment="Left" Margin="251,249,0,0" Name="button3" VerticalAlignment="Top" Width="247">Button</Button>
+        <Controls:Tile Height="157" HorizontalAlignment="Left" Margin="251,249,0,0" 
+                Name="button3" VerticalAlignment="Top" Width="247" 
+                >Button</Controls:Tile>
+        <Controls:AppBarButton Margin="510,138,250,482" Background="Aquamarine"
+                               Foreground="{DynamicResource BlackBrush}">Allo cai bo</Controls:AppBarButton>
+        <Button Content="Button" Style="{DynamicResource SquareButtonStyle}" HorizontalAlignment="Left" Margin="266,157,0,0" VerticalAlignment="Top" Width="144" Height="61"/>
+         
     </Grid>
 </UserControl>
