@@ -20,8 +20,8 @@ using ClientUtility = POSServer.Utils.ClientUtility;
 
 namespace POSServer.ViewModels.Synchronize
 {
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
-    public class CreateSyncUSBViewModel : PosViewModel, ICreateSyncUSBViewModel
+    [AttachMenuAndMainScreen(typeof(MainMenuViewModel), typeof(MainViewModel))]
+    public class CreateSyncUSBViewModel : PosViewModel
     {
 
         private IList _departments;

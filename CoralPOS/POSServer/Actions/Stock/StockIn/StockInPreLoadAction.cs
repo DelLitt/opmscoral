@@ -9,7 +9,7 @@ using POSServer.Utils;
 
 namespace POSServer.Actions.Stock.StockIn
 {
-    public class StockInPreLoadAction : PosAction,IStockInPreLoadAction
+    public class StockInPreLoadAction : PosAction
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
         

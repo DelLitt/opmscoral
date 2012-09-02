@@ -20,8 +20,8 @@ using POSServer.ViewModels.Menu.ProductMaster;
 namespace POSServer.ViewModels.ProductMaster
 {
 
-    [AttachMenuAndMainScreen(typeof(IProductMasterMenuViewModel), typeof(IProductMasterMainViewModel))]
-    public class ProductMasterViewModel : PosViewModel, IProductMasterViewModel
+    [AttachMenuAndMainScreen(typeof(ProductMasterMenuViewModel), typeof(ProductMasterMainViewModel))]
+    public class ProductMasterViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;
@@ -281,7 +281,7 @@ namespace POSServer.ViewModels.ProductMaster
             IEnumerable<IError> errors = this.GetErrors(ProductMaster);
             if (errors.Count() > 0)
             {
-                var test = IoC.Get<IErrorDialogViewModel>();
+                var test = IoC.Get<ErrorDialogViewModel>();
                 test.ErrorResult = errors.ToList();
                 _startViewModel.ShowDialog(test);
                 return;

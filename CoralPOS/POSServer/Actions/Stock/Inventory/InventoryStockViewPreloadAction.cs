@@ -11,7 +11,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.Stock.Inventory
 {
-    public class InventoryStockViewPreloadAction : PosAction,IInventoryStockViewPreloadAction
+    public class InventoryStockViewPreloadAction : PosAction
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
         public IMainStockLogic MainStockLogic { get; set; }

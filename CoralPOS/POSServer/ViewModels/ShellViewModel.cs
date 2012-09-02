@@ -38,7 +38,7 @@ namespace POSServer.ViewModels
             DialogExtensions.ShowDialog = ShowDialog;
             base.OnActivate();
             //if(IsActive == false) Console.WriteLine("UI GIOI !");
-            RootScreen = IoC.Get<IMainViewModel>();
+            RootScreen = IoC.Get<MainViewModel>();
             MainScreen = RootScreen;
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
             if (isLogged)

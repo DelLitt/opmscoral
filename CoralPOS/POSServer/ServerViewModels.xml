@@ -5,80 +5,74 @@
   <object id="IShellViewModel" type="POSServer.ViewModels.ShellViewModel, POSServer" singleton="true">    
   </object>
 
-  <object id="IMainViewModel" type="POSServer.ViewModels.MainViewModel, POSServer" singleton="false">
-    <!--<constructor-arg ref="IShellViewModel" />-->
-  </object>
-  <object id="ICircularLoadViewModel" type="POSServer.ViewModels.CircularLoadViewModel, POSServer" singleton="true">
-    <!--<constructor-arg ref="IShellViewModel" />-->
-  </object>
-  <object id="INormalLoadViewModel" type="POSServer.ViewModels.NormalLoadViewModel, POSServer" singleton="true">
+  <object id="MainViewModel" type="POSServer.ViewModels.MainViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
   </object>
   
-  <object id="IProductMasterViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterViewModel, POSServer" singleton="false">
+  <object id="ProductMasterViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
   </object>
 
-  <object id="IProductMasterPriceUpdateViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterPriceUpdateViewModel, POSServer" singleton="false">
+  <object id="ProductMasterPriceUpdateViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterPriceUpdateViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
   
-  <object id="IProductMasterSummaryViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterSummaryViewModel, POSServer" singleton="false">
+  <object id="ProductMasterSummaryViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterSummaryViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
   </object>
   
-  <object id="IProductTypeViewModel" type="POSServer.ViewModels.ProductMaster.ProductTypeViewModel, POSServer" singleton="false">
+  <object id="ProductTypeViewModel" type="POSServer.ViewModels.ProductMaster.ProductTypeViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
   </object>
 
-  <object id="IExProductSizeViewModel" type="POSServer.ViewModels.ProductMaster.ExProductSizeViewModel, POSServer" singleton="false">
+  <object id="ExProductSizeViewModel" type="POSServer.ViewModels.ProductMaster.ExProductSizeViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
   </object>
 
-  <object id="IExProductColorViewModel" type="POSServer.ViewModels.ProductMaster.ExProductColorViewModel, POSServer" singleton="false">
+  <object id="ExProductColorViewModel" type="POSServer.ViewModels.ProductMaster.ExProductColorViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
   </object>
   
-  <object id="IProductCategoryViewModel" type="POSServer.ViewModels.ProductMaster.ProductCategoryViewModel, POSServer" singleton="false">
+  <object id="ProductCategoryViewModel" type="POSServer.ViewModels.ProductMaster.ProductCategoryViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="CategoryLogic" ref="ICategoryLogic" />
   </object>
 
-  <object id="IDepartmentsViewModel" type="POSServer.ViewModels.Management.DepartmentsViewModel, POSServer" singleton="false">
+  <object id="DepartmentsViewModel" type="POSServer.ViewModels.Management.DepartmentsViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
 
-  <object id="IEmployeesViewModel" type="POSServer.ViewModels.Management.EmployeesViewModel, POSServer" singleton="false">
+  <object id="EmployeesViewModel" type="POSServer.ViewModels.Management.EmployeesViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="EmployeeInfoLogic" ref="IEmployeeInfoLogic" />
   </object>
   
   
-  <object id="IStockInViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInViewModel, POSServer" singleton="false">
+  <object id="StockInViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
 
-  <object id="IStockInConfirmViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
+  <object id="StockInConfirmViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <constructor-arg value="false" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
 
-  <object id="IProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.ProductPropertiesViewModel, POSServer" singleton="false">
+  <object id="ProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.ProductPropertiesViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="ProductLogic" ref="IProductLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
   </object>
   
-  <object id="IStockProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.StockProductPropertiesViewModel, POSServer" singleton="false">
+  <object id="StockProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.StockProductPropertiesViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="ProductLogic" ref="IProductLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
@@ -87,88 +81,88 @@
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
   </object>
 
-  <object id="IStockOutChoosingViewModel" type="POSServer.ViewModels.Dialogs.StockOutChoosingViewModel, POSServer" singleton="false">
+  <object id="StockOutChoosingViewModel" type="POSServer.ViewModels.Dialogs.StockOutChoosingViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="StockInLogic" ref="IStockInLogic" />    
   </object>
 
-  <object id="IStockOutViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutViewModel, POSServer" singleton="false">
+  <object id="StockOutViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="MainStockLogic" ref="IMainStockLogic" />
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     
   </object>
 
-  <object id="IStockOutSpecificViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutSpecificViewModel, POSServer" singleton="false">
+  <object id="StockOutSpecificViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutSpecificViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="MainStockLogic" ref="IMainStockLogic" />
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
   </object>
   
   
-  <object id="IStockOutConfirmViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutConfirmViewModel, POSServer" singleton="false">
+  <object id="StockOutConfirmViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutConfirmViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <constructor-arg value="false" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
 
-  <object id="IStockOutWaitingConfirmViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutWaitingConfirmViewModel, POSServer" singleton="false">
+  <object id="StockOutWaitingConfirmViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutWaitingConfirmViewModel, POSServer" singleton="false">
     <property name="MainStockLogic" ref="IMainStockLogic" />
   </object>
   
-  <object id="IStockOutSearchViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutSearchViewModel, POSServer" singleton="false">
+  <object id="StockOutSearchViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutSearchViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="StockOutLogic" ref="IStockOutLogic" />
     <property name="CategoryLogic" ref="ICategoryLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object> 
-  <object id="IStockOutDetailViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutConfirmViewModel, POSServer" singleton="false">
+  <object id="StockOutDetailViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutConfirmViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <constructor-arg value="true" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
 
-  <object id="IStockInSearchViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInSearchViewModel, POSServer" singleton="false">
+  <object id="StockInSearchViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInSearchViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="StockInLogic" ref="IStockInLogic" />
     <property name="CategoryLogic" ref="ICategoryLogic" />    
   </object>
-  <object id="IStockInDetailViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
+  <object id="StockInDetailViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <constructor-arg value="true" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
 
-  <object id="IStockInventoryViewModel" type="POSServer.ViewModels.Stock.Inventory.StockInventoryViewModel, POSServer" singleton="false">
+  <object id="StockInventoryViewModel" type="POSServer.ViewModels.Stock.Inventory.StockInventoryViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="DepartmentStockTempValidLogic" ref="IDepartmentStockTempValidLogic" />    
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
 
-  <object id="IStockInventoryProcessingViewModel" type="POSServer.ViewModels.Stock.Inventory.StockInventoryProcessingViewModel, POSServer" singleton="false">
+  <object id="StockInventoryProcessingViewModel" type="POSServer.ViewModels.Stock.Inventory.StockInventoryProcessingViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="DepartmentStockTempValidLogic" ref="IDepartmentStockTempValidLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
     <property name="StockDefinitionStatusLogic" ref ="IStockDefinitionStatusLogic" />
   </object>
   
-  <object id="ISyncToDepartmentViewModel" type="POSServer.ViewModels.Synchronize.SyncToDepartmentViewModel, POSServer" singleton="false">
+  <object id="SyncToDepartmentViewModel" type="POSServer.ViewModels.Synchronize.SyncToDepartmentViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
     <property name="SyncLogic" ref="ISyncLogic" />
   </object>
   
-  <object id="ISystemConfigViewModel" type="POSServer.ViewModels.Tool.SystemConfigViewModel, POSServer" singleton="false">
+  <object id="SystemConfigViewModel" type="POSServer.ViewModels.Tool.SystemConfigViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="DepartmentLogic" ref="IDepartmentLogic" />    
   </object>
 
-  <object id="ICreateSyncUSBViewModel" type="POSServer.ViewModels.Synchronize.CreateSyncUSBViewModel, POSServer" singleton="false">
+  <object id="CreateSyncUSBViewModel" type="POSServer.ViewModels.Synchronize.CreateSyncUSBViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->  
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
   
-  <object id="IUserInfoViewModel" type="POSServer.ViewModels.Security.UserInfoViewModel, POSServer" singleton="false">
+  <object id="UserInfoViewModel" type="POSServer.ViewModels.Security.UserInfoViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->
     <property name="UserInfoLogic" ref="IUserInfoLogic" />
     <property name="UserRoleLogic" ref="IUserRoleLogic" />

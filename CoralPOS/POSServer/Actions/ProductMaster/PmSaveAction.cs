@@ -14,7 +14,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
 {
-    public class PmSaveAction : PosAction,IPmSaveAction
+    public class PmSaveAction : PosAction
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
         public IMainPriceLogic MainPriceLogic { get; set; }

@@ -18,8 +18,8 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Synchronize
 {
-    [PerRequest(typeof(ISyncToMainViewModel))]
-    public class SyncToMainViewModel : PosViewModel,ISyncToMainViewModel  
+    [PerRequest]
+    public class SyncToMainViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

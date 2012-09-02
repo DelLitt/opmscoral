@@ -23,7 +23,7 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.ViewModels.ProductMaster
 {
     //[PerRequest(typeof(IProductCategoryViewModel))]
-    public class ProductCategoryViewModel : PosViewModel,IProductCategoryViewModel  
+    public class ProductCategoryViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

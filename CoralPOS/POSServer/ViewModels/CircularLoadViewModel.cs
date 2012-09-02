@@ -8,6 +8,7 @@ using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
+    [PerRequest(typeof(ICircularLoadViewModel))]
     public class CircularLoadViewModel : Screen,ICircularLoadViewModel
     {
         private IShellViewModel _startViewModel;

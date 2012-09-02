@@ -24,8 +24,8 @@ namespace POSServer.ViewModels.Stock.Inventory
 	/// <summary>
 	/// 
 	/// </summary>
-	[AttachMenuAndMainScreen(typeof(IInventoryMenuViewModel), typeof(IStockMainViewModel))]
-	public class StockInventoryViewModel : PosViewModel, IStockInventoryViewModel
+	[AttachMenuAndMainScreen(typeof(InventoryMenuViewModel), typeof(StockMainViewModel))]
+	public class StockInventoryViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

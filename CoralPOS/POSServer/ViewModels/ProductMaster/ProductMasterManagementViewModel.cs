@@ -17,8 +17,8 @@ using POSServer.ViewModels.Menu.ProductMaster;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-	[AttachMenuAndMainScreen(typeof(IProductMasterMenuViewModel), typeof(IProductMasterMainViewModel))]
-	public class ProductMasterManagementViewModel : PosViewModel,IProductMasterManagementViewModel  
+	[AttachMenuAndMainScreen(typeof(ProductMasterMenuViewModel), typeof(ProductMasterMainViewModel))]
+	public class ProductMasterManagementViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

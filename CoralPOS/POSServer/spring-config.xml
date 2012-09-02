@@ -8,9 +8,9 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show login form -->
-        <entry key="Step1" value="POSServer.ViewModels.Security.ILoginViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Security.LoginViewModel"/>
         <!-- run register action -->
-        <entry key="Step2" value="POSServer.Actions.Security.IRegisterUserAction"/>
+        <entry key="Step2" value="POSServer.Actions.Security.RegisterUserAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -19,13 +19,13 @@
   <object id="ProductMasterCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>        
-        <entry key="Step1" value="POSServer.Actions.ProductMaster.IPmPreLoadDefinitionAction"/>
+        <entry key="Step1" value="POSServer.Actions.ProductMaster.PmPreLoadDefinitionAction"/>
         <!-- Show product master form -->
-        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.IProductMasterViewModel"/>
+        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.ProductMasterViewModel"/>
         <!-- Show product master summary form -->
-        <entry key="Step3" value="POSServer.ViewModels.ProductMaster.IProductMasterSummaryViewModel"/>
+        <entry key="Step3" value="POSServer.ViewModels.ProductMaster.ProductMasterSummaryViewModel"/>
         <!-- Save Product Master -->
-        <entry key="Step4" value="POSServer.Actions.ProductMaster.IPmSaveAction"/>
+        <entry key="Step4" value="POSServer.Actions.ProductMaster.PmSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -33,9 +33,9 @@
   <object id="ProductMasterPriceUpdateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
-        <entry key="Step1" value="POSServer.Actions.ProductMaster.IPmPricePreLoadDefinitionAction"/>
+        <entry key="Step1" value="POSServer.Actions.ProductMaster.PmPricePreLoadDefinitionAction"/>
         <!-- Show product master form -->
-        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.IProductMasterPriceUpdateViewModel"/>        
+        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.ProductMasterPriceUpdateViewModel"/>        
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -45,7 +45,7 @@
       <dictionary>
         <!--<entry key="Step1" value="POSServer.Actions.ProductMaster.IExProductColorsViewPreLoadAction"/>-->
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IExProductColorViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.ExProductColorViewModel"/>
         <!-- Show product master summary form -->
         <!--<entry key="Step3" value="POSServer.Actions.ProductMaster.IExProductColorsViewSaveAction"/>-->
       </dictionary>
@@ -56,7 +56,7 @@
     <property name="FlowSteps">
       <dictionary>        
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IExProductSizeViewModel"/>        
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.ExProductSizeViewModel"/>        
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -65,7 +65,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IProductTypeViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.ProductTypeViewModel"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -74,7 +74,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IProductCategoryViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.ProductCategoryViewModel"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -84,7 +84,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Management.IDepartmentsViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Management.DepartmentsViewModel"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -93,13 +93,13 @@
   <object id="StockInCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>        
-        <entry key="Step1" value="POSServer.Actions.Stock.StockIn.IStockInPreLoadAction"/>        
+        <entry key="Step1" value="POSServer.Actions.Stock.StockIn.StockInPreLoadAction"/>        
         <!-- Show product master form -->
-        <entry key="Step2" value="POSServer.ViewModels.Stock.StockIn.IStockInViewModel"/>
+        <entry key="Step2" value="POSServer.ViewModels.Stock.StockIn.StockInViewModel"/>
         <!-- Show product master summary form -->
-        <entry key="Step3" value="POSServer.ViewModels.Stock.StockIn.IStockInConfirmViewModel"/>
+        <entry key="Step3" value="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel"/>
         <!-- Save Product Master -->
-        <entry key="Step4" value="POSServer.Actions.Stock.StockIn.IStockInSaveAction"/>        
+        <entry key="Step4" value="POSServer.Actions.Stock.StockIn.StockInSaveAction"/>        
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -108,13 +108,13 @@
   <object id="StockOutCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
-        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.IStockOutPreLoadAction"/>
+        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.StockOutPreLoadAction"/>
         <!-- Show product master form -->
-        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.IStockOutViewModel"/>
+        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.StockOutViewModel"/>
         <!-- Show product master summary form -->
         <entry key="Step3" value="[IStockOutConfirmViewModel]"/>
         <!-- Save Product Master -->
-        <entry key="Step4" value="POSServer.Actions.Stock.StockOut.IStockOutSaveAction"/>
+        <entry key="Step4" value="POSServer.Actions.Stock.StockOut.StockOutSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -123,13 +123,13 @@
   <object id="StockOutSpecificCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
-        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.IStockOutSpecificPreLoadAction"/>
+        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.StockOutSpecificPreLoadAction"/>
         <!-- Show product master form -->
-        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.IStockOutSpecificViewModel"/>
+        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.StockOutSpecificViewModel"/>
         <!-- Show product master summary form -->
         <entry key="Step3" value="[IStockOutConfirmViewModel]"/>
         <!-- Save Product Master -->
-        <entry key="Step4" value="POSServer.Actions.Stock.StockOut.IStockOutSpecificSaveAction"/>
+        <entry key="Step4" value="POSServer.Actions.Stock.StockOut.StockOutSpecificSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -140,7 +140,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Stock.StockOut.IStockOutSearchViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Stock.StockOut.StockOutSearchViewModel"/>
         <entry key="Step2" value="[IStockOutDetailViewModel]"/>
       </dictionary>
     </property>
@@ -151,7 +151,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Stock.StockIn.IStockInSearchViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Stock.StockIn.StockInSearchViewModel"/>
         <entry key="Step2" value="[IStockInDetailViewModel]"/>
       </dictionary>
     </property>
@@ -162,9 +162,9 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.Actions.Stock.Inventory.IInventoryStockViewPreloadAction"/>
-        <entry key="Step2" value="POSServer.ViewModels.Stock.Inventory.IStockInventoryViewModel"/>
-        <entry key="Step3" value="POSServer.Actions.Stock.Inventory.IInventoryStockViewSaveAction"/>
+        <entry key="Step1" value="POSServer.Actions.Stock.Inventory.InventoryStockViewPreloadAction"/>
+        <entry key="Step2" value="POSServer.ViewModels.Stock.Inventory.StockInventoryViewModel"/>
+        <entry key="Step3" value="POSServer.Actions.Stock.Inventory.InventoryStockViewSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -175,11 +175,11 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Load confirming stockouts -->
-        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.IStockOutConfirmPreLoadAction"/>
+        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.StockOutConfirmPreLoadAction"/>
         <!-- Show stock out confirm form -->
-        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.IStockOutWaitingConfirmViewModel"/>        
+        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.StockOutWaitingConfirmViewModel"/>        
         <!-- Save confirmed stock out -->
-        <entry key="Step3" value="POSServer.Actions.Stock.StockOut.IStockOutConfirmSaveAction"/>
+        <entry key="Step3" value="POSServer.Actions.Stock.StockOut.StockOutConfirmSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -190,7 +190,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show stock inventory checking form -->
-        <entry key="Step1" value="POSServer.ViewModels.Stock.Inventory.IStockInventoryProcessingViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Stock.Inventory.StockInventoryProcessingViewModel"/>
         <!-- Save and process inventory checking automatically -->
         <entry key="Step2" value="POSServer.Actions.Stock.Inventory.StockInventoryProcessingSaveAction"/>
       </dictionary>
@@ -203,7 +203,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Synchronize.ISyncToDepartmentViewModel"/>        
+        <entry key="Step1" value="POSServer.ViewModels.Synchronize.SyncToDepartmentViewModel"/>        
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -213,7 +213,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Synchronize.ICreateSyncUSBViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Synchronize.CreateSyncUSBViewModel"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -223,7 +223,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Tool.ISystemConfigViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Tool.SystemConfigViewModel"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -233,7 +233,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Management.IEmployeesViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Management.EmployeesViewModel"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
@@ -243,7 +243,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Security.IUserInfoViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.Security.UserInfoViewModel"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

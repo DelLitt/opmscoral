@@ -19,8 +19,8 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels.Tool
 {
-    [PerRequest(typeof(IToolMainViewModel))]
-    public class ToolMainViewModel : PosViewModel,IToolMainViewModel  
+    [PerRequest(typeof(ToolMainViewModel))]
+    public class ToolMainViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

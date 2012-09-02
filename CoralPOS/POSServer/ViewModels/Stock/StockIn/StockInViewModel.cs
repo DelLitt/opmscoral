@@ -22,8 +22,8 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.StockIn
 {
 
-    [AttachMenuAndMainScreen(typeof(IStockInMenuViewModel), typeof(IStockMainViewModel))]
-    public class StockInViewModel : PosViewModel, IStockInViewModel
+    [AttachMenuAndMainScreen(typeof(StockInMenuViewModel), typeof(StockMainViewModel))]
+    public class StockInViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;
@@ -247,7 +247,7 @@ namespace POSServer.ViewModels.Stock.StockIn
             IEnumerable<IError> errors = this.GetErrors(StockIn);
             if (errors.Count() > 0)
             {
-                var test = IoC.Get<IErrorDialogViewModel>();
+                var test = IoC.Get<ErrorDialogViewModel>();
                 test.ErrorResult = errors.ToList();
                 _startViewModel.ShowDialog(test);
             }
@@ -335,7 +335,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 
         public void OpenProperty()
         {
-            var screen = IoC.Get<IProductPropertiesViewModel>("IProductPropertiesViewModel");
+            var screen = IoC.Get<ProductPropertiesViewModel>();
             screen.ProductName = ProductMaster.ProductName;
             screen.Setup();
             screen.ConfirmEvent += screen_ConfirmEvent;

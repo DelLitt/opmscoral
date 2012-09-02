@@ -4,33 +4,33 @@
 
   <object id="IProxyFactory" type="AppFrame.WPF.PosDynamicProxy, AppFrame" singleton="false">    
   </object>
-  <object id="IStartLoadScreen" type="POSServer.Actions.StartLoadScreen, POSServer" singleton="false">    
+  <object id="StartLoadScreen" type="POSServer.Actions.StartLoadScreen, POSServer" singleton="false">    
   </object>
-  <object id="IStopLoadScreen" type="POSServer.Actions.StopLoadScreen, POSServer" singleton="false">    
+  <object id="StopLoadScreen" type="POSServer.Actions.StopLoadScreen, POSServer" singleton="false">    
   </object>
-  <object id="IPmPreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPreLoadDefinitionAction, POSServer" singleton="false">         
+  <object id="PmPreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPreLoadDefinitionAction, POSServer" singleton="false">         
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
   </object>
-  <object id="IPmPricePreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPricePreLoadDefinitionAction, POSServer" singleton="false">
-    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
-    <property name="MainPriceLogic" ref="IMainPriceLogic" />
-  </object>
-  <object id="IPmSaveAction" type="POSServer.Actions.ProductMaster.PmSaveAction, POSServer" singleton="false">
+  <object id="PmPricePreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPricePreLoadDefinitionAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
-  <object id="IExProductColorsViewPreLoadAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewPreLoadAction, POSServer" singleton="false">
+  <object id="PmSaveAction" type="POSServer.Actions.ProductMaster.PmSaveAction, POSServer" singleton="false">
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+    <property name="MainPriceLogic" ref="IMainPriceLogic" />
+  </object>
+  <object id="ExProductColorsViewPreLoadAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewPreLoadAction, POSServer" singleton="false">
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
   </object>
-  <object id="IExProductColorsViewSaveAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewSaveAction, POSServer" singleton="false">
+  <object id="ExProductColorsViewSaveAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewSaveAction, POSServer" singleton="false">
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
   </object>
 
-  <object id="IStockInPreLoadAction" type="POSServer.Actions.Stock.StockIn.StockInPreLoadAction, POSServer" singleton="false">
+  <object id="StockInPreLoadAction" type="POSServer.Actions.Stock.StockIn.StockInPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
   </object>
 
-  <object id="IStockInSaveAction" type="POSServer.Actions.Stock.StockIn.StockInSaveAction, POSServer" singleton="false">
+  <object id="StockInSaveAction" type="POSServer.Actions.Stock.StockIn.StockInSaveAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
@@ -39,25 +39,25 @@
     <property name="StockInLogic" ref="IStockInLogic" />    
   </object>
 
-  <object id="IStockOutPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutPreLoadAction, POSServer" singleton="false">
+  <object id="StockOutPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
-  <object id="IStockOutConfirmPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutConfirmPreLoadAction, POSServer" singleton="false">
+  <object id="StockOutConfirmPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutConfirmPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
     <property name="StockOutLogic" ref="IStockOutLogic" />
   </object>
 
-  <object id="IInventoryStockViewPreloadAction" type="POSServer.Actions.Stock.Inventory.InventoryStockViewPreloadAction, POSServer" singleton="false">
+  <object id="InventoryStockViewPreloadAction" type="POSServer.Actions.Stock.Inventory.InventoryStockViewPreloadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />
     <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />   
   </object>
 
-  <object id="IStockInventoryProcessingSaveAction" type="POSServer.Actions.Stock.Inventory.StockInventoryProcessingSaveAction, POSServer" singleton="false">
+  <object id="StockInventoryProcessingSaveAction" type="POSServer.Actions.Stock.Inventory.StockInventoryProcessingSaveAction, POSServer" singleton="false">
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
     <property name="DepartmentStockTempValidLogic" ref="IDepartmentStockTempValidLogic" />
@@ -66,7 +66,7 @@
     <property name="StockDefinitionStatusLogic" ref="IStockDefinitionStatusLogic" />    
   </object>
   
-  <object id="IStockOutSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSaveAction, POSServer" singleton="false">
+  <object id="StockOutSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSaveAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
@@ -75,18 +75,18 @@
     <property name="StockOutLogic" ref="IStockOutLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />
   </object>
-  <object id="IStockOutConfirmSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutConfirmSaveAction, POSServer" singleton="false">
+  <object id="StockOutConfirmSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutConfirmSaveAction, POSServer" singleton="false">
     <property name="StockOutLogic" ref="IStockOutLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />
   </object>
-  <object id="IStockOutSpecificPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutSpecificPreLoadAction, POSServer" singleton="false">
+  <object id="StockOutSpecificPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutSpecificPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
     <property name="StockDefinitionStatusLogic" ref="IStockDefinitionStatusLogic" />
   </object>
 
-  <object id="IStockOutSpecificSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSpecificSaveAction, POSServer" singleton="false">
+  <object id="StockOutSpecificSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSpecificSaveAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
@@ -96,7 +96,7 @@
     <property name="MainStockLogic" ref="IMainStockLogic" />
   </object>
   
-  <object id="ISyncToDepartmentAction" type="POSServer.Actions.Synchronize.SyncToDepartmentAction, POSServer" singleton="false">    
+  <object id="SyncToDepartmentAction" type="POSServer.Actions.Synchronize.SyncToDepartmentAction, POSServer" singleton="false">    
     <property name="SyncLogic" ref="ISyncLogic" />
   </object>
 </objects>

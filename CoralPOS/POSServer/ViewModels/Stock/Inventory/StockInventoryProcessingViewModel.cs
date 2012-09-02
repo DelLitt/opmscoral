@@ -23,7 +23,7 @@ using POSServer.Utils;
 namespace POSServer.ViewModels.Stock.Inventory
 {
 	//[PerRequest(typeof(IStockInventoryProcessingViewModel))]
-	public class StockInventoryProcessingViewModel : PosViewModel,IStockInventoryProcessingViewModel  
+	public class StockInventoryProcessingViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

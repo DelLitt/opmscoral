@@ -10,7 +10,7 @@ using Spring.Transaction.Interceptor;
 
 namespace POSServer.Actions.Stock.StockOut
 {
-    public class StockOutSaveAction : PosAction,IStockOutSaveAction
+    public class StockOutSaveAction : PosAction
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
         public IProductLogic ProductLogic { get; set; }

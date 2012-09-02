@@ -24,8 +24,8 @@ using POSServer.ViewModels.Menu.Management;
 
 namespace POSServer.ViewModels.Management
 {
-    [AttachMenuAndMainScreen(typeof(IDeptEmpMenuViewModel),typeof(IManagementMainViewModel))]
-    public class DepartmentsViewModel : PosViewModel,IDepartmentsViewModel  
+    [AttachMenuAndMainScreen(typeof(DeptEmpMenuViewModel),typeof(ManagementMainViewModel))]
+    public class DepartmentsViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

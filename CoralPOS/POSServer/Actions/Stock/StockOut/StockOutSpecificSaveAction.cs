@@ -11,7 +11,7 @@ using POSServer.Utils;
 
 namespace POSServer.Actions.Stock.StockOut
 {
-    public class StockOutSpecificSaveAction : PosAction, IStockOutSpecificSaveAction
+    public class StockOutSpecificSaveAction : PosAction
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
         public IProductLogic ProductLogic { get; set; }

@@ -25,7 +25,7 @@ using MessageBox = System.Windows.MessageBox;
 namespace POSServer.ViewModels.ProductMaster
 {
 	//[PerRequest(typeof(IProductTypeViewModel))]
-	public class ProductTypeViewModel : PosViewModel,IProductTypeViewModel
+	public class ProductTypeViewModel : PosViewModel
 	{
 	    private IList _originalList;
 	    private bool hasCreatedAction = false;

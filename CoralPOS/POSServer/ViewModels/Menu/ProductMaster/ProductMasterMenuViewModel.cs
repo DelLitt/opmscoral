@@ -19,8 +19,8 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels.Menu.ProductMaster
 {
-    [PerRequest(typeof(IProductMasterMenuViewModel))]
-    public class ProductMasterMenuViewModel : PosViewModel,IProductMasterMenuViewModel  
+    [PerRequest(typeof(ProductMasterMenuViewModel))]
+    public class ProductMasterMenuViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

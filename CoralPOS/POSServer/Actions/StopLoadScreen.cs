@@ -7,7 +7,7 @@ using AppFrame.WPF.Screens;
 
 namespace POSServer.Actions
 {
-    public class StopLoadScreen : PosAction, IStopLoadScreen
+    public class StopLoadScreen : PosAction
     {
         public override void DoExecute()
         {

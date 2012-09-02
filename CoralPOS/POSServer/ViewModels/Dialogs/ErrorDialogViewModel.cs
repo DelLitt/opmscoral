@@ -11,8 +11,8 @@ using AppFrame.Validation;
 
 namespace POSServer.ViewModels.Dialogs
 {
-    [PerRequest(typeof(IErrorDialogViewModel))]
-    public class ErrorDialogViewModel : PosViewModel,IErrorDialogViewModel
+    [PerRequest]
+    public class ErrorDialogViewModel : PosViewModel
     {
         //public IList ErrorsList { get; set; }
 

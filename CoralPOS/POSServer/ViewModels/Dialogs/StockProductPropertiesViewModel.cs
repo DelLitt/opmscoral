@@ -21,7 +21,7 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.ViewModels.Dialogs
 {
 	
-	public class StockProductPropertiesViewModel : PosViewModel,IStockProductPropertiesViewModel  
+	public class StockProductPropertiesViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

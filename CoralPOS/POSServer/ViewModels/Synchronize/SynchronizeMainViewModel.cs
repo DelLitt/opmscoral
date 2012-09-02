@@ -19,8 +19,8 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels.Synchronize
 {
-    [PerRequest(typeof(ISynchronizeMainViewModel))]
-    public class SynchronizeMainViewModel : PosViewModel,ISynchronizeMainViewModel  
+    [PerRequest]
+    public class SynchronizeMainViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

@@ -18,8 +18,8 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Menu.Stock
 {
-    [PerRequest(typeof(IConfirmMenuViewModel))]
-    public class ConfirmMenuViewModel : PosViewModel,IConfirmMenuViewModel  
+    [PerRequest(typeof(ConfirmMenuViewModel))]
+    public class ConfirmMenuViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

@@ -22,7 +22,7 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.ViewModels.ProductMaster
 {
 	//[PerRequest(typeof(IExProductColorViewModel))]
-	public class ExProductColorViewModel : PosViewModel,IExProductColorViewModel  
+	public class ExProductColorViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

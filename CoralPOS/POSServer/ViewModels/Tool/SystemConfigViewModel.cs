@@ -25,8 +25,8 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.ViewModels.Tool
 {
 
-	[AttachMenuAndMainScreen(typeof(IToolMainViewModel), typeof(IMainViewModel))]
-	public class SystemConfigViewModel : PosViewModel,ISystemConfigViewModel  
+	[AttachMenuAndMainScreen(typeof(ToolMainViewModel), typeof(MainViewModel))]
+	public class SystemConfigViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

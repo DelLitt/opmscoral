@@ -18,8 +18,8 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels.Menu.Stock
 {
-    [PerRequest(typeof(IStockOutMenuViewModel))]
-    public class StockOutMenuViewModel : PosViewModel,IStockOutMenuViewModel  
+    [PerRequest]
+    public class StockOutMenuViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

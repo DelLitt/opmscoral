@@ -7,7 +7,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
 {
-    public class ExProductColorsViewPreLoadAction : PosAction, IExProductColorsViewPreLoadAction
+    public class ExProductColorsViewPreLoadAction : PosAction
     {
         public IExProductColorLogic ProductColorLogic
         {

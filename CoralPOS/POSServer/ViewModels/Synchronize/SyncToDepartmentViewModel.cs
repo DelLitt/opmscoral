@@ -20,8 +20,8 @@ using POSServer.ViewModels.Menu;
 
 namespace POSServer.ViewModels.Synchronize
 {
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
-    public class SyncToDepartmentViewModel : PosViewModel, ISyncToDepartmentViewModel
+    [AttachMenuAndMainScreen(typeof(MainMenuViewModel), typeof(MainViewModel))]
+    public class SyncToDepartmentViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

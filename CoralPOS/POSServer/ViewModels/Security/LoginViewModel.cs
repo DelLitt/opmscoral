@@ -17,8 +17,8 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels.Security
 {
-    [PerRequest(typeof(ILoginViewModel))]
-    public class LoginViewModel : PosViewModel,ILoginViewModel  
+    [PerRequest]
+    public class LoginViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

@@ -10,8 +10,8 @@ using POSServer.ViewModels.Menu.Stock;
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-	[AttachMenuAndMainScreen(typeof(IStockOutMenuViewModel), typeof(IStockMainViewModel))]
-	public class StockOutConfirmViewModel : PosViewModel,IStockOutConfirmViewModel  
+	[AttachMenuAndMainScreen(typeof(StockOutMenuViewModel), typeof(StockMainViewModel))]
+	public class StockOutConfirmViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

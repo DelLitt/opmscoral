@@ -22,8 +22,8 @@ using POSServer.ViewModels.Menu.Stock;
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-    [AttachMenuAndMainScreen(typeof(IStockOutMenuViewModel), typeof(IStockMainViewModel))]
-    public class StockOutViewModel : PosViewModel, IStockOutViewModel
+    [AttachMenuAndMainScreen(typeof(StockOutMenuViewModel), typeof(StockMainViewModel))]
+    public class StockOutViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;
@@ -183,7 +183,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             IEnumerable<IError> errors = this.GetErrors(StockOut);
             if (this.HasError())
             {
-                var test = IoC.Get<IErrorDialogViewModel>();
+                var test = IoC.Get<ErrorDialogViewModel>();
                 test.ErrorResult = errors.ToList();
                 _startViewModel.ShowDialog(test);
             }
@@ -201,7 +201,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 
         public void CreateByBlock()
         {
-            var screen = IoC.Get<IStockOutChoosingViewModel>("IStockOutChoosingViewModel");
+            var screen = IoC.Get<StockOutChoosingViewModel>();
             screen.ConfirmEvent += new EventHandler<StockInChoosingArg>(StockInConfirmEvent);
             _startViewModel.ShowDialog(screen);
         }
@@ -342,7 +342,7 @@ namespace POSServer.ViewModels.Stock.StockOut
         public void Create()
         {
             if (ObjectUtility.IsNullOrEmpty(ProductMaster)) return;
-            var screen = IoC.Get<IStockProductPropertiesViewModel>("IStockProductPropertiesViewModel");
+            var screen = IoC.Get<StockProductPropertiesViewModel>();
             screen.ProductName = ProductMaster.ProductName;
             screen.Setup();
             screen.ConfirmEvent += new EventHandler<ProductEventArgs>(ScreenConfirmEvent);

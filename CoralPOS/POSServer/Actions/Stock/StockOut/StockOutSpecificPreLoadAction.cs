@@ -12,7 +12,7 @@ using POSServer.Utils;
 
 namespace POSServer.Actions.Stock.StockOut
 {
-    public class StockOutSpecificPreLoadAction : PosAction, IStockOutSpecificPreLoadAction
+    public class StockOutSpecificPreLoadAction : PosAction
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
         public IMainStockLogic MainStockLogic

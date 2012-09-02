@@ -18,8 +18,8 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Menu.Stock
 {
-    [PerRequest(typeof(IInventoryMenuViewModel))]
-    public class InventoryMenuViewModel : PosViewModel,IInventoryMenuViewModel  
+    [PerRequest]
+    public class InventoryMenuViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

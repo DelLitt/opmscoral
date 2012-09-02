@@ -8,7 +8,7 @@ using POSServer.BusinessLogic.Logic.Security;
 
 namespace POSServer.Actions
 {
-    public class LoginAction : ILoginAction
+    public class LoginAction 
     {
         public IPosActionResult Execute(LoginModel model)
         {

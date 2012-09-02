@@ -5,8 +5,8 @@ using POSServer.Common;
 
 namespace POSServer.Actions.Security
 {
-    [PerRequest(typeof(IRegisterUserAction))]
-    public class RegisterUserAction : PosAction,IRegisterUserAction
+    [PerRequest]
+    public class RegisterUserAction : PosAction
     {
         public override void DoExecute()
         {

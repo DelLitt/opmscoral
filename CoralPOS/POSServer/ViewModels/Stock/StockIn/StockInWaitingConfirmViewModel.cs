@@ -18,8 +18,8 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
-	[PerRequest(typeof(IStockInWaitingConfirmViewModel))]
-	public class StockInWaitingConfirmViewModel : PosViewModel,IStockInWaitingConfirmViewModel  
+	[PerRequest(typeof(StockInWaitingConfirmViewModel))]
+	public class StockInWaitingConfirmViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

@@ -21,7 +21,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Dialogs
 {
-	public class StockOutChoosingViewModel : PosViewModel,IStockOutChoosingViewModel  
+	public class StockOutChoosingViewModel : PosViewModel
 	{
 		
 		private IShellViewModel _startViewModel;

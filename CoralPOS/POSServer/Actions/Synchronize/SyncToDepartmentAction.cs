@@ -16,7 +16,7 @@ using ClientUtility = POSServer.Utils.ClientUtility;
 
 namespace POSServer.Actions.Synchronize
 {
-    public class SyncToDepartmentAction : PosAction, ISyncToDepartmentAction
+    public class SyncToDepartmentAction : PosAction
     {
         public ISyncLogic SyncLogic { get; set; }
         private IList resultList = null;

@@ -17,8 +17,8 @@ namespace POSServer.ViewModels.Security
     /// <summary>
     /// 
     /// </summary>
-    [AttachMenuAndMainScreen(typeof(IDeptEmpMenuViewModel), typeof(IManagementMainViewModel))]
-    public class UserInfoViewModel : PosViewModel, IUserInfoViewModel
+    [AttachMenuAndMainScreen(typeof(DeptEmpMenuViewModel), typeof(ManagementMainViewModel))]
+    public class UserInfoViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

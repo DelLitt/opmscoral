@@ -22,7 +22,7 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.ViewModels.ProductMaster
 {
     //[PerRequest(typeof(IExProductSizeViewModel))]
-    public class ExProductSizeViewModel : PosViewModel,IExProductSizeViewModel  
+    public class ExProductSizeViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

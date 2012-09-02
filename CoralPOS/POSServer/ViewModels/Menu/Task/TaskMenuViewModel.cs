@@ -18,8 +18,8 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Menu.Task
 {
-    [PerRequest(typeof(ITaskMenuViewModel))]
-    public class TaskMenuViewModel : PosViewModel,ITaskMenuViewModel  
+    [PerRequest]
+    public class TaskMenuViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;

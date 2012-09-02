@@ -21,8 +21,8 @@ using POSServer.ViewModels.Menu.Stock;
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
-    [AttachMenuAndMainScreen(typeof(IStockInMenuViewModel), typeof(IStockMainViewModel))]
-	public class StockInSearchViewModel : PosViewModel,IStockInSearchViewModel  
+    [AttachMenuAndMainScreen(typeof(StockInMenuViewModel), typeof(StockMainViewModel))]
+	public class StockInSearchViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

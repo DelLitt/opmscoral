@@ -1,10 +1,11 @@
 ﻿using System.Timers;
+using AppFrame.CustomAttributes;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
-
+    [PerRequest(typeof(INormalLoadViewModel))]
     public class NormalLoadViewModel : Screen, INormalLoadViewModel
     {
         private IShellViewModel _startViewModel;

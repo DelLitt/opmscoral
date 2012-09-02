@@ -58,7 +58,11 @@ namespace POSServer
                 .ForEach(x =>
                              {
                                  IObjectDefinition def = factory.CreateObjectDefinition(x.CreateType.FullName + "," + x.CreateType.Assembly.GetName(), null, AppDomain.CurrentDomain);
-                                 context.ObjectFactory.RegisterObjectDefinition(x.Attribute.Type.Name,def);
+                                 
+                                 string name = x.CreateType.Name;
+                                 if (x.Attribute.Type != null) name = x.Attribute.Type.Name;
+                                 if (x.Attribute.Name != null) name = x.Attribute.Name;
+                                 context.ObjectFactory.RegisterObjectDefinition(name, def);
                              });
             context.Refresh();
             
@@ -96,6 +100,12 @@ namespace POSServer
             return typedColls.AsEnumerable();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="service"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         protected override object GetInstance(Type service, string key)
         {
             if (string.IsNullOrEmpty(key))

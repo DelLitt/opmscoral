@@ -19,9 +19,9 @@ namespace POSServer.ViewModels.Stock
 	/// <summary>
 	/// 
 	/// </summary>
-	[PerRequest(typeof(IStockMainViewModel))]
-	[AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainViewModel))]
-	public class StockMainViewModel : PosViewModel,IStockMainViewModel  
+	[PerRequest]
+	[AttachMenuAndMainScreen(typeof(MainMenuViewModel),typeof(MainViewModel))]
+	public class StockMainViewModel : PosViewModel
 	{
 
 		private IShellViewModel _startViewModel;

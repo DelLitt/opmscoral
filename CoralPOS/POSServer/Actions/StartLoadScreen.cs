@@ -6,7 +6,7 @@ using POSServer.Utils;
 
 namespace POSServer.Actions
 {
-    public class StartLoadScreen : PosAction, IStartLoadScreen
+    public class StartLoadScreen : PosAction
     {
         public override void DoExecute()
         {

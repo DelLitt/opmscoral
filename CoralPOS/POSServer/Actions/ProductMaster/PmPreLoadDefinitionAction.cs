@@ -7,7 +7,7 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.Actions.ProductMaster
 {
     
-    public class PmPreLoadDefinitionAction : PosAction,IPmPreLoadDefinitionAction
+    public class PmPreLoadDefinitionAction : PosAction
     {
         public override void DoExecute()
         {
