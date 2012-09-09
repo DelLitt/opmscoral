@@ -18,7 +18,7 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Menu.Management
 {
-    [PerRequest(typeof(CostMenuViewModel))]
+    [PerRequest]
     public class CostMenuViewModel : PosViewModel
     {
 

@@ -18,7 +18,7 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Task
 {
-    [PerRequest(typeof(TaskMainViewModel))]
+    [PerRequest]
     public class TaskMainViewModel : PosViewModel
     {
 

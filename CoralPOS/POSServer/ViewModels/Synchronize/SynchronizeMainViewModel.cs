@@ -42,7 +42,7 @@ namespace POSServer.ViewModels.Synchronize
 		        
         public void ToDepartment()
         {
-            _startViewModel.EnterFlow(FlowDefinition.SYNC_TO_DEPARTMENT);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.SYNC_TO_DEPARTMENT);
         }
 		        
         public void FromDepartment()
@@ -62,7 +62,7 @@ namespace POSServer.ViewModels.Synchronize
 
         public void CreateSyncUSB()
         {
-            _startViewModel.EnterFlow(FlowDefinition.CreateSyncUSBFlow);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.CreateSyncUSBFlow);
         }
 				#endregion
 		

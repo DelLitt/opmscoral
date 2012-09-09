@@ -19,7 +19,6 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(ITemplatePOSViewModel))]
     public class TemplatePOSViewModel : PosViewModel,ITemplatePOSViewModel  
     {
 

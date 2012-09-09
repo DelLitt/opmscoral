@@ -8,7 +8,7 @@ using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
-    [PerRequest(typeof(INavLoginViewModel))]
+    [PerRequest(Type = typeof(INavLoginViewModel))]
     public class NavLoginViewModel : Screen,INavLoginViewModel
     {
         private string _username;

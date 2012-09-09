@@ -47,7 +47,7 @@ namespace POSServer.ViewModels.Management
         /// </summary>
         public void CreateDepartment()
         {
-            _startViewModel.EnterFlow(FlowDefinition.DepartmentsViewFlow);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.DepartmentsViewFlow);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace POSServer.ViewModels.Management
         /// </summary>
         public void CreateEmployee()
         {
-            _startViewModel.EnterFlow(FlowDefinition.EmployeesViewFlow);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.EmployeesViewFlow);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace POSServer.ViewModels.Management
         /// </summary>
         public void AccountManagement()
         {
-            _startViewModel.EnterFlow(FlowDefinition.UserInfoViewFlow);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.UserInfoViewFlow);
         }
 
         /// <summary>

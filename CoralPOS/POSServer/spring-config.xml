@@ -3,7 +3,7 @@
          xmlns:tx="http://www.springframework.net/tx">
 
   <!-- Define annotation bean processor -->
-  <object type="AppFrame.SpringSupport.AnnotationObjectPostProcessor, AppFrame" />
+  <!--<object type="AppFrame.SpringSupport.AnnotationObjectPostProcessor, AppFrame" />-->
   <!-- Define flow session -->
   <object id="FlowSession" type="AppFrame.Base.FlowSession, AppFrame" singleton="false" />
   

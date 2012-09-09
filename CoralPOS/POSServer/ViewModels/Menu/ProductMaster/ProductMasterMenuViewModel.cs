@@ -19,7 +19,7 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels.Menu.ProductMaster
 {
-    [PerRequest(typeof(ProductMasterMenuViewModel))]
+    [PerRequest]
     public class ProductMasterMenuViewModel : PosViewModel
     {
 

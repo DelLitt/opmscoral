@@ -11,7 +11,6 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.StockOut
 {
 	[AttachMenuAndMainScreen(typeof(StockOutMenuViewModel), typeof(StockMainViewModel))]
-    [PerRequest]
 	public class StockOutConfirmViewModel : PosViewModel
 	{
 

@@ -13,7 +13,7 @@ using NHibernate.Mapping;
 
 namespace POSServer.ViewModels.Security
 {
-    [PerRequest(typeof(CaliburnLoginViewModel))]
+    [PerRequest(Type = typeof(CaliburnLoginViewModel))]
     public class CaliburnLoginViewModel : GenericPosViewModel<CaliburnLoginModel>
     {
 

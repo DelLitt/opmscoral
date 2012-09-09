@@ -18,7 +18,7 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels.Menu.Stock
 {
-	[PerRequest(typeof(StockInMenuViewModel))]
+	[PerRequest]
 	public class StockInMenuViewModel : PosViewModel
 	{
 

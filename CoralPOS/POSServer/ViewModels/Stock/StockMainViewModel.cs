@@ -19,8 +19,8 @@ namespace POSServer.ViewModels.Stock
 	/// <summary>
 	/// 
 	/// </summary>
-	[PerRequest]
 	[AttachMenuAndMainScreen(typeof(MainMenuViewModel),typeof(MainViewModel))]
+    [PerRequest]
 	public class StockMainViewModel : PosViewModel
 	{
 
@@ -50,7 +50,7 @@ namespace POSServer.ViewModels.Stock
 		/// </summary>
 		public void StockIn()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.StockInCreateFlow); 
+            ShellViewModel.Current.EnterFlow(FlowDefinition.StockInCreateFlow); 
 		}
 
 		/// <summary>
@@ -58,7 +58,7 @@ namespace POSServer.ViewModels.Stock
 		/// </summary>
 		public void StockInList()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.StockInSearchFlow); 
+            ShellViewModel.Current.EnterFlow(FlowDefinition.StockInSearchFlow); 
 		}
 
 		/// <summary>
@@ -76,17 +76,17 @@ namespace POSServer.ViewModels.Stock
 				
 		public void StockOutToDepartment()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.StockOutCreateFlow); 
+            ShellViewModel.Current.EnterFlow(FlowDefinition.StockOutCreateFlow); 
 		}
 				
 		public void StockOutToOther()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.StockOutSpecificCreateFlow); 
+            ShellViewModel.Current.EnterFlow(FlowDefinition.StockOutSpecificCreateFlow); 
 		}
 				
 		public void StockOutList()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.StockOutSearchFlow);  
+            ShellViewModel.Current.EnterFlow(FlowDefinition.StockOutSearchFlow);  
 		}
 				
 		public void StockOutByExcel()
@@ -96,12 +96,12 @@ namespace POSServer.ViewModels.Stock
 				
 		public void InventoryCollector()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.StockInventoryViewFlow);  
+            ShellViewModel.Current.EnterFlow(FlowDefinition.StockInventoryViewFlow);  
 		}
 				
 		public void AfterInventoryCollectorProcessing()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.StockInventoryProcessingFlow);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.StockInventoryProcessingFlow);
 		}
 				
 		public void StockSearch()
@@ -121,7 +121,7 @@ namespace POSServer.ViewModels.Stock
 				
 		public void StockOutConfirm()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.StockOutConfirmingFlow);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.StockOutConfirmingFlow);
 		}
 				
 		public void DepartmentStockOutConfirm()

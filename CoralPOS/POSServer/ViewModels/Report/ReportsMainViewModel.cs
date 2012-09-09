@@ -18,7 +18,7 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Report
 {
-    [PerRequest(typeof(ReportsMainViewModel))]
+    [PerRequest]
     public class ReportsMainViewModel : PosViewModel
     {
 

@@ -25,10 +25,10 @@ namespace POSServer.ViewModels.Dialogs
 	public class StockOutChoosingViewModel : PosViewModel
 	{
 		
-		private IShellViewModel _startViewModel;
+		
 		public StockOutChoosingViewModel()
 		{
-			_startViewModel = ShellViewModel.Current;
+			
 		}
 		
 		#region Fields
@@ -66,7 +66,7 @@ namespace POSServer.ViewModels.Dialogs
 
 		public void Close()
 		{
-            _startViewModel.HideDialog(this);
+            ShellViewModel.Current.HideDialog(this);
 			//Shutdown();
 		}
 				

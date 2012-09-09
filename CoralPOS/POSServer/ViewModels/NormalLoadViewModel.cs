@@ -5,7 +5,7 @@ using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
-    [PerRequest(typeof(INormalLoadViewModel))]
+    [PerRequest(Type = typeof(INormalLoadViewModel))]
     public class NormalLoadViewModel : Screen, INormalLoadViewModel
     {
         private IShellViewModel _startViewModel;
@@ -13,7 +13,7 @@ namespace POSServer.ViewModels
         public NormalLoadViewModel()
         {
             _startViewModel = ShellViewModel.Current;
-            Parent = _startViewModel;
+            Parent = ShellViewModel.Current;
             /*timer = new Timer();
             timer.Interval = 100;
             timer.Elapsed += TimerElapsed;
@@ -48,13 +48,13 @@ namespace POSServer.ViewModels
 
         public void StartLoading()
         {
-            _startViewModel.ShowDialog(this);
+            ShellViewModel.Current.ShowDialog(this);
         }
 
         public void StopLoading()
         {
             TryClose();
-            _startViewModel.HideDialog(this);
+            ShellViewModel.Current.HideDialog(this);
             //timer.Stop();
             //Shutdown(); 
         }

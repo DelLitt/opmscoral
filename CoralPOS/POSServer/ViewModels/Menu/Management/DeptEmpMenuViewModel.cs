@@ -18,7 +18,7 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Menu.Management
 {
-    [PerRequest(typeof(DeptEmpMenuViewModel))]
+    [PerRequest]
     public class DeptEmpMenuViewModel : PosViewModel
     {
 

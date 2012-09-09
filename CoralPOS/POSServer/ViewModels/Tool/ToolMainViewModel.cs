@@ -19,7 +19,7 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels.Tool
 {
-    [PerRequest(typeof(ToolMainViewModel))]
+    [PerRequest]
     public class ToolMainViewModel : PosViewModel
     {
 
@@ -62,7 +62,7 @@ namespace POSServer.ViewModels.Tool
 		        
         public void Configuration()
         {
-            _startViewModel.EnterFlow(FlowDefinition.SystemConfigFlow);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.SystemConfigFlow);
         }
 		        
         public void ExportStockCollectorData()

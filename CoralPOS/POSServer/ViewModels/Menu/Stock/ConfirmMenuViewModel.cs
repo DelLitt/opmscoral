@@ -18,7 +18,7 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Menu.Stock
 {
-    [PerRequest(typeof(ConfirmMenuViewModel))]
+    [PerRequest]
     public class ConfirmMenuViewModel : PosViewModel
     {
 

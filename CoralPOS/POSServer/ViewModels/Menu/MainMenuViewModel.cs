@@ -24,7 +24,7 @@ using POSServer.ViewModels.Tool;
 
 namespace POSServer.ViewModels.Menu
 {
-	[PerRequest(typeof(MainMenuViewModel))]
+	[PerRequest]
 	public class MainMenuViewModel : PosViewModel
 	{
 
@@ -47,18 +47,18 @@ namespace POSServer.ViewModels.Menu
 				
 		public void Task()
 		{
-			_startViewModel.Open<TaskMainViewModel>();
+            ShellViewModel.Current.Open<TaskMainViewModel>();
 		}
 				
 		public void ProductMaster()
 		{
-			_startViewModel.Open<ProductMasterMainViewModel>();
+            ShellViewModel.Current.Open<ProductMasterMainViewModel>();
 			//_startViewModel.EnterFlow("ProductMasterCreateFlow");
 		}
 				
 		public void Stock()
 		{
-			_startViewModel.Open<StockMainViewModel>();
+            ShellViewModel.Current.Open<StockMainViewModel>();
 			//_startViewModel.EnterFlow("StockInCreateFlow");
 		}
 				
@@ -69,17 +69,17 @@ namespace POSServer.ViewModels.Menu
 		
 		public void Management()
 		{
-			_startViewModel.Open<ManagementMainViewModel>();
+            ShellViewModel.Current.Open<ManagementMainViewModel>();
 		}
 				
 		public void Utility()
 		{
-			_startViewModel.Open<ToolMainViewModel>();
+            ShellViewModel.Current.Open<ToolMainViewModel>();
 		}
 				
 		public void Synchronize()
 		{
-			_startViewModel.Open<SynchronizeMainViewModel>();
+            ShellViewModel.Current.Open<SynchronizeMainViewModel>();
 		}
 				#endregion
 		
