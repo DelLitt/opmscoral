@@ -5,19 +5,21 @@ using System.Text;
 
 namespace AppFrame.CustomAttributes
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class SingletonAttribute : Attribute
     {
         private Type _type;
         private string _name;
-        public SingletonAttribute(Type type)
+        public SingletonAttribute()
         {
-            _type = type;
+            _type = null;
+            _name = null;
         }
-        public SingletonAttribute(string name, Type type)
-        {
-            _name = name;
-            _type = type;
-        }
+        //public SingletonAttribute(string name, Type type)
+        //{
+        //    _name = name;
+        //    _type = type;
+        //}
 
         public Type Type
         {
@@ -30,5 +32,6 @@ namespace AppFrame.CustomAttributes
             get { return _name; }
             set { _name = value; }
         }
+        public object[] ConstructorArgs { get; set; }
     }
 }

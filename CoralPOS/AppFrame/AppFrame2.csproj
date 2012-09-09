@@ -55,6 +55,9 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caliburn.Core">
+      <HintPath>..\POSServer.BusinessLogic\bin\Debug\Caliburn.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Caliburn.Micro">
       <HintPath>..\libraries\Caliburn\Caliburn.Micro.dll</HintPath>
       <Private>False</Private>
@@ -73,6 +76,7 @@
       <HintPath>..\libraries\NHibernate\Iesi.Collections.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="NHibernate">
       <HintPath>..\libraries\NHibernate\NHibernate.dll</HintPath>
       <Private>False</Private>
@@ -156,6 +160,7 @@
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="CustomAttributes\AttachMenuAndMainScreenAttribute.cs" />
+    <Compile Include="CustomAttributes\AutowiredAttribute.cs" />
     <Compile Include="CustomAttributes\SingletonAttribute.cs" />
     <Compile Include="CustomAttributes\MainScreenAttribute.cs" />
     <Compile Include="CustomAttributes\PerRequestAttribute.cs" />
@@ -208,6 +213,7 @@
     <Compile Include="Security\RoleDeniedActions.cs" />
     <Compile Include="Security\RoleSecurity.cs" />
     <Compile Include="Security\UISecurityCheckingAttribute.cs" />
+    <Compile Include="SpringSupport\AnnotationObjectPostProcessor.cs" />
     <Compile Include="Utils\ClientUtility.cs" />
     <Compile Include="Utils\DateUtility.cs" />
     <Compile Include="Utils\DbUtility.cs" />

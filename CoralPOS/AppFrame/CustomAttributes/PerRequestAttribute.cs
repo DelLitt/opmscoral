@@ -5,19 +5,24 @@ using System.Text;
 
 namespace AppFrame.CustomAttributes
 {
+    [AttributeUsage(AttributeTargets.Class,AllowMultiple = true)]
     public class PerRequestAttribute : Attribute
     {
-        private Type _type;
-        private string _name;
-        public PerRequestAttribute(Type type)
+        private Type _type = null;
+        private string _name = null;
+        public PerRequestAttribute()
         {
-            _type = type;
+            
         }
-        public PerRequestAttribute(string name,Type type)
-        {
-            _name = name;
-            _type = type;
-        }
+        //public PerRequestAttribute(Type type)
+        //{
+        //    _type = type;
+        //}
+        //public PerRequestAttribute(string name,Type type)
+        //{
+        //    _name = name;
+        //    _type = type;
+        //}
 
         public Type Type
         {
@@ -30,5 +35,7 @@ namespace AppFrame.CustomAttributes
             get { return _name; }
             set { _name = value; }
         }
+
+        public object[] ConstructorArgs { get; set; }
     }
 }
