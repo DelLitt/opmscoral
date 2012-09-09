@@ -5,7 +5,7 @@ using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
-    [PerRequest(Type = typeof(INormalLoadViewModel))]
+    [Singleton(Type = typeof(INormalLoadViewModel))]
     public class NormalLoadViewModel : Screen, INormalLoadViewModel
     {
         private IShellViewModel _startViewModel;

@@ -25,7 +25,6 @@ namespace POSServer.ViewModels.Dialogs
 	public class ProductPropertiesViewModel : PosViewModel
 	{
 
-		private IShellViewModel _startViewModel;
 		private IList _productColorList;
 
 		private IList _productSizeList;
@@ -44,7 +43,7 @@ namespace POSServer.ViewModels.Dialogs
 
 		public ProductPropertiesViewModel()
 		{
-			_startViewModel = ShellViewModel.Current;
+			
 		}
 		
 		#region Fields
@@ -171,13 +170,13 @@ namespace POSServer.ViewModels.Dialogs
 			eventArgs.ProductColorList = SelectedProductColors;
 			eventArgs.ProductSizeList = SelectedProductSizes;
 			if(ConfirmEvent!=null) ConfirmEvent(this, eventArgs);
-			_startViewModel.HideDialog(this);
+            ShellViewModel.Current.HideDialog(this);
 			//Shutdown();
 		}
 
 		public void Cancel()
 		{
-			_startViewModel.HideDialog(this);
+            ShellViewModel.Current.HideDialog(this);
 			//Shutdown();
 		}
 		protected void OnShutdown()

@@ -23,6 +23,8 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.StockIn
 {
     [AttachMenuAndMainScreen(typeof(StockInMenuViewModel), typeof(StockMainViewModel))]
+    [PerRequest(Name = "StockInConfirmViewModel",ConstructorArgs= new object[]{false})]
+    [PerRequest(Name = "StockInDetailViewModel", ConstructorArgs = new object[] { true })]
 	public class StockInConfirmViewModel : PosViewModel
 	{
 

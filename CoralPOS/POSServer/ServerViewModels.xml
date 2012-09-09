@@ -6,17 +6,17 @@
   <object type="AppFrame.SpringSupport.AnnotationObjectPostProcessor, AppFrame" />
 
   <!-- Define stock in confirm beans -->
-  <object id="StockInConfirmViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
-    <!--<constructor-arg ref="IShellViewModel" />-->
+  <!--<object id="StockInConfirmViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
+  
     <constructor-arg value="false" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
   
   <object id="StockInDetailViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
-    <!--<constructor-arg ref="IShellViewModel" />-->
+  
     <constructor-arg value="true" />
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
-  </object>
+  </object>-->
 
   <!-- Define stock out confirm beans -->
   <object id="StockOutConfirmViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutConfirmViewModel, POSServer" singleton="false">

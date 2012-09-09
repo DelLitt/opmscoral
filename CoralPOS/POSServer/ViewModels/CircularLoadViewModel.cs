@@ -8,7 +8,7 @@ using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
-    [PerRequest(Type = typeof(ICircularLoadViewModel))]
+    [Singleton(Type = typeof(ICircularLoadViewModel))]
     public class CircularLoadViewModel : Screen,ICircularLoadViewModel
     {
         private IShellViewModel _startViewModel;
@@ -26,7 +26,6 @@ namespace POSServer.ViewModels
 
         public void StopLoading()
         {
-            TryClose();
             ShellViewModel.Current.HideDialog(this);
             ////Shutdown();
         }
