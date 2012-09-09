@@ -18,8 +18,8 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Menu.Tool
 {
-    [PerRequest(typeof(IToolMenuViewModel))]
-    public class ToolMenuViewModel : PosViewModel,IToolMenuViewModel  
+    [PerRequest]
+    public class ToolMenuViewModel : PosViewModel
     {
 
         private IShellViewModel _startViewModel;
