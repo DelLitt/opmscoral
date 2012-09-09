@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
@@ -12,19 +13,22 @@ using POSServer.Utils;
 
 namespace POSServer.Actions.Stock.StockOut
 {
+    [PerRequest]
     public class StockOutConfirmPreLoadAction : PosAction
     {
+        [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
+        [Autowired]
         public IMainStockLogic MainStockLogic
         {
             get; set;
         }
-
+        [Autowired]
         public IDepartmentLogic DepartmentLogic
         {
             get; set;
         }
-
+        [Autowired]
         public IStockOutLogic StockOutLogic
         {
             get; set; 

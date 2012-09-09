@@ -26,6 +26,7 @@ namespace POSServer.ViewModels.Tool
 {
 
 	[AttachMenuAndMainScreen(typeof(ToolMainViewModel), typeof(MainViewModel))]
+    [PerRequest]
 	public class SystemConfigViewModel : PosViewModel
 	{
 

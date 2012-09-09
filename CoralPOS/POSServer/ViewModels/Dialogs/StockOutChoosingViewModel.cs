@@ -21,6 +21,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Dialogs
 {
+    [PerRequest]
 	public class StockOutChoosingViewModel : PosViewModel
 	{
 		
@@ -32,7 +33,7 @@ namespace POSServer.ViewModels.Dialogs
 		
 		#region Fields
 
-		
+        [Autowired]
 		IStockInLogic StockInLogic { get; set; }
 				#endregion
 		

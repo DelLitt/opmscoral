@@ -253,7 +253,6 @@
     <Compile Include="ViewModels\Menu\Stock\StockOutMenuViewModel.cs" />
     <Compile Include="ViewModels\Menu\Synchronize\SynchronizeMenuViewModel.cs" />
     <Compile Include="ViewModels\Menu\Task\TaskMenuViewModel.cs" />
-    <Compile Include="ViewModels\Menu\Tool\IToolMenuViewModel.cs" />
     <Compile Include="ViewModels\Menu\Tool\ToolMenuViewModel.cs" />
     <Compile Include="ViewModels\NormalLoadViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

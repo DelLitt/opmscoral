@@ -21,7 +21,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-	//[PerRequest(typeof(IExProductColorViewModel))]
+	[PerRequest]
 	public class ExProductColorViewModel : PosViewModel
 	{
 
@@ -36,7 +36,7 @@ namespace POSServer.ViewModels.ProductMaster
 		}
 		
 		#region Fields
-
+        [Autowired]
 		public IExProductColorLogic ProductColorLogic
 		{
 			get; set;

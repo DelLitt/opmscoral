@@ -24,7 +24,7 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-	//[PerRequest(typeof(IProductTypeViewModel))]
+	[PerRequest]
 	public class ProductTypeViewModel : PosViewModel
 	{
 	    private IList _originalList;
@@ -80,7 +80,7 @@ namespace POSServer.ViewModels.ProductMaster
 				NotifyOfPropertyChange(() => TypeId);
 			}
 		}
-
+        [Autowired]
 		public IProductTypeLogic ProductTypeLogic
 		{
 			get; set;

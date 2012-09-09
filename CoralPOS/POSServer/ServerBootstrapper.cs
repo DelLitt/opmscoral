@@ -18,6 +18,7 @@ using Spring.Objects.Factory.Support;
 
 namespace POSServer
 {
+    
     public class ServerBootstrapper : Bootstrapper<IShellViewModel>
     {
         private GenericApplicationContext context;
@@ -41,29 +42,30 @@ namespace POSServer
             // scan for all attributes of Spring.
             var assembly = Assembly.GetEntryAssembly();
             
-            // register all singleton attribute
-            (from type in assembly.GetTypes()
-             let attributes = type.GetCustomAttributes(typeof (SingletonAttribute), false)
-             where attributes != null && attributes.Length > 0
-             select new { CreateType = type, Attribute = attributes.Cast<SingletonAttribute>().First() })
-                .ToList()
-                .ForEach(x => context.ObjectFactory.RegisterSingleton(x.Attribute.Type.Name, Activator.CreateInstance(x.CreateType)));
 
-            // register all perrequest attribute
-            (from type in assembly.GetTypes()
-             let attributes = type.GetCustomAttributes(typeof(PerRequestAttribute), false)
-             where attributes != null && attributes.Length > 0
-             select new { CreateType = type, Attribute = attributes.Cast<PerRequestAttribute>().First() })
-                .ToList()
-                .ForEach(x =>
-                             {
-                                 IObjectDefinition def = factory.CreateObjectDefinition(x.CreateType.FullName + "," + x.CreateType.Assembly.GetName(), null, AppDomain.CurrentDomain);
+            // register all singleton attribute
+            //(from type in assembly.GetTypes()
+            // let attributes = type.GetCustomAttributes(typeof (SingletonAttribute), false)
+            // where attributes != null && attributes.Length > 0
+            // select new { CreateType = type, Attribute = attributes.Cast<SingletonAttribute>().First() })
+            //    .ToList()
+            //    .ForEach(x => context.ObjectFactory.RegisterSingleton(x.Attribute.Type.Name, Activator.CreateInstance(x.CreateType)));
+
+            //// register all perrequest attribute
+            //(from type in assembly.GetTypes()
+            // let attributes = type.GetCustomAttributes(typeof(PerRequestAttribute), false)
+            // where attributes != null && attributes.Length > 0
+            // select new { CreateType = type, Attribute = attributes.Cast<PerRequestAttribute>().First() })
+            //    .ToList()
+            //    .ForEach(x =>
+            //                 {
+            //                     IObjectDefinition def = factory.CreateObjectDefinition(x.CreateType.FullName + "," + x.CreateType.Assembly.GetName(), null, AppDomain.CurrentDomain);
                                  
-                                 string name = x.CreateType.Name;
-                                 if (x.Attribute.Type != null) name = x.Attribute.Type.Name;
-                                 if (x.Attribute.Name != null) name = x.Attribute.Name;
-                                 context.ObjectFactory.RegisterObjectDefinition(name, def);
-                             });
+            //                     string name = x.CreateType.Name;
+            //                     if (x.Attribute.Type != null) name = x.Attribute.Type.Name;
+            //                     if (x.Attribute.Name != null) name = x.Attribute.Name;
+            //                     context.ObjectFactory.RegisterObjectDefinition(name, def);
+            //                 });
             context.Refresh();
             
         }

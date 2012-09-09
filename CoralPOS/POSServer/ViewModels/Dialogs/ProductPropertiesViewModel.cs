@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.Utils;
 using AppFrame.WPF;
@@ -20,7 +21,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Dialogs
 {
-	
+	[PerRequest]
 	public class ProductPropertiesViewModel : PosViewModel
 	{
 
@@ -113,8 +114,11 @@ namespace POSServer.ViewModels.Dialogs
 		}
 
 		public string ProductName { get; set; }
+        [Autowired]
 		public IExProductColorLogic ProductColorLogic { get; set; }
+        [Autowired]
 		public IExProductSizeLogic ProductSizeLogic { get; set; }
+        [Autowired]
 		public IProductLogic ProductLogic { get; set; }
 		public event EventHandler<ProductEventArgs> ConfirmEvent;
 

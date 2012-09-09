@@ -21,6 +21,7 @@ namespace POSServer.ViewModels.ProductMaster
 {
 
     [AttachMenuAndMainScreen(typeof(ProductMasterMenuViewModel), typeof(ProductMasterMainViewModel))]
+    [PerRequest]
     public class ProductMasterViewModel : PosViewModel
     {
 

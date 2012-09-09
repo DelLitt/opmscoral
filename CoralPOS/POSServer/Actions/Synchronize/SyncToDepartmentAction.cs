@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.Base.Synchronize;
+using AppFrame.CustomAttributes;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 using CoralPOS.Models;
@@ -16,8 +17,10 @@ using ClientUtility = POSServer.Utils.ClientUtility;
 
 namespace POSServer.Actions.Synchronize
 {
+    [PerRequest]
     public class SyncToDepartmentAction : PosAction
     {
+        [Autowired]
         public ISyncLogic SyncLogic { get; set; }
         private IList resultList = null;
 

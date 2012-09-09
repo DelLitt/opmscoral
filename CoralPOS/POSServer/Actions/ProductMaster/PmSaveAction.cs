@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 using CoralPOS.Models;
@@ -14,9 +15,12 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
 {
+    [PerRequest]
     public class PmSaveAction : PosAction
     {
+        [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
+        [Autowired]
         public IMainPriceLogic MainPriceLogic { get; set; }
         private bool IsOK = false;
         private String message = "";

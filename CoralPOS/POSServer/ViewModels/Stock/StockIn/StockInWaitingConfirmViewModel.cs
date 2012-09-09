@@ -18,7 +18,7 @@ using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
-	[PerRequest(typeof(StockInWaitingConfirmViewModel))]
+	[PerRequest]
 	public class StockInWaitingConfirmViewModel : PosViewModel
 	{
 

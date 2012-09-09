@@ -22,7 +22,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    //[PerRequest(typeof(IProductCategoryViewModel))]
+    [PerRequest]
     public class ProductCategoryViewModel : PosViewModel
     {
 
@@ -80,7 +80,7 @@ namespace POSServer.ViewModels.ProductMaster
         {
             get; set;
         }
-
+        [Autowired]
         public ICategoryLogic CategoryLogic
         {
             get; set;

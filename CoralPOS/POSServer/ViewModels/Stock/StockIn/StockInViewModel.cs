@@ -23,6 +23,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 {
 
     [AttachMenuAndMainScreen(typeof(StockInMenuViewModel), typeof(StockMainViewModel))]
+    [PerRequest]
     public class StockInViewModel : PosViewModel
     {
 
@@ -139,8 +140,9 @@ namespace POSServer.ViewModels.Stock.StockIn
             get { return _productNameText; }
             set { _productNameText = value; NotifyOfPropertyChange(() => ProductNameText); }
         }
-
+        [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
+        [Autowired]
         public IMainPriceLogic MainPriceLogic { get; set; }
         #endregion
 

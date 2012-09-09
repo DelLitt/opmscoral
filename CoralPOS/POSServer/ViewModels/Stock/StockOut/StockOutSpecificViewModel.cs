@@ -24,6 +24,7 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.StockOut
 {
 	[AttachMenuAndMainScreen(typeof(StockOutMenuViewModel), typeof(StockMainViewModel))]
+    [PerRequest]
 	public class StockOutSpecificViewModel : PosViewModel
 	{
 
@@ -35,8 +36,9 @@ namespace POSServer.ViewModels.Stock.StockOut
 		
 		#region Fields
 
-
+        [Autowired]
 		public IMainStockLogic MainStockLogic { get; set; }
+        [Autowired]
 		public IProductMasterLogic ProductMasterLogic { get; set; }	
 
 

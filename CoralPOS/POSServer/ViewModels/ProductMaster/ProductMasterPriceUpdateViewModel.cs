@@ -21,6 +21,7 @@ using POSServer.ViewModels.Menu.ProductMaster;
 namespace POSServer.ViewModels.ProductMaster
 {
 	[AttachMenuAndMainScreen(typeof(ProductMasterMenuViewModel), typeof(ProductMasterMainViewModel))]
+    [PerRequest]
 	public class ProductMasterPriceUpdateViewModel : PosViewModel
 	{
 
@@ -34,9 +35,11 @@ namespace POSServer.ViewModels.ProductMaster
 		#region Fields
 
 		private string _productName;
-
+        
+        [Autowired]
 		public IMainPriceLogic MainPriceLogic
 		{
+            
 			get;
 			set;
 		}

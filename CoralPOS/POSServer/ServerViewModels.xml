@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net"
-         xmlns:tx="http://www.springframework.net/tx"> 
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <!-- Define annotation bean processor -->
+  <object type="AppFrame.SpringSupport.AnnotationObjectPostProcessor, AppFrame" />
   
   <object id="IShellViewModel" type="POSServer.ViewModels.ShellViewModel, POSServer" singleton="true">    
   </object>
@@ -13,10 +16,10 @@
     <!--<constructor-arg ref="IShellViewModel" />-->
   </object>
 
-  <object id="ProductMasterPriceUpdateViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterPriceUpdateViewModel, POSServer" singleton="false">
-    <!--<constructor-arg ref="IShellViewModel" />-->
+  <!--<object id="ProductMasterPriceUpdateViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterPriceUpdateViewModel, POSServer" singleton="false">
+    --><!--<constructor-arg ref="IShellViewModel" />--><!--
     <property name="MainPriceLogic" ref="IMainPriceLogic" />
-  </object>
+  </object>-->
   
   <object id="ProductMasterSummaryViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterSummaryViewModel, POSServer" singleton="false">
     <!--<constructor-arg ref="IShellViewModel" />-->

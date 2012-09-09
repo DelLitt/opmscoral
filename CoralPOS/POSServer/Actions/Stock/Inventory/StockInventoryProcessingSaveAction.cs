@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
@@ -10,13 +11,20 @@ using POSServer.Utils;
 
 namespace POSServer.Actions.Stock.Inventory
 {
+    [PerRequest]
     public class StockInventoryProcessingSaveAction : PosAction
     {
+        [Autowired]
         public IDepartmentLogic DepartmentLogic { get; set; }
+        [Autowired]
         public IStockOutLogic StockOutLogic { get; set; }
+        [Autowired]
         public IStockInLogic StockInLogic { get; set; }
+        [Autowired]
         public IDepartmentStockTempValidLogic DepartmentStockTempValidLogic { get; set; }
+        [Autowired]
         public IMainPriceLogic MainPriceLogic { get; set; }
+        [Autowired]
         public IStockDefinitionStatusLogic StockDefinitionStatusLogic { get; set; }
         
         public void DoExecute()

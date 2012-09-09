@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using AppFrame.Base;
 using AppFrame.Common;
+using AppFrame.CustomAttributes;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 using CoralPOS.Common;
@@ -11,15 +12,24 @@ using POSServer.Utils;
 
 namespace POSServer.Actions.Stock.StockOut
 {
+    [PerRequest]
     public class StockOutSpecificSaveAction : PosAction
     {
+        [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
+        [Autowired]
         public IProductLogic ProductLogic { get; set; }
+        [Autowired]
         public IExProductColorLogic ProductColorLogic { get; set; }
+        [Autowired]
         public IExProductSizeLogic ProductSizeLogic { get; set; }
+        [Autowired]
         public ICategoryLogic CategoryLogic { get; set; }
+        [Autowired]
         public IProductTypeLogic ProductTypeLogic { get; set; }
+        [Autowired]
         public IStockOutLogic StockOutLogic { get; set; }
+        [Autowired]
         public IMainStockLogic MainStockLogic { get; set; }
 
         public override void DoExecute()

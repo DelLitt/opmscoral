@@ -21,7 +21,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    //[PerRequest(typeof(IExProductSizeViewModel))]
+    [PerRequest]
     public class ExProductSizeViewModel : PosViewModel
     {
 
@@ -74,12 +74,12 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => SizeId);
             }
         }
-
+        [Autowired]
         public ExProductSize SelectedProductSize
         {
             get; set;
         }
-
+        [Autowired]
         public IExProductSizeLogic ProductSizeLogic
         {
             get; set;

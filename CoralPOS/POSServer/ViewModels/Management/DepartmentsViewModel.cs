@@ -25,6 +25,7 @@ using POSServer.ViewModels.Menu.Management;
 namespace POSServer.ViewModels.Management
 {
     [AttachMenuAndMainScreen(typeof(DeptEmpMenuViewModel),typeof(ManagementMainViewModel))]
+    [PerRequest]
     public class DepartmentsViewModel : PosViewModel
     {
 
@@ -87,6 +88,7 @@ namespace POSServer.ViewModels.Management
         /// Gets or sets the department logic.
         /// </summary>
         /// <value>The department logic.</value>
+        [Autowired]
         public IDepartmentLogic DepartmentLogic
         {
             get; set;

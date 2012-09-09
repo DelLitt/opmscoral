@@ -4,7 +4,6 @@ using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
-    [Singleton(typeof(NavigationShellViewModel))]
     public class NavigationShellViewModel : Navigator<IScreen>, INavigationShellViewModel
     {
         /*private IServiceLocator _serviceLocator;

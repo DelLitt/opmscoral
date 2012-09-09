@@ -114,27 +114,30 @@ namespace POSServer.ViewModels.Dialogs
 		}
 
 		public string ProductName { get; set; }
-		public IExProductColorLogic ProductColorLogic { get; set; }
-		public IExProductSizeLogic ProductSizeLogic { get; set; }
-		public IProductLogic ProductLogic { get; set; }
-		public IMainStockLogic MainStockLogic { get; set; }
-		public IProductMasterLogic ProductMasterLogic { get; set; }
-		public event EventHandler<ProductEventArgs> ConfirmEvent;
-
 		#endregion
-		
-		#region List use to fetch object for view
-				#endregion
-		
-		#region List which just using in Data Grid
-				#endregion
-		
-		#region Methods
 
-		
+        #region dependency object
+        public IExProductColorLogic ProductColorLogic { get; set; }
+        public IExProductSizeLogic ProductSizeLogic { get; set; }
+        public IProductLogic ProductLogic { get; set; }
+        public IMainStockLogic MainStockLogic { get; set; }
+        public IProductMasterLogic ProductMasterLogic { get; set; }
+        #endregion
+        
+        public event EventHandler<ProductEventArgs> ConfirmEvent;
 
-		
-		public IResult LoadData()
+        #region List use to fetch object for view
+        #endregion
+
+        #region List which just using in Data Grid
+        #endregion
+
+        #region Methods
+
+
+
+
+        public IResult LoadData()
 		{
 			return new FlowBackgroundTaskResult<INormalLoadViewModel, FlowBackgroundTaskResultEventArgs>(Setup);
 		}

@@ -2,9 +2,9 @@
 <objects xmlns="http://www.springframework.net"
          xmlns:tx="http://www.springframework.net/tx">
 
-  <object id="IProxyFactory" type="AppFrame.WPF.PosDynamicProxy, AppFrame" singleton="false">    
-  </object>
-  <object id="StartLoadScreen" type="POSServer.Actions.StartLoadScreen, POSServer" singleton="false">    
+  <!--<object id="IProxyFactory" type="AppFrame.WPF.PosDynamicProxy, AppFrame" singleton="false">    
+  </object>-->
+  <!--<object id="StartLoadScreen" type="POSServer.Actions.StartLoadScreen, POSServer" singleton="false">    
   </object>
   <object id="StopLoadScreen" type="POSServer.Actions.StopLoadScreen, POSServer" singleton="false">    
   </object>
@@ -23,10 +23,10 @@
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
   </object>
   <object id="ExProductColorsViewSaveAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewSaveAction, POSServer" singleton="false">
-    <property name="ProductColorLogic" ref="IExProductColorLogic" />
-  </object>
+    <property name="ProductColorLogic" ref="IExProductColorLogic" /> 
+  </object> -->
 
-  <object id="StockInPreLoadAction" type="POSServer.Actions.Stock.StockIn.StockInPreLoadAction, POSServer" singleton="false">
+  <!--<object id="StockInPreLoadAction" type="POSServer.Actions.Stock.StockIn.StockInPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
   </object>
 
@@ -98,5 +98,5 @@
   
   <object id="SyncToDepartmentAction" type="POSServer.Actions.Synchronize.SyncToDepartmentAction, POSServer" singleton="false">    
     <property name="SyncLogic" ref="ISyncLogic" />
-  </object>
+  </object> -->
 </objects>

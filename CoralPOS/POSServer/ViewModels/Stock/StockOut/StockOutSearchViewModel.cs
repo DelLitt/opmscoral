@@ -23,6 +23,7 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.StockOut
 {
     [AttachMenuAndMainScreen(typeof(StockOutMenuViewModel), typeof(StockMainViewModel))]
+    [PerRequest]
 	public class StockOutSearchViewModel : PosViewModel
 	{
 
@@ -125,13 +126,15 @@ namespace POSServer.ViewModels.Stock.StockOut
 				NotifyOfPropertyChange(() => SelectedStockOut);
 			}
 		}
-		
+
+        [Autowired]
 		public IStockOutLogic StockOutLogic
 		{
 			get; set;
 		}
-
+        [Autowired]
 		public ICategoryLogic CategoryLogic { get; set; }
+        [Autowired]
 		public IDepartmentLogic DepartmentLogic { get; set; }
 
 		#endregion

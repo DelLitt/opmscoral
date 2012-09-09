@@ -18,6 +18,7 @@ namespace POSServer.ViewModels.Security
     /// 
     /// </summary>
     [AttachMenuAndMainScreen(typeof(DeptEmpMenuViewModel), typeof(ManagementMainViewModel))]
+    [PerRequest]
     public class UserInfoViewModel : PosViewModel
     {
 
@@ -89,10 +90,13 @@ namespace POSServer.ViewModels.Security
                 NotifyOfPropertyChange(() => SelectedRole);
             }
         }
-
+        [Autowired]
         public IUserInfoLogic UserInfoLogic { get; set; }
+        [Autowired]
         public IEmployeeInfoLogic EmployeeInfoLogic { get; set; }
+        [Autowired]
         public IUserRoleLogic UserRoleLogic { get; set; }
+        [Autowired]
         public IRoleLogic RoleLogic { get; set; }
         #endregion
 

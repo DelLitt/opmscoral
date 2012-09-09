@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
@@ -9,7 +10,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
 {
-
+    [PerRequest]
     public class PmPricePreLoadDefinitionAction : PosAction
     {
         public override void DoExecute()
@@ -34,11 +35,13 @@ namespace POSServer.Actions.ProductMaster
             return null;
         }
         
+        [Autowired]
         public IProductMasterLogic ProductMasterLogic
         {
             get; set;
         }
 
+        [Autowired]
         public IMainPriceLogic MainPriceLogic
         {
             get; set; 

@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
 {
-    
+    [PerRequest]
     public class PmPreLoadDefinitionAction : PosAction
     {
         public override void DoExecute()
@@ -28,7 +29,7 @@ namespace POSServer.Actions.ProductMaster
             ProductMasterLogic.PreloadDefinition(this.Flow.Session);
             return null;
         }
-        
+        [Autowired]
         public IProductMasterLogic ProductMasterLogic
         {
             get; set;

@@ -9,6 +9,7 @@ namespace POSServer.ViewModels
 {
     //[Singleton(typeof(IShellViewModel))]
     //[Singleton(typeof(IShellViewModel))]
+    [Singleton(Name = "IShellViewModel")]
     public class ShellViewModel : ShellNavigator<IScreen,INode>, IShellViewModel
     {
         

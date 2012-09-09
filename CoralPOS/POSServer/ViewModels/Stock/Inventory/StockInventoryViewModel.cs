@@ -25,6 +25,7 @@ namespace POSServer.ViewModels.Stock.Inventory
 	/// 
 	/// </summary>
 	[AttachMenuAndMainScreen(typeof(InventoryMenuViewModel), typeof(StockMainViewModel))]
+    [PerRequest]
 	public class StockInventoryViewModel : PosViewModel
 	{
 
@@ -121,7 +122,9 @@ namespace POSServer.ViewModels.Stock.Inventory
 				NotifyOfPropertyChange(() => SelectedProductType);
 			}
 		}
+        [Autowired]
 		public IDepartmentLogic DepartmentLogic { get; set; }
+        [Autowired]
 		public IDepartmentStockTempValidLogic DepartmentStockTempValidLogic { get; set; }
 		#endregion
 

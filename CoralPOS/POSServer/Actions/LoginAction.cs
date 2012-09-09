@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using CoralPOS2.Models;
 using POSServer.BusinessLogic.Logic.Security;
 
 namespace POSServer.Actions
 {
+    [PerRequest]
     public class LoginAction 
     {
         public IPosActionResult Execute(LoginModel model)

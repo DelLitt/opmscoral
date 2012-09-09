@@ -2,6 +2,9 @@
 <objects xmlns="http://www.springframework.net"
          xmlns:tx="http://www.springframework.net/tx">
 
+  <!-- Define annotation bean processor -->
+  <object type="AppFrame.SpringSupport.AnnotationObjectPostProcessor, AppFrame" />
+  <!-- Define flow session -->
   <object id="FlowSession" type="AppFrame.Base.FlowSession, AppFrame" singleton="false" />
   
   <object id="LoginFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">

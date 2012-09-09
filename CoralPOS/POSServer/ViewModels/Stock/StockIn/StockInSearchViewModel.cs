@@ -22,6 +22,7 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.StockIn
 {
     [AttachMenuAndMainScreen(typeof(StockInMenuViewModel), typeof(StockMainViewModel))]
+    [PerRequest]
 	public class StockInSearchViewModel : PosViewModel
 	{
 
@@ -137,12 +138,12 @@ namespace POSServer.ViewModels.Stock.StockIn
 			get { return _selectedStockIn; }
 			set { _selectedStockIn = value; NotifyOfPropertyChange(()=>SelectedStockIn); }
 		}
-
+        [Autowired]
 		public ICategoryLogic CategoryLogic
 		{
 			get; set;
 		}
-
+        [Autowired]
 		public IStockInLogic StockInLogic
 		{
 			get; set;

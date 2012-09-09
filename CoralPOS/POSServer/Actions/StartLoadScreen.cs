@@ -1,11 +1,13 @@
 ﻿using System;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.WPF.Screens;
 using Caliburn.Micro;
 using POSServer.Utils;
 
 namespace POSServer.Actions
 {
+    [PerRequest]
     public class StartLoadScreen : PosAction
     {
         public override void DoExecute()

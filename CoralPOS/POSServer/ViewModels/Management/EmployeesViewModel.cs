@@ -22,6 +22,7 @@ namespace POSServer.ViewModels.Management
     /// 
     /// </summary>
     [AttachMenuAndMainScreen(typeof(DeptEmpMenuViewModel), typeof(ManagementMainViewModel))]
+    [PerRequest]
     public class EmployeesViewModel : PosViewModel
     {
 
@@ -116,6 +117,7 @@ namespace POSServer.ViewModels.Management
         /// Gets or sets the employee info logic.
         /// </summary>
         /// <value>The employee info logic.</value>
+        [Autowired]
         public IEmployeeInfoLogic EmployeeInfoLogic { get; set; }
         #endregion
 

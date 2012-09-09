@@ -18,7 +18,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-	//[PerRequest(typeof(IProductMasterSummaryViewModel))]
+	[PerRequest]
 	public class ProductMasterSummaryViewModel : PosViewModel
 	{
 

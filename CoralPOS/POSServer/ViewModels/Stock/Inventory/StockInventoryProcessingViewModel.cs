@@ -18,11 +18,13 @@ using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 using POSServer.Common;
 using POSServer.Utils;
+using POSServer.ViewModels.Menu.Stock;
 
 
 namespace POSServer.ViewModels.Stock.Inventory
 {
-	//[PerRequest(typeof(IStockInventoryProcessingViewModel))]
+	[PerRequest]
+    [AttachMenuAndMainScreen(typeof(InventoryMenuViewModel), typeof(StockMainViewModel))]
 	public class StockInventoryProcessingViewModel : PosViewModel
 	{
 
@@ -91,8 +93,11 @@ namespace POSServer.ViewModels.Stock.Inventory
 		}
 
 		private DepartmentStockTempValidDTO _tempValidDTO;
+        [Autowired]
 		public IDepartmentLogic DepartmentLogic { get; set; }
+        [Autowired]
 		public IDepartmentStockTempValidLogic DepartmentStockTempValidLogic { get; set; }
+        [Autowired]
 		public IStockDefinitionStatusLogic StockDefinitionStatusLogic { get; set; }
 				#endregion
 		

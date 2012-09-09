@@ -24,6 +24,7 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.StockOut
 {
 	[AttachMenuAndMainScreen(typeof(StockOutMenuViewModel), typeof(StockMainViewModel))]
+    [PerRequest]
 	public class StockOutWaitingConfirmViewModel : PosViewModel
 	{
 
@@ -32,7 +33,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 		{
 			_startViewModel = ShellViewModel.Current;
 		}
-
+        [Autowired]
 		private IMainStockLogic MainStockLogic { get; set; }
 		#region Fields
 				#endregion

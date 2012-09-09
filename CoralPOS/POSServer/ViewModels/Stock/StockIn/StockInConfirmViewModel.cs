@@ -23,6 +23,7 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.StockIn
 {
     [AttachMenuAndMainScreen(typeof(StockInMenuViewModel), typeof(StockMainViewModel))]
+    [PerRequest]
 	public class StockInConfirmViewModel : PosViewModel
 	{
 
@@ -115,6 +116,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 			get { return _barcodeText; }
 			set { _barcodeText = value;NotifyOfPropertyChange(()=>BarcodeText); }
 		}
+        [Autowired]
 		public IMainPriceLogic MainPriceLogic { get; set; }
 		#endregion
 		
