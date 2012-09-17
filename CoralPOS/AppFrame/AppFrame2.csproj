@@ -214,6 +214,9 @@
     <Compile Include="Security\RoleSecurity.cs" />
     <Compile Include="Security\UISecurityCheckingAttribute.cs" />
     <Compile Include="SpringSupport\AnnotationObjectPostProcessor.cs" />
+    <Compile Include="SpringSupport\ChildFlowObjectDefinitionParser.cs" />
+    <Compile Include="SpringSupport\DefaultFlowObjectDefinitionParser.cs" />
+    <Compile Include="SpringSupport\FlowNamespaceParser.cs" />
     <Compile Include="Utils\ClientUtility.cs" />
     <Compile Include="Utils\DateUtility.cs" />
     <Compile Include="Utils\DbUtility.cs" />
@@ -263,6 +266,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EmbeddedResource Include="spring-support.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Page Include="WPF\Screens\CircularProgressBar.xaml">

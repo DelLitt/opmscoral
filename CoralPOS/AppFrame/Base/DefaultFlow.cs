@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Caliburn.Micro;
 
@@ -6,7 +7,6 @@ namespace AppFrame.Base
 {
     public class DefaultFlow : IFlow
     {
-        private ShellNavigator<IScreen,INode> _rootNavigator;
         private readonly Stack<INode> _next = new Stack<INode>();
         private readonly Stack<INode> _previous = new Stack<INode>();
         private IFlowSession _flowSession;
@@ -16,12 +16,18 @@ namespace AppFrame.Base
 
         public DefaultFlow()
         {
-             
+            
         }
 
         public DefaultFlow(ShellNavigator<IScreen,INode> rootNavigator) 
         {
-            _rootNavigator = rootNavigator;
+            Navigator = rootNavigator;
+            InitFlow();
+        }
+        
+        public DefaultFlow(IDictionary flowSteps)
+        {
+            FlowSteps = flowSteps;
             InitFlow();
         }
 
@@ -44,14 +50,7 @@ namespace AppFrame.Base
         }
         public ShellNavigator<IScreen, INode> Navigator
         {
-            get
-            {
-                return _rootNavigator; 
-            }
-            set
-            {
-                _rootNavigator = value;
-            }
+            get;set;
         }
 
         public INode CurrentNode
@@ -140,7 +139,7 @@ namespace AppFrame.Base
             if (_current is IScreen)
             {
                 var screen = _current as IScreen;
-                _rootNavigator.ActivateItem(screen);
+                Navigator.ActivateItem(screen);
             }
             else if(_current is IActionNode)
             {
@@ -208,7 +207,7 @@ namespace AppFrame.Base
 
         private INode EnsureNode(string nodeTypeName,int position)
         {
-            INode node = _rootNavigator.CreateNode(nodeTypeName);
+            INode node = Navigator.CreateNode(nodeTypeName);
             node.Name = _nodeList[position];
             return node;
         }
@@ -259,7 +258,17 @@ namespace AppFrame.Base
 
         public virtual void End()
         {
-            _rootNavigator.LeaveFlow(); 
+            Clean();
+            Navigator.LeaveFlow(); 
+        }
+
+        private void Clean()
+        {
+            _current = null;
+            _flowSession.Clear();
+            _nodeList.Clear();
+            _next.Clear();
+            _previous.Clear();
         }
 
         public bool IsRepeated
@@ -298,6 +307,15 @@ namespace AppFrame.Base
                 _flowSession.Flow = this;
             }
         }
+
+        public Type MenuClass { get; set; }
+
+        public Type MainScreenClass { get; set; }
+
+        public PosViewModel Menu { get; set; }
+
+        public PosViewModel MainScreen { get; set; }
+
         public int Count
         {
             get

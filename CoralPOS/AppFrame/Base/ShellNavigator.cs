@@ -25,29 +25,8 @@ namespace AppFrame.Base
          
         public ShellNavigator()
         {
-            //_serviceLocator = (Caliburn.PresentationFramework.ApplicationModel.CaliburnApplication) Application.Current).Container;
-            /*var bootstrapper = (Bootstrapper)Application.Current.Resources["bootstrapper"];*/
+            
         }
-        
-        /*/// <summary>
-        /// Service locator
-        /// </summary>
-        public IServiceLocator ServiceLocator
-        {
-            get
-            {
-                if (_serviceLocator == null)
-                {
-                    var bootstrapper = (Bootstrapper)Application.Current.Resources["bootstrapper"];
-                    _serviceLocator = bootstrapper.Container;
-                }
-                return _serviceLocator;
-            }
-            set
-            {
-                _serviceLocator = value;
-            }
-        }*/
         
         /// <summary>
         /// Menu attach with ActiveScreen
@@ -72,6 +51,15 @@ namespace AppFrame.Base
         public T RootScreen
         {
             get; set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public T MainScreen
+        {
+            get;
+            set;
         }
 
         /// <summary>
@@ -209,7 +197,7 @@ namespace AppFrame.Base
         {
             if (!isResume)
             {
-                flow.Navigator = this as ShellNavigator<IScreen, INode>;
+                flow.Navigator = (this as ShellNavigator<IScreen, INode>);
                 flow.InitFlow();
                 ActiveFlow = flow;
                 flow.Start();
@@ -233,6 +221,7 @@ namespace AppFrame.Base
             {*/
                 IFlow flow = IoC.Get<IFlow>(flowName);
                 flow.Name = flowName;
+                flow.Session.Clear();
                 ExecuteFlow(flow,false);
                 return true;
             /*}
@@ -285,11 +274,6 @@ namespace AppFrame.Base
             return (U) instance;
         }
 
-        public T MainScreen
-        {
-            get; set;
-        }
-
         /// <summary>
         /// Leave flow
         /// </summary>
@@ -302,6 +286,7 @@ namespace AppFrame.Base
                 ChildFlow childFlow = (ChildFlow) flow;
                 if(childFlow.ParentFlow!= null)
                 {
+                    flow.Navigator = null;
                     ResumeFlow(childFlow.ParentFlow.Name);
                 }
                 else
@@ -313,6 +298,7 @@ namespace AppFrame.Base
                     }
                     else
                     {
+                        flow.Navigator = null;
                         OpenMainScreen();    
                     }
                 }
@@ -326,6 +312,8 @@ namespace AppFrame.Base
                 }
                 else
                 {
+                    flow.Navigator = null;
+                    flow = null;
                     OpenMainScreen();    
                 }
             }
@@ -336,7 +324,17 @@ namespace AppFrame.Base
         /// </summary>
         public void OpenMainScreen()
         {
-            if (MainScreen != null) this.ActivateItem(MainScreen);
+            if (MainScreen != null)
+            {
+                ActivateItem(MainScreen);
+            }
+            //else
+            //{
+            //    if(RootScreen!=null)
+            //    {
+            //        ActivateItem(RootScreen);
+            //    }
+            //}
             // if active flow is not null so freeze it
             if (ActiveFlow != null)
             {
@@ -371,7 +369,6 @@ namespace AppFrame.Base
         protected override void ChangeActiveItem(T newActiveScreen,bool closePrevious)
         {
             base.ChangeActiveItem(newActiveScreen,closePrevious);
-            
             // process AttachMenu
             Type type = newActiveScreen.GetType();
             object[] attachMenuAttributes = type.GetCustomAttributes(typeof (AttachMenuAndMainScreenAttribute), false);
@@ -385,10 +382,20 @@ namespace AppFrame.Base
                 {
                     MainScreen = (T) IoC.GetInstance(attribute.MainScreen,null);
                 }
-                else
+            }
+            else // get menu and mainscreen from flow
+            {
+                // if it does not have active flow then return
+                if (ActiveFlow == null) return;
+                if(ActiveFlow.MenuClass!=null)
                 {
-                    MainScreen = null;
+                    IScreen menuScreen = (IScreen)IoC.GetInstance(ActiveFlow.MenuClass, null);
+                    ActiveMenu = menuScreen;
                 }
+                if(ActiveFlow.MainScreenClass!=null)
+                {
+                    MainScreen = (T)IoC.GetInstance(ActiveFlow.MainScreenClass, null);
+                } 
             }
         }
 

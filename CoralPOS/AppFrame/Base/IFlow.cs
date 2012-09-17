@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Caliburn.Micro;
 
 namespace AppFrame.Base
@@ -29,6 +30,7 @@ namespace AppFrame.Base
         IDictionary FlowSteps { get; set; }
 
         IFlowSession Session { get; set; }
-        
+        Type MenuClass { get; set; }
+        Type MainScreenClass { get; set; }
     }
 }

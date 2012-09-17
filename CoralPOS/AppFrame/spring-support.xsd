@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="pos"
+    targetNamespace="http://www.newcoral.com.vn/schema/pos"        
+    xmlns="http://www.newcoral.com.vn/schema/pos"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:objects="http://www.springframework.net"
+    xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    vs:friendlyname="Spring Support for CoralPOS" vs:ishtmlschema="false"
+    vs:iscasesensitive="true" vs:requireattributequotes="true"
+    vs:defaultnamespacequalifier="" vs:defaultnsprefix=""
+  >
+  
+  <xsd:import namespace="http://www.springframework.net" />
+  
+  <xsd:complexType name="flowType">
+      <xsd:complexContent>
+        <xsd:extension base="objects:identifiedType">
+          <xsd:sequence>
+            <xsd:element name="menu" type="xsd:string"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="screen" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="steps" type="stepsType" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="session" type="xsd:string" minOccurs="1" maxOccurs="1" />
+          </xsd:sequence>
+          <xsd:attribute name="menu" type="xsd:string" use="optional"/>
+          <xsd:attribute name="screen" type="xsd:string" use="optional"/>
+          <xsd:attribute name="singleton" type="xsd:boolean" use="optional" default="false"/>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+          
+  <xsd:element name="flow" type="flowType">
+  </xsd:element>
+  
+  <xsd:complexType name="stepsType">
+    <xsd:sequence>
+      <xsd:element name="step" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:element name="childflow">
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="flowType">
+          <xsd:attribute name="parent" type="xsd:string" use="optional" />
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+
