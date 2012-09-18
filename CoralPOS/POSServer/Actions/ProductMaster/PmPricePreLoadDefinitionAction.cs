@@ -11,27 +11,27 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.Actions.ProductMaster
 {
     [PerRequest]
-    public class PmPricePreLoadDefinitionAction : PosAction
+    public class PmPricePreLoadDefinitionAction : DefaultPosAction
     {
         public override void DoExecute()
         {
-            IoC.Get<ICircularLoadViewModel>().StartLoading();
-            DoExecuteCompleted +=  LoadProductCompleted;
-            DoExecuteAsync(LoadProductMasterDefinition, null);
+            StartAsyncWork();
         }
 
-        private void LoadProductCompleted(object sender, RunWorkerCompletedEventArgs e)
+        public override object Working()
         {
-            IoC.Get<ICircularLoadViewModel>().StopLoading();
+            return LoadProductMasterDefinition();
+        }
+
+        public override void AfterWorkCompleted()
+        {
             GoToNextNode();
         }
-
+        
         private object LoadProductMasterDefinition()
         {
             ProductMasterLogic.PreloadDefinition(this.Flow.Session);
             MainPriceLogic.PreloadDefinition(Flow.Session);
-            //IList<CoralPOS.Models.ProductMaster> productMasterList = ProductMasterLogic.FindAll(new ObjectCriteria<CoralPOS.Models.ProductMaster>());
-            //Flow.Session.Put(FlowConstants.PRODUCT_MASTER_LIST,productMasterList);
             return null;
         }
         

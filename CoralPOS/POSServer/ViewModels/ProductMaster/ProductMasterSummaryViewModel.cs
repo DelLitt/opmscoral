@@ -198,18 +198,15 @@ namespace POSServer.ViewModels.ProductMaster
 			
 		}
 
-		protected override void OnInitialize()
-		{
-			CoralPOS.Models.ProductMaster master = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_MASTER) as CoralPOS.Models.ProductMaster;
-
-			ProductMaster = master;
-			Category = master.Category;
-			ProductType = master.ProductType;
-			ProductColors = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_COLORS_LIST) as IList;
-			ProductSizes = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_SIZES_LIST) as IList;
-			//Flow.Session.OnFlowChanged += new EventHandler(Session_OnFlowChanged);
-		}
-
+		protected override void OnActivate()
+        {
+            CoralPOS.Models.ProductMaster master = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_MASTER) as CoralPOS.Models.ProductMaster;
+            ProductMaster = master;
+            Category = master.Category;
+            ProductType = master.ProductType;
+            ProductColors = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_COLORS_LIST) as IList;
+            ProductSizes = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_SIZES_LIST) as IList;
+        }
 		#endregion
 		
 		

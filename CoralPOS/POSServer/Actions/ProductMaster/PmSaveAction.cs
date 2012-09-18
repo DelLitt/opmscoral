@@ -16,7 +16,7 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.Actions.ProductMaster
 {
     [PerRequest]
-    public class PmSaveAction : PosAction
+    public class PmSaveAction : DefaultPosAction
     {
         [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
@@ -26,14 +26,16 @@ namespace POSServer.Actions.ProductMaster
         private String message = "";
         public override void DoExecute()
         {
-            IoC.Get<ICircularLoadViewModel>().StartLoading();
-            DoExecuteCompleted += SaveProductMasterCompleted;
-            DoExecuteAsync(SaveProductMaster, null);
+            StartAsyncWork();
         }
 
-        private void SaveProductMasterCompleted(object sender, RunWorkerCompletedEventArgs e)
+        public override object Working()
         {
-            IoC.Get<ICircularLoadViewModel>().StopLoading();
+            return SaveProductMaster();
+        }
+
+        public override void AfterWorkCompleted()
+        {
             if (IsOK)
             {
                 MessageBox.Show(message);

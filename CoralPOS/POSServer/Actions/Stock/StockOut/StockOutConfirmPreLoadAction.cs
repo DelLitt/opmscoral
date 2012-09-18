@@ -14,7 +14,7 @@ using POSServer.Utils;
 namespace POSServer.Actions.Stock.StockOut
 {
     [PerRequest]
-    public class StockOutConfirmPreLoadAction : PosAction
+    public class StockOutConfirmPreLoadAction : DefaultPosAction
     {
         [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
@@ -36,18 +36,15 @@ namespace POSServer.Actions.Stock.StockOut
 
         public override void DoExecute()
         {
-            IoC.Get<ICircularLoadViewModel>().StartLoading();
-            DoExecuteCompleted += StockOutPreLoadActionDoExecuteCompleted;
-            DoExecuteAsync(DoWork, null);
+            StartAsyncWork();
         }
 
-        void StockOutPreLoadActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        public override void AfterWorkCompleted()
         {
-            IoC.Get<ICircularLoadViewModel>().StopLoading();
             GoToNextNode();
         }
 
-        private object DoWork()
+        public override object Working()
         {
             
             var stockOutCriteria = new ObjectCriteria<CoralPOS.Models.StockOut>();

@@ -13,7 +13,7 @@ using POSServer.Utils;
 namespace POSServer.Actions.Stock.StockOut
 {
     [PerRequest]
-    public class StockOutPreLoadAction : PosAction
+    public class StockOutPreLoadAction : DefaultPosAction
     {
         [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
@@ -30,27 +30,26 @@ namespace POSServer.Actions.Stock.StockOut
 
         public override void DoExecute()
         {
-            IoC.Get<ICircularLoadViewModel>().StartLoading();
-            DoExecuteCompleted += StockOutPreLoadActionDoExecuteCompleted;
-            DoExecuteAsync(() => DoWork(), null);
+            StartAsyncWork();
         }
 
-        void StockOutPreLoadActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        public override object Working()
         {
-            IoC.Get<ICircularLoadViewModel>().StopLoading();
-            GoToNextNode();
-        }
-
-        private object DoWork()
-        {
-            IList productMasters = (IList) MainStockLogic.FetchAll(new LinqCriteria<MainStock>());
+            IList productMasters = (IList)MainStockLogic.FetchAll(new LinqCriteria<MainStock>());
             //IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType("%%");
             Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
             ObjectCriteria<Department> objectCriteria = new ObjectCriteria<Department>();
             objectCriteria.Add(x => x.DepartmentId > 0); // we don't get department 0 because department 0 is MAIN STOCK.
             IList<Department> departments = DepartmentLogic.FindAll(objectCriteria);
-            Flow.Session.Put(FlowConstants.DEPARTMENTS,departments);
+            Flow.Session.Put(FlowConstants.DEPARTMENTS, departments);
             return null;
         }
+
+        public override void AfterWorkCompleted()
+        {
+            GoToNextNode();
+        }
+
+        
     }
 }

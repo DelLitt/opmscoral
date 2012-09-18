@@ -18,7 +18,7 @@ using ClientUtility = POSServer.Utils.ClientUtility;
 namespace POSServer.Actions.Synchronize
 {
     [PerRequest]
-    public class SyncToDepartmentAction : PosAction
+    public class SyncToDepartmentAction : DefaultPosAction
     {
         [Autowired]
         public ISyncLogic SyncLogic { get; set; }
@@ -26,17 +26,13 @@ namespace POSServer.Actions.Synchronize
 
         public override void DoExecute()
         {
-            SyncToDepartmentObject toDepartmentObject = Flow.Session.Get(FlowConstants.SYNC_TO_DEPARTMENT) as SyncToDepartmentObject;
-
-            IoC.Get<INormalLoadViewModel>().StartLoading();
-            DoExecuteCompleted += SyncToDepartmentCompleted;
-            DoExecuteAsync(() => SyncToDepartment(toDepartmentObject), toDepartmentObject);
-            GoToNextNode();
+            StartAsyncWork();
         }
                
         
-        public object SyncToDepartment(SyncToDepartmentObject toDepartmentObject)
+        public override object Working()
         {
+            SyncToDepartmentObject toDepartmentObject = Flow.Session.Get(FlowConstants.SYNC_TO_DEPARTMENT) as SyncToDepartmentObject;
             IList departmentUsbList = ClientUtility.GetUSBDrives();
             foreach (var POSSyncDrive in departmentUsbList)
             {
@@ -67,9 +63,8 @@ namespace POSServer.Actions.Synchronize
             return new List<UsbSyncDisc>();
         }
 
-        private void SyncToDepartmentCompleted(object sender, RunWorkerCompletedEventArgs e)
+        public override void AfterWorkCompleted()
         {
-            IoC.Get<INormalLoadViewModel>().StopLoading();
             GoToNextNode();
         }
     }

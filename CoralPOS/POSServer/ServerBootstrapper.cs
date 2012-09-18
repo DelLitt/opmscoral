@@ -12,20 +12,22 @@ using AppFrame.CustomAttributes;
 using Caliburn.Micro;
 using POSServer.Common;
 using POSServer.ViewModels;
+using Spring.Context;
 using Spring.Context.Support;
 using Spring.Objects.Factory.Config;
 using Spring.Objects.Factory.Support;
 
 namespace POSServer
 {
-    
+
     public class ServerBootstrapper : Bootstrapper<IShellViewModel>
     {
-        private GenericApplicationContext context;
+        private IApplicationContext context;
 
-        public ServerBootstrapper() :base()
+        public ServerBootstrapper()
+            : base()
         {
-            
+
         }
 
         private void InitValidators()
@@ -36,38 +38,10 @@ namespace POSServer
         private void InitSpring()
         {
             GlobalSession.Instance.Put(CommonConstants.IS_LOGGED, false);
-            var cxt = ContextRegistry.GetContext();
-            context = new GenericApplicationContext(cxt);
-            var factory = new DefaultObjectDefinitionFactory();
-            // scan for all attributes of Spring.
-            var assembly = Assembly.GetEntryAssembly();
+            context = ContextRegistry.GetContext();
             
+            //context.Refresh();
 
-            // register all singleton attribute
-            //(from type in assembly.GetTypes()
-            // let attributes = type.GetCustomAttributes(typeof (SingletonAttribute), false)
-            // where attributes != null && attributes.Length > 0
-            // select new { CreateType = type, Attribute = attributes.Cast<SingletonAttribute>().First() })
-            //    .ToList()
-            //    .ForEach(x => context.ObjectFactory.RegisterSingleton(x.Attribute.Type.Name, Activator.CreateInstance(x.CreateType)));
-
-            //// register all perrequest attribute
-            //(from type in assembly.GetTypes()
-            // let attributes = type.GetCustomAttributes(typeof(PerRequestAttribute), false)
-            // where attributes != null && attributes.Length > 0
-            // select new { CreateType = type, Attribute = attributes.Cast<PerRequestAttribute>().First() })
-            //    .ToList()
-            //    .ForEach(x =>
-            //                 {
-            //                     IObjectDefinition def = factory.CreateObjectDefinition(x.CreateType.FullName + "," + x.CreateType.Assembly.GetName(), null, AppDomain.CurrentDomain);
-                                 
-            //                     string name = x.CreateType.Name;
-            //                     if (x.Attribute.Type != null) name = x.Attribute.Type.Name;
-            //                     if (x.Attribute.Name != null) name = x.Attribute.Name;
-            //                     context.ObjectFactory.RegisterObjectDefinition(name, def);
-            //                 });
-            context.Refresh();
-            
         }
 
         protected override void Configure()
@@ -79,7 +53,7 @@ namespace POSServer
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
             Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy";
 
-            
+
         }
 
         private void InitCommands()
@@ -112,17 +86,23 @@ namespace POSServer
         {
             if (string.IsNullOrEmpty(key))
             {
-                if (service.IsInterface) // we use interface as key name for get object
+                if (context.ContainsObject(service.Name))
                 {
                     object firstTry = context.GetObject(service.Name);
-                    if (firstTry != null) return firstTry;
-                    object secondTry = context.GetObject(service.FullName);
-                    if (secondTry != null) return secondTry;
+                    return firstTry;
                 }
+                if (service.IsInterface) // we use interface as key name for get object
+                {
+
+                    if (context.ContainsObject(service.FullName))
+                    {
+                        object secondTry = context.GetObject(service.FullName);
+                        return secondTry;
+                    }
+                }
+
                 // we get object by its type
-                object testTry = context.GetObject(service.Name);
-                if (testTry != null) return testTry;
-                IDictionary thirdTry = context.GetObjectsOfType(service);
+                IDictionary thirdTry = context.GetObjectsOfType(service, true, false);
                 IEnumerator enumerator = thirdTry.Values.GetEnumerator();
                 if (enumerator.MoveNext())
                 {

@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:p="http://www.newcoral.com.vn/schema/pos"
+         >
+
+  <!-- Define annotation bean processor -->
+  <!--<object type="AppFrame.SpringSupport.AnnotationObjectPostProcessor, AppFrame" />-->
+  <!-- Define flow session -->
+  <object id="FlowSession" type="AppFrame.Base.FlowSession, AppFrame" singleton="false" />
+
+  <p:flow id="LoginFlow">
+    <p:steps>
+      <p:step>POSServer.ViewModels.Security.LoginViewModel</p:step>
+      <p:step>POSServer.Actions.Security.RegisterUserAction</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+  
+  <p:flow id="ProductMasterCreateFlow">
+    <p:menu>POSServer.ViewModels.Menu.ProductMaster.ProductMasterMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.ProductMaster.ProductMasterMainViewModel</p:screen>
+    <p:steps>
+      <p:step>POSServer.Actions.ProductMaster.PmPreLoadDefinitionAction</p:step>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.ProductMaster.ProductMasterViewModel</p:step>
+      <!-- Show product master summary form -->
+      <p:step>POSServer.ViewModels.ProductMaster.ProductMasterSummaryViewModel</p:step>
+      <!-- Save Product Master -->
+      <p:step>POSServer.Actions.ProductMaster.PmSaveAction</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="ProductMasterPriceUpdateFlow">
+    <p:menu>POSServer.ViewModels.Menu.ProductMaster.ProductMasterMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.ProductMaster.ProductMasterMainViewModel</p:screen>
+    <p:steps>
+      <p:step>POSServer.Actions.ProductMaster.PmPricePreLoadDefinitionAction</p:step>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.ProductMaster.ProductMasterPriceUpdateViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:childflow id="ProductColorViewFlow">
+    <p:steps>
+      <!--<p:step>POSServer.Actions.ProductMaster.IExProductColorsViewPreLoadAction"/>-->
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.ProductMaster.ExProductColorViewModel</p:step>
+      <!-- Show product master summary form -->
+      <!--<p:step>POSServer.Actions.ProductMaster.IExProductColorsViewSaveAction"/>-->
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:childflow>
+  
+  <p:childflow id="ProductSizeViewFlow">
+    <p:steps>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.ProductMaster.ExProductSizeViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:childflow>
+
+  <p:childflow id="ProductTypeViewFlow">
+    <p:steps>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.ProductMaster.ProductTypeViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:childflow>
+
+  <p:childflow id="ProductCategoryViewFlow">
+    <p:steps>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.ProductMaster.ProductCategoryViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:childflow>
+
+  <p:childflow id="DepartmentsViewFlow" >
+    <p:steps>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.Management.DepartmentsViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:childflow>
+
+  <p:flow id="StockInCreateFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Stock.StockInMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Stock.StockMainViewModel</p:screen>
+    <p:steps>
+      <p:step>POSServer.Actions.Stock.StockIn.StockInPreLoadAction</p:step>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.Stock.StockIn.StockInViewModel</p:step>
+      <!-- Show product master summary form -->
+      <p:step>POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel</p:step>
+      <!-- Save Product Master -->
+      <p:step>POSServer.Actions.Stock.StockIn.StockInSaveAction</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="StockOutCreateFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Stock.StockInMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Stock.StockMainViewModel</p:screen>
+    <p:steps>
+      <p:step>POSServer.Actions.Stock.StockOut.StockOutPreLoadAction</p:step>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.Stock.StockOut.StockOutViewModel</p:step>
+      <!-- Show product master summary form -->
+      <p:step>[IStockOutConfirmViewModel]</p:step>
+      <!-- Save Product Master -->
+      <p:step>POSServer.Actions.Stock.StockOut.StockOutSaveAction</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="StockOutSpecificCreateFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Stock.StockInMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Stock.StockMainViewModel</p:screen>
+    <p:steps>
+      <p:step>POSServer.Actions.Stock.StockOut.StockOutSpecificPreLoadAction</p:step>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.Stock.StockOut.StockOutSpecificViewModel</p:step>
+      <!-- Show product master summary form -->
+      <p:step>[IStockOutConfirmViewModel]</p:step>
+      <!-- Save Product Master -->
+      <p:step>POSServer.Actions.Stock.StockOut.StockOutSpecificSaveAction</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <!-- StockOutSearch List -->
+  <p:flow id="StockOutSearchFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Stock.StockInMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Stock.StockMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.Stock.StockOut.StockOutSearchViewModel</p:step>
+      <p:step>[IStockOutDetailViewModel]</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="StockInSearchFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Stock.StockInMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Stock.StockMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.Stock.StockIn.StockInSearchViewModel</p:step>
+      <p:step>[IStockInDetailViewModel]</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="StockInventoryViewFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Stock.InventoryMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Stock.StockMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show product master form -->
+      <p:step>POSServer.Actions.Stock.Inventory.InventoryStockViewPreloadAction</p:step>
+      <p:step>POSServer.ViewModels.Stock.Inventory.StockInventoryViewModel</p:step>
+      <p:step>POSServer.Actions.Stock.Inventory.InventoryStockViewSaveAction</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="StockOutConfirmFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Stock.StockInMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Stock.StockMainViewModel</p:screen>
+    <p:steps>
+      <!-- Load confirming stockouts -->
+      <p:step>POSServer.Actions.Stock.StockOut.StockOutConfirmPreLoadAction</p:step>
+      <!-- Show stock out confirm form -->
+      <p:step>POSServer.ViewModels.Stock.StockOut.StockOutWaitingConfirmViewModel</p:step>
+      <!-- Save confirmed stock out -->
+      <p:step>POSServer.Actions.Stock.StockOut.StockOutConfirmSaveAction</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="StockInventoryProcessingFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Stock.StockInMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Stock.StockMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show stock inventory checking form -->
+      <p:step>POSServer.ViewModels.Stock.Inventory.StockInventoryProcessingViewModel</p:step>
+      <!-- Save and process inventory checking automatically -->
+      <p:step>POSServer.Actions.Stock.Inventory.StockInventoryProcessingSaveAction</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="SyncToDepartmentFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Synchronize.SynchronizeMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Synchronize.SynchronizeMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show sync to depatment form -->
+      <p:step>POSServer.ViewModels.Synchronize.SyncToDepartmentViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="CreateSyncUSBFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Synchronize.SynchronizeMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Synchronize.SynchronizeMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show create sync USB form -->
+      <p:step>POSServer.ViewModels.Synchronize.CreateSyncUSBViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="SystemConfigFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Synchronize.SynchronizeMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Synchronize.SynchronizeMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show syste confi form -->
+      <p:step>POSServer.ViewModels.Tool.SystemConfigViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="EmployeesViewFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Management.DeptEmpMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Management.ManagementMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show employee view form -->
+      <p:step>POSServer.ViewModels.Management.EmployeesViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+  <p:flow id="UserInfoViewFlow" >
+    <p:menu>POSServer.ViewModels.Menu.Management.DeptEmpMenuViewModel</p:menu>
+    <p:screen>POSServer.ViewModels.Management.ManagementMainViewModel</p:screen>
+    <p:steps>
+      <!-- Show product master form -->
+      <p:step>POSServer.ViewModels.Security.UserInfoViewModel</p:step>
+    </p:steps>
+    <p:session>FlowSession</p:session>
+  </p:flow>
+
+</objects>

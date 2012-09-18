@@ -175,6 +175,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\DefaultPosAction.cs" />
     <Compile Include="Actions\ProductMaster\PmPricePreLoadDefinitionAction.cs" />
     <Compile Include="Actions\Stock\Inventory\InventoryStockViewPreloadAction.cs" />
     <Compile Include="Actions\Stock\Inventory\StockInventoryProcessingSaveAction.cs" />
@@ -990,6 +991,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="flow-definitions.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

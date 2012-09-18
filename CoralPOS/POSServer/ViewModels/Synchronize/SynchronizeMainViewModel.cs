@@ -15,11 +15,13 @@ using AppFrame.CustomAttributes;
 using AppFrame.CustomAttributes;
 using POSServer.BusinessLogic.Common;
 using POSServer.Common;
+using POSServer.ViewModels.Menu;
 
 
 namespace POSServer.ViewModels.Synchronize
 {
     [PerRequest]
+    [AttachMenuAndMainScreen(typeof(MainMenuViewModel), typeof(MainViewModel))]
     public class SynchronizeMainViewModel : PosViewModel
     {
 

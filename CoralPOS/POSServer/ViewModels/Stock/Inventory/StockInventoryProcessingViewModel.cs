@@ -24,7 +24,7 @@ using POSServer.ViewModels.Menu.Stock;
 namespace POSServer.ViewModels.Stock.Inventory
 {
 	[PerRequest]
-    [AttachMenuAndMainScreen(typeof(InventoryMenuViewModel), typeof(StockMainViewModel))]
+    //[AttachMenuAndMainScreen(typeof(InventoryMenuViewModel), typeof(StockMainViewModel))]
 	public class StockInventoryProcessingViewModel : PosViewModel
 	{
 

@@ -11,29 +11,26 @@ using POSServer.Utils;
 namespace POSServer.Actions.Stock.StockIn
 {
     [PerRequest]
-    public class StockInPreLoadAction : PosAction
+    public class StockInPreLoadAction : DefaultPosAction
     {
         [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
         
         public override void DoExecute()
         {
-            IoC.Get<ICircularLoadViewModel>().StartLoading();
-            DoExecuteCompleted += StockInPreLoadAction_DoExecuteCompleted;
-            DoExecuteAsync(DoWork, null);
+            StartAsyncWork();
         }
 
-        void StockInPreLoadAction_DoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            IoC.Get<ICircularLoadViewModel>().StopLoading();
-            GoToNextNode();
-        }
-
-        private object DoWork()
+        public override object Working()
         {
             IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType("%%");
             Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
             return null;
+        }
+
+        public override void AfterWorkCompleted()
+        {
+            GoToNextNode();
         }
     }
 }

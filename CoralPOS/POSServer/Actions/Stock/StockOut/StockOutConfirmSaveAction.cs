@@ -13,7 +13,7 @@ using Spring.Transaction.Interceptor;
 namespace POSServer.Actions.Stock.StockOut
 {
     [PerRequest]
-    public class StockOutConfirmSaveAction : PosAction
+    public class StockOutConfirmSaveAction : DefaultPosAction
     {
         [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
@@ -34,16 +34,15 @@ namespace POSServer.Actions.Stock.StockOut
 
         public override void DoExecute()
         {
-            IList stockOuts = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as IList;
-            bool confirmFlag = (bool)Flow.Session.Get(FlowConstants.STOCK_OUT_CONFIRM_FLAG);
-            IoC.Get<INormalLoadViewModel>().StartLoading();
-            DoExecuteCompleted += StockOutSaveActionDoExecuteCompleted;
-            DoExecuteAsync(()=>ProcessStockOut(stockOuts,confirmFlag), stockOuts);
+            StartAsyncWork();
         }
 
         [Transaction]
-        object ProcessStockOut(IList stockOuts,bool confirmFlag)
+        public override object Working()
         {
+            IList stockOuts = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as IList;
+            bool confirmFlag = (bool)Flow.Session.Get(FlowConstants.STOCK_OUT_CONFIRM_FLAG);
+
             foreach (CoralPOS.Models.StockOut stockOut in stockOuts)
             {
                 if (confirmFlag)
@@ -57,9 +56,9 @@ namespace POSServer.Actions.Stock.StockOut
             }
             return null;
         }
-        void StockOutSaveActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+
+        public override void AfterWorkCompleted()
         {
-            IoC.Get<INormalLoadViewModel>().StopLoading();
             MessageBox.Show("Processed Stock Out Confirmation  !!");
             GoToNextNode();
         }

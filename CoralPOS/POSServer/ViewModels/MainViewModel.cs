@@ -10,7 +10,7 @@ using POSServer.ViewModels.Menu;
 
 namespace POSServer.ViewModels
 {
-    [PerRequest(Type = typeof(MainViewModel))]
+    [Singleton]
     [AttachMenuAndMainScreen(typeof(MainMenuViewModel))]
     public class MainViewModel : PosViewModel
     {

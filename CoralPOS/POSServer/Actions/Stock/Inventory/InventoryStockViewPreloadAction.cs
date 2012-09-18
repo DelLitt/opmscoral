@@ -13,7 +13,7 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.Actions.Stock.Inventory
 {
     [PerRequest]
-    public class InventoryStockViewPreloadAction : PosAction
+    public class InventoryStockViewPreloadAction : DefaultPosAction
     {
         [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
@@ -24,21 +24,18 @@ namespace POSServer.Actions.Stock.Inventory
 
         public override void DoExecute()
         {
-            IoC.Get<ICircularLoadViewModel>().StartLoading();
-            DoExecuteCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(InventoryStockViewPreloadAction_DoExecuteCompleted);
-            DoExecuteAsync(DoWork,null);
+            StartAsyncWork();
         }
 
-        private object DoWork()
+        public  override  object Working()
         {
             IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType("");
             Flow.Session.Put(FlowConstants.PRODUCT_MASTER_LIST,productMasters);
             return null;
         }
 
-        void InventoryStockViewPreloadAction_DoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        public override void AfterWorkCompleted()
         {
-            IoC.Get<ICircularLoadViewModel>().StopLoading();
             GoToNextNode();
         }
     }

@@ -20,7 +20,7 @@ using POSServer.ViewModels.Menu.ProductMaster;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-	[AttachMenuAndMainScreen(typeof(ProductMasterMenuViewModel), typeof(ProductMasterMainViewModel))]
+	//[AttachMenuAndMainScreen(typeof(ProductMasterMenuViewModel), typeof(ProductMasterMainViewModel))]
     [PerRequest]
 	public class ProductMasterPriceUpdateViewModel : PosViewModel
 	{

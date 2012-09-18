@@ -20,12 +20,11 @@ using POSServer.ViewModels.Menu.ProductMaster;
 namespace POSServer.ViewModels.ProductMaster
 {
 
-    [AttachMenuAndMainScreen(typeof(ProductMasterMenuViewModel), typeof(ProductMasterMainViewModel))]
+    //[AttachMenuAndMainScreen(typeof(ProductMasterMenuViewModel), typeof(ProductMasterMainViewModel))]
     [PerRequest]
     public class ProductMasterViewModel : PosViewModel
     {
 
-        private IShellViewModel _startViewModel;
         private IList _productColors;
 
         private IList _productSizes;
@@ -37,7 +36,7 @@ namespace POSServer.ViewModels.ProductMaster
 
         public ProductMasterViewModel()
         {
-            _startViewModel = ShellViewModel.Current;
+            
         }
 
         #region Fields
@@ -284,7 +283,7 @@ namespace POSServer.ViewModels.ProductMaster
             {
                 var test = IoC.Get<ErrorDialogViewModel>();
                 test.ErrorResult = errors.ToList();
-                _startViewModel.ShowDialog(test);
+                ShellViewModel.Current.ShowDialog(test);
                 return;
             }
 
@@ -296,11 +295,11 @@ namespace POSServer.ViewModels.ProductMaster
             savePm.UpdateDate = DateTime.Now;
             savePm.UpdateId = "admin";
 
-            var productColorList = ProductColors;
-            var productSizeList = ProductSizes;
+            var selectedColors = ProductColors;
+            var selectedSizes = ProductSizes;
             Flow.Session.Put(FlowConstants.SAVE_PRODUCT_MASTER, savePm);
-            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_COLORS_LIST, productColorList);
-            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_SIZES_LIST, productSizeList);
+            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_COLORS_LIST, selectedColors);
+            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_SIZES_LIST, selectedSizes);
             GoToNextNode();
         }
 
@@ -317,13 +316,13 @@ namespace POSServer.ViewModels.ProductMaster
         public void NewType()
         {
             Flow.Session.Put(FlowConstants.SAVE_PRODUCT_MASTER, ProductMaster);
-            _startViewModel.EnterChildFlow("ProductTypeViewFlow", this.Flow);
+            ShellViewModel.Current.EnterChildFlow("ProductTypeViewFlow", this.Flow);
         }
 
         public void NewCategory()
         {
             Flow.Session.Put(FlowConstants.SAVE_PRODUCT_MASTER, ProductMaster);
-            _startViewModel.EnterChildFlow("ProductCategoryViewFlow", this.Flow);
+            ShellViewModel.Current.EnterChildFlow("ProductCategoryViewFlow", this.Flow);
         }
 
         public void ColorAddAll()
@@ -387,13 +386,13 @@ namespace POSServer.ViewModels.ProductMaster
         public void NewColor()
         {
             Flow.Session.Put(FlowConstants.SAVE_PRODUCT_MASTER, ProductMaster);
-            _startViewModel.EnterChildFlow("ProductColorViewFlow", this.Flow);
+            ShellViewModel.Current.EnterChildFlow("ProductColorViewFlow", this.Flow);
         }
 
         public void NewSize()
         {
             Flow.Session.Put(FlowConstants.SAVE_PRODUCT_MASTER,ProductMaster);
-            _startViewModel.EnterChildFlow("ProductSizeViewFlow", this.Flow);
+            ShellViewModel.Current.EnterChildFlow("ProductSizeViewFlow", this.Flow);
         }
 
         protected override void OnInitialize()
@@ -409,14 +408,25 @@ namespace POSServer.ViewModels.ProductMaster
             ProductTypeList = Flow.Session.Get(FlowConstants.PRODUCT_TYPE_LIST) as IList;
             ProductColorsList = Flow.Session.Get(FlowConstants.PRODUCT_COLOR_LIST) as IList;
             ProductSizesList = Flow.Session.Get(FlowConstants.PRODUCT_SIZE_LIST) as IList;
-            if (_productColors == null) _productColors = new ArrayList();
-            if (_productSizes == null) _productSizes = new ArrayList();
+            ProductColors = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_COLORS_LIST) as IList;
+            if (ProductColors == null) ProductColors = new ArrayList();
+            ProductSizes = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_SIZES_LIST) as IList;
+            if (ProductSizes == null) ProductSizes = new ArrayList();
             if (_selectedProductColors == null) _selectedProductColors = new Collection<ExProductColor>();
             if (_removeProductColors == null) _removeProductColors = new List<ExProductColor>();
             if (_selectedProductSizes == null) _selectedProductSizes = new List<ExProductSize>();
             if (_removeProductSizes == null) _removeProductSizes = new List<ExProductSize>();
             ProductMaster = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_MASTER) as CoralPOS.Models.ProductMaster;
-            if (ProductMaster == null) CreateNewProductMaster();
+            if (ProductMaster == null)
+            {
+                CreateNewProductMaster();
+            }
+            else
+            {
+                ProductName = ProductMaster.ProductName;
+                ProductType = ProductMaster.ProductType;
+                Category = ProductMaster.Category;
+            }
         }
 
         private void CreateNewProductMaster()

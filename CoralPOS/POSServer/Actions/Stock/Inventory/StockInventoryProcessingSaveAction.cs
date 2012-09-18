@@ -12,7 +12,7 @@ using POSServer.Utils;
 namespace POSServer.Actions.Stock.Inventory
 {
     [PerRequest]
-    public class StockInventoryProcessingSaveAction : PosAction
+    public class StockInventoryProcessingSaveAction : DefaultPosAction
     {
         [Autowired]
         public IDepartmentLogic DepartmentLogic { get; set; }

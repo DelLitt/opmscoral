@@ -21,7 +21,7 @@ namespace POSServer.ViewModels.Management
     /// <summary>
     /// 
     /// </summary>
-    [AttachMenuAndMainScreen(typeof(DeptEmpMenuViewModel), typeof(ManagementMainViewModel))]
+    //[AttachMenuAndMainScreen(typeof(DeptEmpMenuViewModel), typeof(ManagementMainViewModel))]
     [PerRequest]
     public class EmployeesViewModel : PosViewModel
     {

@@ -8,27 +8,30 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.Actions.ProductMaster
 {
     [PerRequest]
-    public class PmPreLoadDefinitionAction : PosAction
+    public class PmPreLoadDefinitionAction : DefaultPosAction
     {
         public override void DoExecute()
         {
-            IoC.Get<ICircularLoadViewModel>().StartLoading();
-            DoExecuteCompleted += LoadProductMasterDefinitionCompleted;
-            DoExecuteAsync(LoadProductMasterDefinition, null);
-            
+            StartAsyncWork();
         }
 
-        private void LoadProductMasterDefinitionCompleted(object sender, RunWorkerCompletedEventArgs e)
+        public override object Working()
         {
-            IoC.Get<ICircularLoadViewModel>().StopLoading();
+            return LoadProductMasterDefinition();
+        }
+
+        public override void AfterWorkCompleted()
+        {
             GoToNextNode();
         }
 
         private object LoadProductMasterDefinition()
         {
-            ProductMasterLogic.PreloadDefinition(this.Flow.Session);
+            Flow.Session.Clear();
+            ProductMasterLogic.PreloadDefinition(Flow.Session);
             return null;
         }
+        
         [Autowired]
         public IProductMasterLogic ProductMasterLogic
         {

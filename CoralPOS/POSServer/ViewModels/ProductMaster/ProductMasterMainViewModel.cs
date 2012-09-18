@@ -44,7 +44,7 @@ namespace POSServer.ViewModels.ProductMaster
 				
 		public void CreateProductMaster()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.ProductMasterCreateFlow);
+            ShellViewModel.Current.EnterFlow(FlowDefinition.ProductMasterCreateFlow);
 		}
 				
 		public void CreateProductMasterByTemplate()
@@ -59,7 +59,7 @@ namespace POSServer.ViewModels.ProductMaster
 				
 		public void PriceUpdate()
 		{
-			_startViewModel.EnterFlow(FlowDefinition.ProductMasterPriceUpdateFlow);   
+            ShellViewModel.Current.EnterFlow(FlowDefinition.ProductMasterPriceUpdateFlow);   
 		}
 				
 		public void ExtendFunctions()

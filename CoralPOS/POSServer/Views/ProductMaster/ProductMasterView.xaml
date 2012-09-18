@@ -24,10 +24,10 @@
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="6.333,0,0,14.29" Name="label4" VerticalAlignment="Bottom" Width="114.32" HorizontalContentAlignment="Right">NHÓM</Label>
                 <ComboBox Margin="352,98,256,0" Name="ProductTypeList" Height="41.997" VerticalAlignment="Top" DisplayMemberPath="TypeName" SelectedItem="{Binding ProductType,Mode=TwoWay}" FontSize="16" />
                 <ComboBox Height="38.583" Margin="352,0,256,13" Name="CategoryList" VerticalAlignment="Bottom" DisplayMemberPath="CategoryName" FontSize="16" SelectedItem="{Binding Category,Mode=TwoWay}" />
-                <TextBox FontSize="14" Height="38" Margin="407.628,8,199.872,0" Name="textBox5" VerticalAlignment="Top" />
-                <Button FontSize="14" FontWeight="Bold" Height="38.773" Margin="0,7,32.222,0" Name="ProductImageSelect" VerticalAlignment="Top" HorizontalAlignment="Right" Width="145.758">NHẬP</Button>
-                <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="287.874,18,0,0" Name="label5" VerticalAlignment="Top" Width="114.32">HÌNH ẢNH</Label>
-                <Canvas HorizontalAlignment="Right" Margin="0,78,32.222,13" Name="ProductImage" Width="145.758" />
+                <TextBox FontSize="14" Height="38" Margin="407.628,8,199.872,0" Name="textBox5" VerticalAlignment="Top" Visibility="Hidden" />
+                <Button FontSize="14" FontWeight="Bold" Height="38.773" Margin="0,7,32.222,0" Name="ProductImageSelect" VerticalAlignment="Top" HorizontalAlignment="Right" Width="145.758">NHẬP HÌNH ẢNH</Button>
+                <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="287.874,18,0,0" Name="label5" VerticalAlignment="Top" Width="114.32" Visibility="Hidden">HÌNH ẢNH</Label>
+                <Canvas HorizontalAlignment="Right" Margin="0,53,32,13" Name="ProductImage" Width="146" Background="#FFF5E8C4" />
                 <TextBox Height="38.583" HorizontalAlignment="Left" Margin="142.25,9,0,0" Name="ProductMasterId" VerticalAlignment="Top" Width="120.036" FontSize="14" IsReadOnly="True" />
             <Button HorizontalAlignment="Right" Margin="0,98,199.872,64" Name="NewType" Width="42">**</Button>
             <Button Height="40" HorizontalAlignment="Right" Margin="0,0,199.872,12" Name="NewCategory" VerticalAlignment="Bottom" Width="42">**</Button>

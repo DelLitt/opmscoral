@@ -7,9 +7,7 @@ using POSServer.Common;
 
 namespace POSServer.ViewModels
 {
-    //[Singleton(typeof(IShellViewModel))]
-    //[Singleton(typeof(IShellViewModel))]
-    [Singleton(Name = "IShellViewModel")]
+    [Singleton]
     public class ShellViewModel : ShellNavigator<IScreen,INode>, IShellViewModel
     {
         
@@ -17,7 +15,7 @@ namespace POSServer.ViewModels
         private IScreen _dialogModel;
 
         public string CurrentPath { get;set; }
-        private static ShellViewModel _currentShellNavigator;
+        private static ShellViewModel _currentShellNavigator = null;
         public static ShellViewModel Current
         {
             get { return _currentShellNavigator; }
@@ -32,15 +30,19 @@ namespace POSServer.ViewModels
             }
         }
 
+        protected override void OnInitialize()
+        {
+            RootScreen = IoC.Get<MainViewModel>();
+            MainScreen = RootScreen;
+            DialogExtensions.HideDialog = HideDialog;
+            DialogExtensions.ShowDialog = ShowDialog;
+        }
+
         //public override void Activate() {}
         protected override void OnActivate()
         {
-            DialogExtensions.HideDialog = HideDialog;
-            DialogExtensions.ShowDialog = ShowDialog;
             base.OnActivate();
             //if(IsActive == false) Console.WriteLine("UI GIOI !");
-            RootScreen = IoC.Get<MainViewModel>();
-            MainScreen = RootScreen;
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
             if (isLogged)
             {
@@ -51,23 +53,5 @@ namespace POSServer.ViewModels
                 EnterFlow(FlowDefinition.LoginFlow);
             }
         }
-
-        
-        /*protected override void OnInitialize() 
-        {
-            base.OnInitialize();
-            RootScreen = IoC.Get<IMainViewModel>();
-            MainScreen = RootScreen;
-            bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
-            if(isLogged)
-            {
-                this.ActivateItem(MainScreen);
-            }
-            else
-            {
-                EnterFlow(FlowDefinition.LoginFlow);    
-            }
-        }*/
-        
     }
 }

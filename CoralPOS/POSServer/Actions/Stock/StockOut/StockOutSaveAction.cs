@@ -12,7 +12,7 @@ using Spring.Transaction.Interceptor;
 namespace POSServer.Actions.Stock.StockOut
 {
     [PerRequest]
-    public class StockOutSaveAction : PosAction
+    public class StockOutSaveAction : DefaultPosAction
     {
         [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
@@ -33,15 +33,13 @@ namespace POSServer.Actions.Stock.StockOut
 
         public override void DoExecute()
         {
-            CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
-            IoC.Get<INormalLoadViewModel>().StartLoading();
-            DoExecuteCompleted += StockOutSaveActionDoExecuteCompleted;
-            DoExecuteAsync(()=>ProcessStockOut(stockOut), stockOut);
+            StartAsyncWork();
         }
 
         [Transaction]
-        object ProcessStockOut(CoralPOS.Models.StockOut stockOut)
+        public override object Working()
         {
+            CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
             StockOutLogic.Add(stockOut);
             // if does not confirm when stock out so we update main stock immediately
             if(stockOut.ConfirmFlg == 0 && !SystemConfig.Instance.StockOutConfirm)
@@ -50,9 +48,8 @@ namespace POSServer.Actions.Stock.StockOut
             }
             return stockOut;
         }
-        void StockOutSaveActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        public override void AfterWorkCompleted()
         {
-            IoC.Get<INormalLoadViewModel>().StopLoading();
             MessageBox.Show("Saved StockOut successfully !!");
             GoToNextNode();
         }

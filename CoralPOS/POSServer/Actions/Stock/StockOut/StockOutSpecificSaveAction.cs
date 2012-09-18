@@ -13,7 +13,7 @@ using POSServer.Utils;
 namespace POSServer.Actions.Stock.StockOut
 {
     [PerRequest]
-    public class StockOutSpecificSaveAction : PosAction
+    public class StockOutSpecificSaveAction : DefaultPosAction
     {
         [Autowired]
         public IProductMasterLogic ProductMasterLogic { get; set; }
@@ -34,15 +34,12 @@ namespace POSServer.Actions.Stock.StockOut
 
         public override void DoExecute()
         {
-            CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
-            
-            IoC.Get<INormalLoadViewModel>().StartLoading();
-            DoExecuteCompleted += StockOutSaveActionDoExecuteCompleted;
-            DoExecuteAsync(() => DoStockOut(stockOut), stockOut);
+            StartAsyncWork();
         }
 
-        private object DoStockOut(CoralPOS.Models.StockOut stockOut)
+        public override object Working()
         {
+            CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
             StockOutLogic.Add(stockOut);
             if (stockOut.ConfirmFlg == 0 && !SystemConfig.Instance.StockOutConfirm)
             {
@@ -51,9 +48,8 @@ namespace POSServer.Actions.Stock.StockOut
             return stockOut;
         }
 
-        void StockOutSaveActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        public override void AfterWorkCompleted()
         {
-            IoC.Get<INormalLoadViewModel>().StopLoading();
             MessageBox.Show("Saved StockOut successfully !!");
             GoToNextNode();
         }
