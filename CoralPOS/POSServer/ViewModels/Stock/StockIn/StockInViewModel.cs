@@ -299,13 +299,12 @@ namespace POSServer.ViewModels.Stock.StockIn
             
         }
 
-        protected override void OnInitialize()
+        protected override void OnActivate()
         {
-            var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
-            ProductMasterList = list as IList;
-            _stockInDetailList = new ArrayList();
-            _selectedStockInDetails = new ArrayList();
-            SelectedStockInDetails = _selectedStockInDetails;
+            var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST) as IList;
+            ProductMasterList = list;
+            StockInDetailList = new ArrayList();
+            SelectedStockInDetails = new ArrayList();
             StockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
             if (StockIn == null)
             {
