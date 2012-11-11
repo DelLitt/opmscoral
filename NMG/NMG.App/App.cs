@@ -1110,7 +1110,7 @@ namespace NHibernateMappingGenerator
         private void btnGenViewModel_Click(object sender, EventArgs e)
         {
             errorLabel.Text = string.Empty;
-            if (string.IsNullOrEmpty(txtBusinessLayerDir.Text))
+            if (string.IsNullOrEmpty(txtViewModelDir.Text))
             {
                 errorCodeGen.Text = "Please select a directory for VIEWMODEL GEN";
                 return;
@@ -1137,6 +1137,7 @@ namespace NHibernateMappingGenerator
             catch (Exception ex)
             {
                 errorCodeGen.Text = ex.Message;
+                textBox1.Text = ex.Message;
             }
             finally
             {

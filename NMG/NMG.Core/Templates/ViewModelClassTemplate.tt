@@ -1,19 +1,18 @@
-﻿<#@ template hostspecific="true" language="C#v3.5" #>
+﻿<#@ template language="C#" #>
 <#@ property name="ClassName" type="System.String" 
 			 processor="PropertyProcessor" #>
 <#@ property name="NamespaceName" type="System.String" 
-             processor="PropertyProcessor" #>
+			 processor="PropertyProcessor" #>
 			 
 <#@ property name="FieldNames" type="System.Collections.ArrayList" 
-             processor="PropertyProcessor" #>
+			 processor="PropertyProcessor" #>
 <#@ property name="MethodNames" type="System.Collections.ArrayList" 
-             processor="PropertyProcessor" #>
+			 processor="PropertyProcessor" #>
 
 <#@ property name="DetailList" type="System.Collections.ArrayList" 
-             processor="PropertyProcessor" #>
+			 processor="PropertyProcessor" #>
 <#@ property name="ListNames" type="System.Collections.ArrayList" 
-             processor="PropertyProcessor" #>			 
-
+			 processor="PropertyProcessor" #>
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,47 +20,47 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
-
-
+using AppFrame.CustomAttributes;
+using AppFrame.Extensions;
+using AppFrame.Utils;
+using AppFrame.Validation;
+using AppFrame.WPF.ValidationAttributes;
+using Caliburn.Micro;
 
 namespace <#= NamespaceName #>
 {
-    [PerRequest(typeof(I<#= ClassName #>))]
-    public class <#= ClassName #> : PosViewModel,I<#= ClassName #>  
-    {
+	[PerRequest(typeof(I<#= ClassName #>))]
+	public class <#= ClassName #> : PosViewModel,I<#= ClassName #>  
+	{
 
-        private IShellViewModel _startViewModel;
-        public <#= ClassName #>(IShellViewModel startViewModel)
-        {
-            _startViewModel = startViewModel; 
-        }
+		private IShellViewModel _startViewModel;
+		public <#= ClassName #>()
+		{
+			_startViewModel = ShellViewModel.Current; 
+		}
 		
 		#region Fields
 		<# 
 			foreach(string fieldName in FieldNames)
 			{
 				char lower = char.ToLower(fieldName[0]);
-            	string fieldLower = fieldName.Remove(0, 1);
-            	fieldLower = lower + fieldLower;
-            
+				string fieldLower = fieldName.Remove(0, 1);
+				fieldLower = lower + fieldLower;
+			
 		#>        
-        private string _<#=fieldLower  #>;
-        public string <#= fieldName #>
-        {
-            get
-            {
-                return _<#=fieldLower  #>;
-            }
-            set
-            {
-                _<#=fieldLower  #> = value;
-                NotifyOfPropertyChange(() => <#= fieldName #>);
-            }
-        }
+		private string _<#=fieldLower  #>;
+		public string <#= fieldName #>
+		{
+			get
+			{
+				return _<#=fieldLower  #>;
+			}
+			set
+			{
+				_<#=fieldLower  #> = value;
+				NotifyOfPropertyChange(() => <#= fieldName #>);
+			}
+		}
 		<# 
 			}
 		#>
@@ -72,23 +71,23 @@ namespace <#= NamespaceName #>
 			foreach(string listName in ListNames)
 			{
 				char lower = char.ToLower(listName[0]);
-            	string listLower = listName.Remove(0, 1);
-            	listLower = lower + listLower;
-            
+				string listLower = listName.Remove(0, 1);
+				listLower = lower + listLower;
+			
 		#>        
-        private IList _<#=listLower  #>;
-        public IList <#= listName #>
-        {
-            get
-            {
-                return _<#=listLower  #>;
-            }
-            set
-            {
-                _<#=listLower  #> = value;
-                NotifyOfPropertyChange(() => <#= listName #>);
-            }
-        }
+		private IList _<#=listLower  #>;
+		public IList <#= listName #>
+		{
+			get
+			{
+				return _<#=listLower  #>;
+			}
+			set
+			{
+				_<#=listLower  #> = value;
+				NotifyOfPropertyChange(() => <#= listName #>);
+			}
+		}
 		<# 
 			}
 		#>
@@ -99,23 +98,23 @@ namespace <#= NamespaceName #>
 			foreach(string detailName in DetailList)
 			{
 				char lower = char.ToLower(detailName[0]);
-            	string detailLower = detailName.Remove(0, 1);
-            	detailLower = lower + detailLower;
-            
+				string detailLower = detailName.Remove(0, 1);
+				detailLower = lower + detailLower;
+			
 		#>        
-        private IList _<#=detailLower  #>;
-        public IList <#= detailName #>
-        {
-            get
-            {
-                return _<#=detailLower  #>;
-            }
-            set
-            {
-                _<#=detailLower  #> = value;
-                NotifyOfPropertyChange(() => <#= detailName #>);
-            }
-        }
+		private IList _<#=detailLower  #>;
+		public IList <#= detailName #>
+		{
+			get
+			{
+				return _<#=detailLower  #>;
+			}
+			set
+			{
+				_<#=detailLower  #> = value;
+				NotifyOfPropertyChange(() => <#= detailName #>);
+			}
+		}
 		<# 
 			}
 		#>
@@ -125,18 +124,18 @@ namespace <#= NamespaceName #>
 		<# 
 			foreach(string methodName in MethodNames)
 			{			
-            
+			
 		#>        
-        public void <#= methodName #>()
-        {
-            
-        }
+		public void <#= methodName #>()
+		{
+			
+		}
 		<# 
 			}
 		#>
 		#endregion
 		
-        
-        
-    }
+		
+		
+	}
 }

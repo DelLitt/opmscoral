@@ -103,16 +103,17 @@ namespace NMG.Core.Generator
             WriteToFile(interfaceName, source, saveViewModelPath);
 
             ViewModelGenerateArgument classArgument = new ViewModelGenerateArgument
-                                                     (
-                                                         className,
-                                                         namespaceName,
-                                                         ConvertToArrayList(fieldNames),
-                                                         ConvertToArrayList(methodNames), 
-                                                         ConvertToArrayList(detailList),
-                                                         genListNames
-                                                     );
-            source = ViewModelClassTemplate.Transform(classArgument);
-            WriteToFile(className,source,saveViewModelPath);
+                                                             (
+                                                                 className,
+                                                                 namespaceName,
+                                                                 ConvertToArrayList(fieldNames),
+                                                                 ConvertToArrayList(methodNames),
+                                                                 ConvertToArrayList(detailList),
+                                                                 genListNames
+                                                             );
+                source = ViewModelClassTemplate.Transform(classArgument);
+                WriteToFile(className, source, saveViewModelPath);
+            
 
         }
 

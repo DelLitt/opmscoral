@@ -1,38 +1,36 @@
-﻿<#@ template hostspecific="true" language="C#v3.5" #>
+﻿<#@ template language="C#" #>
 <#@ import namespace="System.Collections" #>
 <#@ property name="ClassName" type="System.String" 
 			 processor="PropertyProcessor" #>
 <#@ property name="NamespaceName" type="System.String" 
-             processor="PropertyProcessor" #>
+			 processor="PropertyProcessor" #>
 
 <#@ property name="FieldNames" type="ArrayList" 
-             processor="PropertyProcessor" #>
+			 processor="PropertyProcessor" #>
 <#@ property name="MethodNames" type="ArrayList" 
-             processor="PropertyProcessor" #>
-			 
+			 processor="PropertyProcessor" #>			 
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
 
 namespace <#= NamespaceName #>
 {
-    public interface I<#= ClassName #> : IScreenNode
-    {
-        #region Fields
+	public interface I<#= ClassName #> : IScreenNode
+	{
+		#region Fields
 		<# 
 			foreach(string fieldName in FieldNames)
 			{				            
 		#>                
-        string <#= fieldName #>
-        {
-            get;
-            set;            
-        }
+		string <#= fieldName #>
+		{
+			get;
+			set;            
+		}
 		<# 
 			}
 		#>
@@ -42,13 +40,13 @@ namespace <#= NamespaceName #>
 		<# 
 			foreach(string methodName in MethodNames)
 			{			
-            
+			
 		#>        
-        void <#= methodName #>();
-        
+		void <#= methodName #>();
+		
 		<# 
 			}
 		#>
 	#endregion
-    }
+	}
 }

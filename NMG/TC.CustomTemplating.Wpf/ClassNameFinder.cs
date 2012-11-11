@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TextTemplating;
 
+
 namespace TC.CustomTemplating.Wpf
 {
     public class ClassNameFinder : MarshalByRefObject

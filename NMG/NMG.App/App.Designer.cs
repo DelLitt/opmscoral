@@ -69,9 +69,7 @@ namespace NHibernateMappingGenerator
             this.lblDesc = new System.Windows.Forms.Label();
             this.refColumnGrid = new System.Windows.Forms.DataGridView();
             this.refColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.columnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.refTableColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.refColumnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.refName = new System.Windows.Forms.TextBox();
             this.refTypeCombo = new System.Windows.Forms.ComboBox();
@@ -160,6 +158,9 @@ namespace NHibernateMappingGenerator
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.projectNameTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.columnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.refColumnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dbTableDetailsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.basicSettingsTabPage.SuspendLayout();
@@ -167,8 +168,6 @@ namespace NHibernateMappingGenerator
             this.groupBox5.SuspendLayout();
             this.tableReferenceGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refColumnGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.businessLayerTabPage.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -180,6 +179,8 @@ namespace NHibernateMappingGenerator
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // connStrTextBox
@@ -549,10 +550,6 @@ namespace NHibernateMappingGenerator
             this.refColumn.Name = "refColumn";
             this.refColumn.Width = 135;
             // 
-            // columnDetailBindingSource
-            // 
-            this.columnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
-            // 
             // refTableColumn
             // 
             this.refTableColumn.DataSource = this.refColumnDetailBindingSource;
@@ -560,10 +557,6 @@ namespace NHibernateMappingGenerator
             this.refTableColumn.HeaderText = "Reference Column";
             this.refTableColumn.Name = "refTableColumn";
             this.refTableColumn.Width = 137;
-            // 
-            // refColumnDetailBindingSource
-            // 
-            this.refColumnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
             // 
             // label7
             // 
@@ -715,6 +708,7 @@ namespace NHibernateMappingGenerator
             // 
             // businessLayerTabPage
             // 
+            this.businessLayerTabPage.Controls.Add(this.textBox1);
             this.businessLayerTabPage.Controls.Add(this.groupBox10);
             this.businessLayerTabPage.Controls.Add(this.groupBox9);
             this.businessLayerTabPage.Controls.Add(this.groupBox8);
@@ -1148,7 +1142,7 @@ namespace NHibernateMappingGenerator
             this.errorCodeGen.AutoSize = true;
             this.errorCodeGen.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorCodeGen.ForeColor = System.Drawing.Color.OrangeRed;
-            this.errorCodeGen.Location = new System.Drawing.Point(11, 620);
+            this.errorCodeGen.Location = new System.Drawing.Point(4, 496);
             this.errorCodeGen.Name = "errorCodeGen";
             this.errorCodeGen.Size = new System.Drawing.Size(109, 23);
             this.errorCodeGen.TabIndex = 31;
@@ -1469,6 +1463,22 @@ namespace NHibernateMappingGenerator
             this.label12.TabIndex = 22;
             this.label12.Text = "Project Name";
             // 
+            // columnDetailBindingSource
+            // 
+            this.columnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
+            // 
+            // refColumnDetailBindingSource
+            // 
+            this.refColumnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(4, 523);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(975, 84);
+            this.textBox1.TabIndex = 39;
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1492,8 +1502,6 @@ namespace NHibernateMappingGenerator
             this.tableReferenceGroup.ResumeLayout(false);
             this.tableReferenceGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refColumnGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.businessLayerTabPage.ResumeLayout(false);
@@ -1515,6 +1523,8 @@ namespace NHibernateMappingGenerator
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1649,6 +1659,7 @@ namespace NHibernateMappingGenerator
         private TextBox txtViewModelDir;
         private Label label21;
         private Label label22;
+        private TextBox textBox1;
     }
 }
 
